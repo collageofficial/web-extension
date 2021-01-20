@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useContext } from "react";
+import { Context } from "./Context/Context";
 
-function App() {
+import Button from "./Components/Atoms/Button";
+import Text from "./Components/Atoms/Text";
+
+const App = () => {
+  const context = useContext(Context);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {/* test stuffs, delete them after */}
+      {/* <h1>hello</h1>
+      <h1>Counter with Hook State</h1>
+      <h1>{context.counter}</h1>
+      <button onClick={() => context.setCounter(context.counter + 1)}>
+        Increment
+      </button>
+      <hr /> */}
+      <Button
+        text="Add"
+        bgColor="primary"
+        width="20"
+        height="10"
+        color="light"
+      />
+
+      <Button text="Delete" bgColor="light" color="dark" />
+
+      <Text text="Hello world!" bgColor="primary" color="light" />
+    </>
   );
-}
+};
 
 export default App;
