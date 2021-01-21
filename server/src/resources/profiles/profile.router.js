@@ -1,6 +1,7 @@
 const router = require('express').Router()
 const profileService = require('./profile.service')
 const Profile = require('./profile.model')
+const mongoose = require('mongoose')
 
 router.route('/').get(async (req, res) => {
     const profiles = await profileService.getAll()
