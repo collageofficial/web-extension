@@ -17,16 +17,44 @@ const App = () => {
       </button>
       <hr /> */}
       <Button
-        text="Add"
+        text="Button"
         bgColor="primary"
         width="20"
         height="10"
         color="light"
+        borderRadius="lg"
       />
 
-      <Button text="Delete" bgColor="light" color="dark" />
+      <Button
+        text="Button"
+        bgColor="light"
+        width="20"
+        height="10"
+        color="dark"
+        border="2"
+        borderColor="dark"
+        borderRadius="lg"
+      />
 
-      <Text text="Hello world!" bgColor="primary" color="light" />
+      <Button
+        text="Button"
+        bgColor="light"
+        width="20"
+        height="10"
+        color="primary"
+        border="2"
+        borderColor="primary"
+        borderRadius="lg"
+      />
+
+      <Button
+        text="+"
+        bgColor="primary"
+        width="5"
+        height="5"
+        color="light"
+      />
+      {/* <Text text="Hello world!" bgColor="primary" color="light" /> */}
     </>
   );
 };
