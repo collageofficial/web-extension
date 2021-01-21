@@ -1,19 +1,23 @@
-import React from "react";
+import React from 'react'
 
 const Button = ({
-  text,
-  bgColor,
-  color,
-  width,
-  height,
-  border,
-  borderColor,
-  borderRadius,
+    action,
+    text,
+    textSize,
+    bgColor,
+    color,
+    width,
+    height,
+    border,
+    borderColor,
+    borderRadius,
 }) => (
-  <button
-    className={`
+    <button
+        onClick={action}
+        className={`
       bg-${bgColor} 
-      text-${color} 
+      text-${color}
+      text-${textSize} 
       w-${width} 
       h-${height} 
       border-${border} 
@@ -25,9 +29,46 @@ const Button = ({
       focus:outline-none
       active:outline-none
     `}
-  >
-    {text}
-  </button>
-);
+    >
+        {text}
+    </button>
+)
 
-export default Button;
+export default Button
+
+// Basic primary color button
+// <Button
+//   text="Button"
+//   color="light"
+//   textSize="medium"
+//   bgColor="primary"
+//   width="20"
+//   height="10"
+//   borderRadius="small"
+// />
+
+// Basic light color button
+// <Button
+//   text="Button"
+//   color="dark"
+//   textSize = 'medium'
+//   bgColor="light"
+//   width="20"
+//   height="10"
+//   border="2"
+//   borderColor="dark"
+//   borderRadius="small"
+// />
+
+// Basic inverted primary color button
+// <Button
+//   text="Button"
+//   bgColor="light"
+//   color="primary"
+//   textSize = 'medium'
+//   width="20"
+//   height="10"
+//   border="2"
+//   borderColor="primary"
+//   borderRadius="small"
+// />

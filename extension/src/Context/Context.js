@@ -1,15 +1,15 @@
-import React, { useState } from "react";
+import React, { useState } from 'react'
 
-export const Context = React.createContext();
+export const Context = React.createContext()
 
 const CollageContext = ({ children }) => {
-  const [counter, setCounter] = useState(0);
+    const [counter, setCounter] = useState(0)
 
-  return (
-    <Context.Provider value={{ counter, setCounter }}>
-      {children}
-    </Context.Provider>
-  );
-};
+    return (
+        <Context.Provider value={{ counter, setCounter }}>
+            {children}
+        </Context.Provider>
+    )
+}
 
-export default CollageContext;
+export default CollageContext
