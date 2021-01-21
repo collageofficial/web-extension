@@ -14,7 +14,10 @@
     "globals": { "module": true, "exports": true, "setImmediate": true },
     "extends": "eslint:recommended",
     "parserOptions": {
-        "sourceType": "module"
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true
+          }
     },
     "rules": {
         "no-unused-vars": "warn",
