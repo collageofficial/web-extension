@@ -1,26 +1,26 @@
 module.exports = {
-  purge: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
+  purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
 
   darkMode: false, // or 'media' or 'class'
 
   theme: {
     extend: {
       colors: {
-        primary: "#E60023",
-        light: "#ffffff",
-        dark: "#000000",
-        grey: "#DDDDDD",
+        primary: '#E60023',
+        light: '#ffffff',
+        dark: '#000000',
+        grey: '#DDDDDD',
       },
       fontFamily: {
-        main: ["Poppins"],
+        main: ['Poppins'],
       },
       fontSize: {
-        small: ["12"],
-        medium: ["18"],
-        large: ["24"],
+        small: ['12'],
+        medium: ['18'],
+        large: ['24'],
       },
       outline: {
-        none: "none",
+        none: 'none',
       },
     },
   },
@@ -29,4 +29,4 @@ module.exports = {
     extend: {},
   },
   plugins: [],
-};
+}
