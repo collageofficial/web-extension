@@ -1,18 +1,15 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import './index.css'
+import App from './App'
 
-import CollageContext from "./Context/Context";
+import CollageContext from './Context/Context'
 
 ReactDOM.render(
-  <React.StrictMode>
-    <CollageContext>
-      <App />
-    </CollageContext>
-  </React.StrictMode>,
-  document.getElementById("root")
-);
-
-reportWebVitals();
+    <React.StrictMode>
+        <CollageContext>
+            <App />
+        </CollageContext>
+    </React.StrictMode>,
+    document.getElementById('root')
+)

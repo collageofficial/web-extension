@@ -8,7 +8,8 @@
         "amd": true,
         "mongo": true,
         "mocha": true,
-        "jest": true
+        "jest": true,
+        "webextensions": true
     },
     "globals": { "module": true, "exports": true, "setImmediate": true },
     "extends": "eslint:recommended",
