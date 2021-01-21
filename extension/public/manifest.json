@@ -34,5 +34,5 @@
   "permissions": [
     "storage"
   ],
-  "content_security_policy": "script-src 'self' 'sha256-UT6ldSvbjpoMDfREKV5D/ILzhCpSj/7E5cB3lE7tFdI='; object-src 'self'"
+  "content_security_policy": "script-src 'self' 'sha256-L+HBeV0C8W1hvGySlV8iloOWPuXsC9chSuEE1lpPSQA='; object-src 'self'"
 }

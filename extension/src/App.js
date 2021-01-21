@@ -1,13 +1,14 @@
 import React, { useContext } from 'react'
 import { Context } from './Context/Context'
 
+import CardContainer from './Components/Organisms/CardContainer'
 import Button from './Components/Atoms/Button'
 import Text from './Components/Atoms/Text'
 
 const App = () => {
     const context = useContext(Context)
     return (
-        <>
+        <div>
             {/* test stuffs, delete them after */}
             {/* <h1>hello</h1>
       <h1>Counter with Hook State</h1>
@@ -16,6 +17,8 @@ const App = () => {
         Increment
       </button>
       <hr /> */}
+<button id="getImages">DO NOT CHANGE MY ID PLEASE</button>
+      <CardContainer/>
             <Button
                 text="Button"
                 bgColor="primary"
@@ -55,7 +58,7 @@ const App = () => {
                 color="light"
             />
             {/* <Text text="Hello world!" bgColor="primary" color="light" /> */}
-        </>
+        </div>
     )
 }
 
