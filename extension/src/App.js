@@ -19,15 +19,7 @@ const App = () => {
             </button>
             <hr /> */}
             <button id="getImages">DO NOT CHANGE MY ID PLEASE</button>
-            <CardContainer />
-            <Button
-                text="Button"
-                bgColor="primary"
-                width="20"
-                height="10"
-                color="light"
-                borderRadius="lg"
-            />
+            {/* <CardContainer /> */}
             <Button
                 text="Button"
                 color="light"
