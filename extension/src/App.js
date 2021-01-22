@@ -10,16 +10,16 @@ const App = () => {
     const context = useContext(Context)
     return (
         <div>
-            {/* test stuffs, delete them after */}
-            {/* <h1>hello</h1>
-      <h1>Counter with Hook State</h1>
-      <h1>{context.counter}</h1>
-      <button onClick={() => context.setCounter(context.counter + 1)}>
-        Increment
-      </button>
-      <hr /> */}
-<button id="getImages">DO NOT CHANGE MY ID PLEASE</button>
-      <CardContainer/>
+            {/* test stuffs, delete them after
+            <h1>hello</h1>
+            <h1>Counter with Hook State</h1>
+            <h1>{context.counter}</h1>
+            <button onClick={() => context.setCounter(context.counter + 1)}>
+                Increment
+            </button>
+            <hr /> */}
+            <button id="getImages">DO NOT CHANGE MY ID PLEASE</button>
+            <CardContainer />
             <Button
                 text="Button"
                 color="light"
@@ -73,13 +73,8 @@ const App = () => {
                 height="8"
                 borderRadius="full"
             />
-<<<<<<< HEAD
-            {/* <Text text='Hello world!' bgColor='primary' color='light' /> */}
-        </>
-=======
             {/* <Text text="Hello world!" bgColor="primary" color="light" /> */}
         </div>
->>>>>>> 1a2e4caecc0f46986c66fbd0616da7d8fbcf255f
     )
 }
 
