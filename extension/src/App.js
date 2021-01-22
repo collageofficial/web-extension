@@ -9,7 +9,7 @@ import Text from './Components/Atoms/Text'
 const App = () => {
     const context = useContext(Context)
     return (
-        <div>
+        <>
             {/* test stuffs, delete them after
             <h1>hello</h1>
             <h1>Counter with Hook State</h1>
@@ -20,6 +20,14 @@ const App = () => {
             <hr /> */}
             <button id="getImages">DO NOT CHANGE MY ID PLEASE</button>
             <CardContainer />
+            <Button
+                text="Button"
+                bgColor="primary"
+                width="20"
+                height="10"
+                color="light"
+                borderRadius="lg"
+            />
             <Button
                 text="Button"
                 color="light"
@@ -74,7 +82,7 @@ const App = () => {
                 borderRadius="full"
             />
             {/* <Text text="Hello world!" bgColor="primary" color="light" /> */}
-        </div>
+        </>
     )
 }
 
