@@ -2,9 +2,16 @@ import React, { useContext } from 'react'
 import { Context } from './Context/Context'
 import './App.css'
 
-import CardContainer from './Components/Organisms/CardContainer'
+// atoms
 import Button from './Components/Atoms/Button'
 import Text from './Components/Atoms/Text'
+import Input from './Components/Atoms/Input'
+
+// molecules
+
+//organism
+import CardContainer from './Components/Organisms/CardContainer'
+
 
 const App = () => {
     const context = useContext(Context)
@@ -72,6 +79,16 @@ const App = () => {
                 width="8"
                 height="8"
                 borderRadius="full"
+            />
+            <Input
+                text="E.g. “Places to go” or “Recipes to make”"
+                textWeight="200"
+                bgColor="light"
+                width="96"
+                height="14"
+                border="2"
+                borderColor="grey"
+                borderRadius = 'small'
             />
             {/* <Text text="Hello world!" bgColor="primary" color="light" /> */}
         </>
