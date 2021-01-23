@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useEffect, useContext } from 'react'
 import { Context } from '../../Context/Context'
 import Card from '../Molecules/Card'
-import './CardGroup.css'
+import './CardContainer.css'
 
 const CardGroup = () => {
     const context = useContext(Context)
@@ -19,12 +19,8 @@ const CardGroup = () => {
             }
         }
         const saveToContext = async () => {
-            /* why is it looping */
-            console.log(context.browserPictures)
-            console.log(images)
-            context.browserPictures.length === images.length
-                ? console.log('hi')
-                : context.setBrowserPictures(images)
+            context.browserPictures.length !== images.length &&
+                context.setBrowserPictures(images)
         }
 
         saveImages().then(saveToContext())
@@ -34,7 +30,17 @@ const CardGroup = () => {
         <div className="cardcontainer">
             {context.browserPictures.length > 0 &&
                 context.browserPictures.map((picture, index) => (
-                    <Card key={index} url={picture.src} />
+                    <Card
+                        key={index}
+                        url={picture.src}
+                        action={() => {
+                            context.setPicturesToSave([
+                                ...context.picturesToSave,
+                                context.browserPictures[index],
+                            ])
+                            console.log(context.picturesToSave)
+                        }}
+                    />
                 ))}
         </div>
     )

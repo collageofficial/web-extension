@@ -1,8 +1,8 @@
-import CardContainer from './Components/Organisms/CardContainer'
+import ImageSelect from './Components/Pages/ImageSelect'
 
 const App = () => (
     <div>
-        <CardContainer />
+        <ImageSelect />
     </div>
 )
 

@@ -1,7 +1,5 @@
 import React from 'react'
 
-const Card = ({url}) => (
-        <img src={url}/>
-)
+const Card = ({ url, action }) => <img src={url} onClick={action} />
 
 export default Card
