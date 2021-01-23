@@ -5,7 +5,8 @@ import './CardContainer.css'
 
 const SelectedCards = () => {
     const context = useContext(Context)
-
+/* why is is showint the thing i splice and not the rest? */
+/* splice function works on console */
     useEffect(() => {}, [context.picturesToSave])
 
     return (
@@ -16,10 +17,14 @@ const SelectedCards = () => {
                         key={index}
                         url={picture.src}
                         action={() => {
-                            console.log('remove')
+                            context.setPicturesToSave(
+                                context.picturesToSave.splice(index, 1)
+                            )
+                            console.log(context.picturesToSave)
                         }}
                     />
                 ))}
+                <button>SAVE ME! I AM NOT DOING ANYTHING FOR NOW</button>
         </div>
     )
 }

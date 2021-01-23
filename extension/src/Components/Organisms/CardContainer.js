@@ -33,12 +33,12 @@ const CardGroup = () => {
                     <Card
                         key={index}
                         url={picture.src}
+                        /* action:prevent from adding 2 times the same picture? */
                         action={() => {
                             context.setPicturesToSave([
                                 ...context.picturesToSave,
                                 context.browserPictures[index],
                             ])
-                            console.log(context.picturesToSave)
                         }}
                     />
                 ))}
