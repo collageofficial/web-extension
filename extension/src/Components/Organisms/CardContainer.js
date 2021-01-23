@@ -8,12 +8,26 @@ const CardGroup = () => {
 
     useEffect(() => {
         let images = []
-        if (window.localStorage.length > 0) {
-            for (let i = 0; i < window.localStorage.length; i++) {
-                images.push(JSON.parse(window.localStorage.getItem(i)))
-                context.setBrowserPictures(images)
+        const saveImages = async () => {
+            if (window.localStorage.length > 0) {
+                for (let i = 0; i < window.localStorage.length; i++) {
+                    images = [
+                        ...images,
+                        JSON.parse(window.localStorage.getItem(i)),
+                    ]
+                }
             }
         }
+        const saveToContext = async () => {
+            /* why is it looping */
+            console.log(context.browserPictures)
+            console.log(images)
+            context.browserPictures.length === images.length
+                ? console.log('hi')
+                : context.setBrowserPictures(images)
+        }
+
+        saveImages().then(saveToContext())
     }, [context.browserPictures])
 
     return (
