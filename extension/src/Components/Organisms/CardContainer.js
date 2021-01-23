@@ -9,13 +9,13 @@ const CardGroup = () => {
         let images = []
         console.log(window.localStorage)
         if (window.localStorage.length > 0) {
+            console.log(localStorage)
             for (let i = 0; i < window.localStorage.length; i++) {
                 images.push(JSON.parse(window.localStorage.getItem(i)))
                 setPictures(images)
-                console.log(pictures)
             }
         }
-    }, [])
+    }, [pictures])
 
     return (
         <div className="cardcontainer">
