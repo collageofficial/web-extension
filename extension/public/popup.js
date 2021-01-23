@@ -13,7 +13,6 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     const recieveImages = async (recieved) => {
         localStorage.clear()
         imagesToStore = JSON.parse(recieved.message)
-        console.log(imagesToStore)
     }
     const storeImages = async () => {
         imagesToStore.map((image, index) =>

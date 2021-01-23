@@ -2,14 +2,19 @@ import React, { useState } from 'react'
 
 export const Context = React.createContext()
 
-const CollageContext = ({ children }) => {
-    const [counter, setCounter] = useState(0)
+const Provider = ({ children }) => {
+    const [browserPictures, setBrowserPictures] = useState([])
 
     return (
-        <Context.Provider value={{ counter, setCounter }}>
+        <Context.Provider
+            value={{
+                browserPictures,
+                setBrowserPictures,
+            }}
+        >
             {children}
         </Context.Provider>
     )
 }
 
-export default CollageContext
+export default Provider
