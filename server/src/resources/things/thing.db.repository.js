@@ -1,13 +1,13 @@
 const Thing = require('./thing.model')
 
-const getAll = async () => Thing.find({})
+const getAll = async profileId => Thing.find({profileId})
 
-const getThingById = async id => Thing.findOne({ _id: id })
+const getByProfileIDandID = async (profileId, id) => await Thing.findOne({ profileId, _id: id,  })
 
-const createThing = async profile => Thing.create(profile)
+const createThing = async (thing, profileId) => Thing.create({...thing, profileId})
 
 module.exports = {
     getAll,
     createThing,
-    getThingById
+    getByProfileIDandID
 }

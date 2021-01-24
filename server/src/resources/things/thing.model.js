@@ -5,8 +5,14 @@ const thingSchema = new mongoose.Schema(
     {
         id: { type: String, default: uuidv4() },
         created: { type: Date, default: Date.now },
-        profile: mongoose.SchemaTypes.ObjectId,
-        image: mongoose.SchemaTypes.ObjectId,
+        profileId: {
+            type: mongoose.SchemaTypes.ObjectId,
+            ref: 'Profile'
+        },
+        image: {
+            type: mongoose.SchemaTypes.ObjectId,
+            ref: 'Image'
+        },
         origin: String,
         type: String,
         url: String,
@@ -21,7 +27,7 @@ const thingSchema = new mongoose.Schema(
 thingSchema.statics.toResponse = (thing) => {
     const {
         created,
-        profile,
+        profileId,
         image,
         origin,
         type,
@@ -34,7 +40,7 @@ thingSchema.statics.toResponse = (thing) => {
     return {
         id: thing._id,
         created,
-        profile,
+        profileId,
         image,
         origin,
         type,

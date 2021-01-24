@@ -4,7 +4,8 @@ const Thing = require('./thing.model')
 const mongoose = require('mongoose')
 
 router.route('/').get(async (req, res) => {
-    const things = await thingService.getAll()
+    console.log(req.params.profileId, 'OOOOOOOOOOO')
+    const things = await thingService.getAll(req.params.profile)
     if (!things) {
         res.status('404')
     }
@@ -12,7 +13,8 @@ router.route('/').get(async (req, res) => {
 })
 
 router.route('/:id').get(async (req, res) => {
-    const thing = await thingService.getThingById(req.params.id)
+    console.log(req.params, 'IIIIIIIIIIIIIII')
+    const thing = await thingService.getThingById(req.params.profileId, req.params.id)
     if (!thing) {
         res.status('404')
     }
@@ -31,7 +33,8 @@ router.route('/').post(async (req, res) => {
             is_highlight: req.body.is_highlight,
             is_highlight_mix: req.body.is_highlight_mix,
             tags: req.body.tags,
-        })
+        }),
+        req.params.profileId
     )
     res.json(thing)
 })

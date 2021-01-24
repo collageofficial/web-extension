@@ -24,7 +24,7 @@ imageSchema.statics.toResponse = image => {
     return { id: image._id, filename, ratio, size, caption, origin, is_active, created }
 }
 
-const Image = mongoose.model('Image', imageSchema)
+const Image = mongoose.model('Image', imageSchema, 'image')
 
 module.exports = Image
 

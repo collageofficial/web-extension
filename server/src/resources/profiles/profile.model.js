@@ -5,18 +5,18 @@ const profileSchema = new mongoose.Schema(
     {
         id: { type: String, default: uuidv4() },
         created: { type: Date, default: Date.now },
-        type: {
-            type: String,
-            enum : ['user','admin'],
-            default: 'user'
-        },
+        // type: {
+        //     type: String,
+        //     enum : ['user','admin'],
+        //     default: 'user'
+        // },
         approved: Boolean,
         applied: Boolean,
-        commission: {
-            type: String,
-            enum : ['user','admin'],
-            default: 'user'
-        },
+        // commission: {
+        //     type: String,
+        //     enum : ['user','admin'],
+        //     default: 'user'
+        // },
         featured: Boolean,
         username: String,
         name: String,
@@ -33,7 +33,10 @@ const profileSchema = new mongoose.Schema(
         website: String,
         official_email: String,
         title_tags:  [],
-        image: mongoose.SchemaTypes.ObjectId
+        // image: [{
+        //     type: mongoose.SchemaTypes.ObjectId,
+        //     ref: 'Image'
+        // }]
     },
     { timestamps: true }
 )
@@ -61,7 +64,7 @@ profileSchema.statics.toResponse = profile => {
          website,
          official_email,
          title_tags,
-         image
+        //  image
         } = profile
     return { 
         id: profile._id,
@@ -86,9 +89,10 @@ profileSchema.statics.toResponse = profile => {
         website,
         official_email,
         title_tags,
-        image }
+        // image
+     }
 }
 
-const Profile = mongoose.model('Profile', profileSchema)
+const Profile = mongoose.model('Profile', profileSchema, 'profile')
 
 module.exports = Profile
