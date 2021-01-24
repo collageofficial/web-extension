@@ -11,6 +11,14 @@ router.route('/').get(async (req, res) => {
     res.json(profiles)
 })
 
+router.route('/:id').get(async (req, res) => {
+    const profile = await profileService.getProfileById(req.params.id)
+    if (!profile) {
+        res.status('404')
+    }
+    res.json(profile)
+})
+
 router.route('/').post(async (req, res) => {
     const profile = await profileService.createProfile(
         new Profile({
