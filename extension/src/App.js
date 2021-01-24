@@ -1,12 +1,24 @@
+import React, { useContext } from 'react'
+import { Context } from './Context/Context'
+import Login from './Components/Pages/Login'
 import ImageSelect from './Components/Pages/ImageSelect'
+import Checkout from './Components/Pages/Checkout'
+import End from './Components/Pages/End'
+
 /* import Button from './Components/Atoms/Button'
 import Text from './Components/Atoms/Text'
 import Input from './Components/Atoms/Input' */
 
-const App = () => (
-    <div>
-        <ImageSelect />
-       {/*  <Button
+const App = () => {
+    const context = useContext(Context)
+
+    return (
+        <div>
+            {context.loginPage && <Login/>}
+            {context.selectPage && <ImageSelect />}
+            {context.checkoutPage && <Checkout/>}
+            {context.endPage && <End/>}
+            {/*  <Button
                 text="Button"
                 color="light"
                 textSize="medium"
@@ -69,7 +81,8 @@ const App = () => (
                 borderColor="grey"
                 borderRadius = 'small'
             /> */}
-    </div>
-)
+        </div>
+    )
+}
 
 export default App
