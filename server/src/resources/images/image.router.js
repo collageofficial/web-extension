@@ -32,14 +32,4 @@ router.route('/').post(async (req, res) => {
     res.json(img)
 })
 
-router.route('/:id').put(async (req, res) => {
-    const newImg = imageService.updateImage(req.params.id, req.body)
-    res.json(newImg)
-})
-
-// router.route('/:id').delete(async (req, res) => {
-//     await imageService.deleteImage(req.params.id)
-//     res.status('204').send('The image has been deleted')
-// })
-
 module.exports = router
