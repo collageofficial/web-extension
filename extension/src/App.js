@@ -1,33 +1,24 @@
 import React, { useContext } from 'react'
 import { Context } from './Context/Context'
-import './App.css'
+import Login from './Components/Pages/Login'
+import ImageSelect from './Components/Pages/ImageSelect'
+import Checkout from './Components/Pages/Checkout'
+import End from './Components/Pages/End'
 
-// atoms
-import Button from './Components/Atoms/Button'
+/* import Button from './Components/Atoms/Button'
 import Text from './Components/Atoms/Text'
-import Input from './Components/Atoms/Input'
-
-// molecules
-
-//organism
-import CardContainer from './Components/Organisms/CardContainer'
-
+import Input from './Components/Atoms/Input' */
 
 const App = () => {
     const context = useContext(Context)
+
     return (
-        <>
-            {/* test stuffs, delete them after
-            <h1>hello</h1>
-            <h1>Counter with Hook State</h1>
-            <h1>{context.counter}</h1>
-            <button onClick={() => context.setCounter(context.counter + 1)}>
-                Increment
-            </button>
-            <hr /> */}
-            <button id="getImages">DO NOT CHANGE MY ID PLEASE</button>
-            {/* <CardContainer /> */}
-            <Button
+        <div>
+            {context.loginPage && <Login/>}
+            {context.selectPage && <ImageSelect />}
+            {context.checkoutPage && <Checkout/>}
+            {context.endPage && <End/>}
+            {/*  <Button
                 text="Button"
                 color="light"
                 textSize="medium"
@@ -89,9 +80,8 @@ const App = () => {
                 border="2"
                 borderColor="grey"
                 borderRadius = 'small'
-            />
-            {/* <Text text="Hello world!" bgColor="primary" color="light" /> */}
-        </>
+            /> */}
+        </div>
     )
 }
 

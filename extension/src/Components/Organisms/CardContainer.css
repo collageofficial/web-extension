@@ -1,0 +1,21 @@
+.cardcontainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 8px;
+}
+.picturestosave {
+    background-color:blue;
+
+}
+.flexColumn {
+    display:flex;
+    flex-direction: column;
+}
+.flexRow {
+    display:flex;
+    flex-direction: row;
+    justify-content:space-evenly;
+    flex-wrap:wrap
+}

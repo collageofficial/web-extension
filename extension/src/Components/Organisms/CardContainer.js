@@ -1,32 +1,45 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useContext } from 'react'
+import { Context } from '../../Context/Context'
 import Card from '../Molecules/Card'
-import './CardGroup.css'
+import './CardContainer.css'
 
 const CardGroup = () => {
-    const [pictures, setPictures] = useState([])
+    const context = useContext(Context)
 
     useEffect(() => {
         let images = []
-        console.log(window.localStorage)
-        if (window.localStorage.length > 0) {
-            for (let i = 0; i < window.localStorage.length; i++) {
-                images.push(JSON.parse(window.localStorage.getItem(i)))
-                setPictures(images)
-                console.log(pictures)
+        const saveImages = async () => {
+            if (window.localStorage.length > 0) {
+                for (let i = 0; i < window.localStorage.length; i++) {
+                    images = [
+                        ...images,
+                        JSON.parse(window.localStorage.getItem(i)),
+                    ]
+                }
             }
         }
-    }, [])
+        const saveToContext = async () => {
+            context.browserPictures.length !== images.length &&
+                context.setBrowserPictures(images)
+        }
+
+        saveImages().then(saveToContext())
+    }, [context.browserPictures])
 
     return (
         <div className="cardcontainer">
-            {pictures.length > 0 &&
-                pictures.map((picture, index) => (
+            {context.browserPictures.length > 0 &&
+                context.browserPictures.map((picture, index) => (
                     <Card
                         key={index}
-                        url={picture.origin}
-                        title={picture.filename}
-                        text={picture.caption}
-                        alt={picture.alt}
+                        url={picture.src}
+                        /* action:prevent from adding 2 times the same picture? */
+                        action={() => {
+                            context.setPicturesToSave([
+                                ...context.picturesToSave,
+                                context.browserPictures[index],
+                            ])
+                        }}
                     />
                 ))}
         </div>

@@ -3,13 +3,13 @@ import ReactDOM from 'react-dom'
 import App from './App'
 import './tailwind.output.css'
 
-import CollageContext from './Context/Context'
+import Provider from './Context/Context'
 
 ReactDOM.render(
     <React.StrictMode>
-        <CollageContext>
+        <Provider>
             <App />
-        </CollageContext>
+        </Provider>
     </React.StrictMode>,
     document.getElementById('root')
 )
