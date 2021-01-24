@@ -1,3 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    outline: none;
+}
+
+/* specials classes start here */
+* {
+    --primary: #e60023;
+    --light: #ffffff;
+    --dark: #000000;
+    --grey: #dddddd;
+}
+
+body {
+    background-color: lightblue;
+}
+
+/* plus button no border*/
+.plus-btn {
+    background: linear-gradient(var(--light), var(--light)),
+        linear-gradient(var(--light), var(--light)), var(--primary);
+    background-position: center;
+    /*thickness = 2px, length = 50% of width or height*/
+    background-size: 50% 2px, 2px 50%;
+    background-repeat: no-repeat;
+}
+.plus-btn:hover {
+    background: linear-gradient(var(--primary), var(--primary)),
+        linear-gradient(var(--primary), var(--primary)), var(--light);
+    background-position: center;
+    background-size: 50% 2px, 2px 50%;
+    background-repeat: no-repeat;
+}
+/* plus button border */
+.plus-btn-border {
+    background: linear-gradient(var(--light), var(--light)),
+        linear-gradient(var(--light), var(--light)), var(--primary);
+    background-position: center;
+    background-size: 60% 2px, 2px 60%;
+    background-repeat: no-repeat;
+    border-color: var(--light);
+}
+.plus-btn-border:hover {
+    background: linear-gradient(var(--primary), var(--primary)),
+        linear-gradient(var(--primary), var(--primary)), var(--light);
+    background-position: center;
+    background-size: 60% 2px, 2px 60%;
+    background-repeat: no-repeat;
+    border-color: var(--primary);
+}

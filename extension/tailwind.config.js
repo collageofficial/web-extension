@@ -1,32 +1,56 @@
 module.exports = {
   purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html', 'public/**/*.html'],
 
-  darkMode: false, // or 'media' or 'class'
+    darkMode: false, // or 'media' or 'class'
 
-  theme: {
-    extend: {
-      colors: {
-        primary: '#E60023',
-        light: '#ffffff',
-        dark: '#000000',
-        grey: '#DDDDDD',
-      },
-      fontFamily: {
-        main: ['Poppins'],
-      },
-      fontSize: {
-        small: ['12'],
-        medium: ['18'],
-        large: ['24'],
-      },
-      outline: {
-        none: 'none',
-      },
+    theme: {
+        extend: {
+          // remember to update colors also in App.css for special classes
+            colors: {
+                primary: '#E60023',
+                light: '#ffffff',
+                dark: '#000000',
+                grey: '#DDDDDD',
+            },
+            margin: {
+                DEFAULT:'0',
+                small: '8px',
+            },
+            padding: {
+                DEFAULT:'0',
+                small: '8px',
+            },
+            fontFamily: {
+                main: ['Poppins', 'helvetica'],
+            },
+            fontSize: {
+                small: ['12px', '20px'],
+                medium: ['18px', '26px'],
+                large: ['24px', '32px'],
+            },
+            fontWeight: {
+                thin: 200,
+                normal: 400,
+                bold: 700,
+            },
+            outline: {
+                none: 'none',
+            },
+            borderWidth: {
+                '1': '1px',
+                '2': '2px',
+            },
+            borderRadius: {
+                none: '0',
+                small: '8px',
+                circle: '50%',
+                full: '9999px',
+            },
+        },
     },
-  },
 
-  variants: {
-    extend: {},
-  },
-  plugins: [],
+    variants: {
+        extend: {},
+    },
+    plugins: [],
 }
