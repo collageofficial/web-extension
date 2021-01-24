@@ -2,8 +2,9 @@
   "name": "server",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "src/server.js",
   "scripts": {
+    "start": "nodemon src/server.js",
     "lint": "eslint ./ --ignore-path .gitignore --fix",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -16,7 +17,13 @@
     "bracketSpacing": true,
     "printWidth": 80
   },
-  "dependencies": {},
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-validator": "^6.9.2",
+    "mongoose": "^5.11.13",
+    "uuidv4": "^6.2.6"
+  },
   "devDependencies": {
     "eslint": "^7.18.0",
     "eslint-config-airbnb-base": "^14.2.1",
