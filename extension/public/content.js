@@ -15,12 +15,14 @@ const getData = () => {
                 (imagesToSend = [
                     ...imagesToSend,
                     {/* FIND THOSE DATA */
+                        /* need to filter. i dont need to see small pictures (like logo or stuff like that) */
+                        /* need to hide broken pictures */
                         filename: 'filename',
                         caption: 'caption',
                         origin: 'origin',
                         size: { width: image.width, height: image.height },
                         ratio: 'ratio',
-                        src: image.attributes[1].value,
+                        src: image.src,
                         created: 'created',
                     },
                 ])
