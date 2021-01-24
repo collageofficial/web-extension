@@ -29,7 +29,7 @@ const SelectedCards = () => {
                             />
                         ))}
                     </div>
-                    <button>SAVE ME! I AM NOT DOING ANYTHING FOR NOW</button>
+                    <button onClick={context.exitSelectPage}>SAVE ME!</button>
                 </div>
             )}
         </div>
