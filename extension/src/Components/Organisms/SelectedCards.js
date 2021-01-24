@@ -5,33 +5,31 @@ import './CardContainer.css'
 
 const SelectedCards = () => {
     const context = useContext(Context)
-    const [selectedImages, setSelectedImages] = useState([])
-    /* why is is showint the thing i splice and not the rest? */
-    /* splice function works on console */
+    const [images, setImages] = useState([])
     useEffect(() => {
-        setSelectedImages(context.picturesToSave)
-    }, [context.picturesToSave])
+        setImages(context.picturesToSave)
+    }, [images])
 
     return (
         <div className="picturestosave">
-            {selectedImages.length > 0 && (
+            {context.picturesToSave.length > 0 && (
                 <div className="flexcolumn">
                     <div className="flexRow">
-                        {selectedImages.map((picture, index) => (
+                        {context.picturesToSave.map((picture, index) => (
                             <Card
                                 key={index}
                                 url={picture.src}
                                 action={() => {
+                                    context.picturesToSave.splice(index, 1)
                                     context.setPicturesToSave(
-                                        context.picturesToSave.splice(index, 1)
+                                        context.picturesToSave
                                     )
-                                    console.log(context.picturesToSave)
+                                    setImages([])
                                 }}
                             />
                         ))}
                     </div>
-                    {/* click the button only if i selected pictures */}
-                    <button onClick={context.exitSelectPage}>SAVE ME!</button>
+                    <button>SAVE ME! I AM NOT DOING ANYTHING FOR NOW</button>
                 </div>
             )}
         </div>
