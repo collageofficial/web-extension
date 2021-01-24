@@ -13,10 +13,38 @@ const thingSchema = new mongoose.Schema(
         is_active: Boolean,
         is_highlight: Boolean,
         is_highlight_mix: Boolean,
-        tags: Array
+        tags: Array,
     },
     { timestamps: true }
 )
+
+thingSchema.statics.toResponse = (thing) => {
+    const {
+        created,
+        profile,
+        image,
+        origin,
+        type,
+        url,
+        is_active,
+        is_highlight,
+        is_highlight_mix,
+        tags,
+    } = image
+    return {
+        id: thing._id,
+        created,
+        profile,
+        image,
+        origin,
+        type,
+        url,
+        is_active,
+        is_highlight,
+        is_highlight_mix,
+        tags,
+    }
+}
 
 const Thing = mongoose.model('Thing', thingSchema)
 

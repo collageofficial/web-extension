@@ -32,16 +32,62 @@ const profileSchema = new mongoose.Schema(
         is_highlight_mix: Boolean,
         website: String,
         official_email: String,
-        badge: {
-            type: String,
-            enum : ['user','admin'],
-            default: 'user'
-        },
         title_tags:  [],
         image: mongoose.SchemaTypes.ObjectId
     },
     { timestamps: true }
 )
+
+profileSchema.statics.toResponse = profile => {
+    const {
+         created, 
+         type, 
+         approved, 
+         applied, 
+         commission, 
+         featured, 
+         username,
+         name,
+         description,
+         url,
+         country,
+         currency,
+         devices,
+         is_active,
+         is_promoted,
+         promoted_tag,
+         is_highlight,
+         is_highlight_mix,
+         website,
+         official_email,
+         title_tags,
+         image
+        } = profile
+    return { 
+        id: profile._id,
+        created, 
+        type, 
+        approved, 
+        applied, 
+        commission, 
+        featured, 
+        username,
+        name,
+        description,
+        url,
+        country,
+        currency,
+        devices,
+        is_active,
+        is_promoted,
+        promoted_tag,
+        is_highlight,
+        is_highlight_mix,
+        website,
+        official_email,
+        title_tags,
+        image }
+}
 
 const Profile = mongoose.model('Profile', profileSchema)
 
