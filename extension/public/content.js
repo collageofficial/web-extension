@@ -17,14 +17,12 @@ const getData = () => {
                     {/* FIND THOSE DATA */
                         /* need to filter. i dont need to see small pictures (like logo or stuff like that) */
                         /* need to hide broken pictures */
-                        /* i dont need created. be will handle that */
                         filename: 'filename',
                         caption: 'caption',
                         origin: 'origin',
                         size: { width: image.width, height: image.height },
                         ratio: 'ratio',
                         src: image.src,
-                        created: 'created',
                     },
                 ])
         )

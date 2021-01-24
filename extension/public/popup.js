@@ -20,7 +20,6 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
                 `${index}`,
                 JSON.stringify({
                     caption: image.caption,
-                    created: image.created,
                     filename: image.filename,
                     origin: image.origin,
                     size: {

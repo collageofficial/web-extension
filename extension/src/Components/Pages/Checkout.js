@@ -1,13 +1,19 @@
 import React, { useContext } from 'react'
 import { Context } from './../../Context/Context'
+import CaptionForm from '../Organisms/CaptionForm'
 
 const Checkout = () => {
     const context = useContext(Context)
 
     return (
         <div>
-            this pages is to check images and to correct the captions
-            <button onClick={context.exitCheckoutPage}>POST MY PICTURES!!</button>
+            <button onClick={context.goBackToSelect}>
+                want to change pictures? click here
+            </button>
+            <CaptionForm />
+            <button onClick={context.exitCheckoutPage}>
+                POST MY PICTURES!!
+            </button>
         </div>
     )
 }
