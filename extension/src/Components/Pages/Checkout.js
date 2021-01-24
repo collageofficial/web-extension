@@ -11,6 +11,7 @@ const Checkout = () => {
                 want to change pictures? click here
             </button>
             <CaptionForm />
+            {/* with this button i need to sent context.picturesToSave inside the backend */}
             <button onClick={context.exitCheckoutPage}>
                 POST MY PICTURES!!
             </button>
