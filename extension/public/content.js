@@ -23,7 +23,6 @@ const getData = () => {
                         size: { width: image.width, height: image.height },
                         ratio: 'ratio',
                         src: image.src,
-                        created: 'created',
                     },
                 ])
         )

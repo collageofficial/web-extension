@@ -18,6 +18,10 @@ const Provider = ({ children }) => {
         setSelectPage(false)
         setCheckoutPage(true)
     }
+    const goBackToSelect = () => {
+        setSelectPage(true)
+        setCheckoutPage(false)
+    }
     const exitCheckoutPage = () => {
         setCheckoutPage(false)
         setEndPage(true)
@@ -35,7 +39,8 @@ const Provider = ({ children }) => {
                 endPage,
                 exitLoginPage,
                 exitSelectPage,
-                exitCheckoutPage
+                goBackToSelect,
+                exitCheckoutPage,
             }}
         >
             {children}
