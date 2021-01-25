@@ -1,6 +1,8 @@
 import React, { useContext } from 'react'
 import { Context } from './Context/Context'
 import './tailwind.css'
+
+// temporary pages
 import Login from './Components/Pages/Login'
 import ImageSelect from './Components/Pages/ImageSelect'
 import Checkout from './Components/Pages/Checkout'
