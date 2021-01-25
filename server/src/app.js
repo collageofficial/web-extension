@@ -1,6 +1,7 @@
 require('dotenv').config()
 const express = require('express')
 const app = express()
+const userRouter = require('./resources/user/users')
 
 const imageRouter = require('./resources/images/image.router')
 const profileRouter = require('./resources/user/user.router')
@@ -15,6 +16,8 @@ app.use('/', (req, res, next) => {
     }
     next()
 })
+
+app.use('/users', userRouter)
 
 // app.use('/image', imageRouter)
 // app.use('/profile', profileRouter)
