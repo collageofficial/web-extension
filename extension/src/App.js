@@ -5,10 +5,14 @@ import Login from './Components/Pages/Login'
 import ImageSelect from './Components/Pages/ImageSelect'
 import Checkout from './Components/Pages/Checkout'
 import End from './Components/Pages/End'
-import Image from './Components/Atoms/Image'
+
+// atoms
 import Button from './Components/Atoms/Button'
 import Text from './Components/Atoms/Text'
 import Input from './Components/Atoms/Input'
+import Image from './Components/Atoms/Image'
+
+// molecules
 import DropDownMenu from './Components/Molecules/Dropdown'
 
 const App = () => {
@@ -21,7 +25,7 @@ const App = () => {
             {context.checkoutPage && <Checkout />}
             {context.endPage && <End />} */}
         </div>
-    )}
-
+    )
+}
 
 export default App
