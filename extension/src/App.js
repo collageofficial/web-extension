@@ -16,6 +16,7 @@ import Image from './Components/Atoms/Image'
 
 // molecules
 import DropDownMenu from './Components/Molecules/Dropdown'
+import Hr from './Components/Atoms/Hr'
 
 const App = () => {
     const context = useContext(Context)
