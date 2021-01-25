@@ -1,12 +1,13 @@
 import React from 'react'
 import { BsTrash } from 'react-icons/bs'
-
+import { FaArrowAltCircleLeft } from 'react-icons/fa'
 // special classeName defined in App.css
 
 const Button = ({
     action,
     special,
     notBin,
+    notBackArrow,
     text,
     textSize,
     textWeight,
@@ -46,6 +47,7 @@ const Button = ({
     >
         {text}
         {notBin === false && <BsTrash />}
+        {notBackArrow === false && <FaArrowAltCircleLeft />}
     </button>
 )
 
@@ -118,7 +120,7 @@ export default Button
     /* <Button special="plus-btn" width="8" height="8" borderRadius="full" /> */
 }
 
-// Bin button border 32 px
+// Bin button border 32px
 {
     /* <Button
     width="8"
@@ -128,6 +130,20 @@ export default Button
     color="light"
     border="2"
     borderColor="primary"
+    textSize="large"
     notBin={false}
 /> */
 }
+
+// Back arrow border 32px
+{/* <Button
+    width="8"
+    height="8"
+    borderRadius="full"
+    bgColor="primary"
+    color="light"
+    border="1"
+    borderColor="primary"
+    textSize="large"
+    notBackArrow={false}
+/> */}

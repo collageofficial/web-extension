@@ -12,7 +12,6 @@ import Text from './Components/Atoms/Text'
 import Input from './Components/Atoms/Input'
 import Image from './Components/Atoms/Image'
 
-
 // molecules
 import DropDownMenu from './Components/Molecules/Dropdown'
 
@@ -25,9 +24,9 @@ const App = () => {
             {context.selectPage && <ImageSelect />}
             {context.checkoutPage && <Checkout />}
             {context.endPage && <End />} */}
- 
+            
         </div>
-    )}
-
+    )
+}
 
 export default App
