@@ -23,7 +23,7 @@ const UserSchema = new mongoose.Schema({
       type: String,
       required: true
     },
-    albums: Array,
+    profile: Object,
     created: {
       type: Date,
       default: Date.now
