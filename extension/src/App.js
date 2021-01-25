@@ -9,16 +9,17 @@ import Image from './Components/Atoms/Image'
 import Button from './Components/Atoms/Button'
 import Text from './Components/Atoms/Text'
 import Input from './Components/Atoms/Input'
+import DropDownMenu from './Components/Molecules/Dropdown'
+
 const App = () => {
     const context = useContext(Context)
 
     return (
         <div>
-            {/* {context.loginPage && <Login/>}
+            {/* {context.loginPage && <Login />}
             {context.selectPage && <ImageSelect />}
-            {context.checkoutPage && <Checkout/>}
-            {context.endPage && <End/>} */}
-           
+            {context.checkoutPage && <Checkout />}
+            {context.endPage && <End />} */}
         </div>
     )}
 

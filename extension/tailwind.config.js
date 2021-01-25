@@ -5,12 +5,15 @@ module.exports = {
 
     theme: {
         extend: {
-          // remember to update colors also in App.css for special classes
+          // remember to update colors also in tailwind.css for special classes
             colors: {
                 primary: '#E60023',
                 light: '#ffffff',
                 dark: '#000000',
                 grey: '#DDDDDD',
+            },
+            width: {
+                100: '100%',
             },
             margin: {
                 DEFAULT:'0',
