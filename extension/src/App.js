@@ -10,6 +10,7 @@ import Button from './Components/Atoms/Button'
 import Text from './Components/Atoms/Text'
 import Input from './Components/Atoms/Input'
 import DropDownMenu from './Components/Molecules/Dropdown'
+import Hr from './Components/Atoms/Hr'
 
 const App = () => {
     const context = useContext(Context)
