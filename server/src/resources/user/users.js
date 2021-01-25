@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const bcrypt = require('bcryptjs')
+const jwt = require('jsonwebtoken')
 const { check, validationResult } = require('express-validator')
 
 const User = require('./User')
@@ -27,12 +28,16 @@ router.post(
         try {
             let user = await User.findOne({ email })
 
-            if(user) {
-                return res.status(400).json({ errors: [ { msg: 'User already exists' }]})
+            if (user) {
+                return res
+                    .status(400)
+                    .json({ errors: [{ msg: 'User already exists' }] })
             }
 
             user = new User({
-                name, email, password
+                name,
+                email,
+                password,
             })
 
             const salt = await bcrypt.genSalt(10)
@@ -41,10 +46,24 @@ router.post(
 
             await user.save()
 
-            res.send('User registered')
+            const payload = {
+                user: {
+                    id: user.id,
+                },
+            }
 
+            jwt.sign(
+                payload,
+                process.env.JWT_SECRET_KEY,
+                { expiresIn: 360000 },
+                (err, token) => {
+                    if (err) throw err
+                    res.json({ token })
+                }
+            )
         } catch (err) {
             console.error(err.message)
+            res.status(500).send('Server error')
         }
     }
 )
