@@ -1,10 +1,12 @@
 import React from 'react'
+import { BsTrash } from 'react-icons/bs'
 
 // special classeName defined in App.css
 
 const Button = ({
     action,
     special,
+    notBin,
     text,
     textSize,
     textWeight,
@@ -20,6 +22,9 @@ const Button = ({
         onClick={action}
         className={`
           ${special}
+          flex
+          justify-center
+          items-center
           font-main
           font-${textWeight}
           text-center
@@ -40,13 +45,15 @@ const Button = ({
         `}
     >
         {text}
+        {notBin === false && <BsTrash />}
     </button>
 )
 
 export default Button
 // Basic button width 80px, height 40px translated in tailwind "numbers"
 // Basic primary color button
-{/* <Button
+{
+    /* <Button
     text="Button"
     color="light"
     textSize="medium"
@@ -55,11 +62,12 @@ export default Button
     width="20"
     height="10"
     borderRadius="small"
-/> */}
-
+/> */
+}
 
 // Basic light color button
-{/* <Button
+{
+    /* <Button
     text="Button"
     color="dark"
     textSize="medium"
@@ -70,11 +78,12 @@ export default Button
     border="2"
     borderColor="dark"
     borderRadius="small"
-/> */}
-
+/> */
+}
 
 // Basic inverted primary color button
-{/* <Button
+{
+    /* <Button
     text="Button"
     color="primary"
     textSize="medium"
@@ -85,8 +94,8 @@ export default Button
     border="2"
     borderColor="primary"
     borderRadius="small"
-/> */}
-
+/> */
+}
 
 //  Plus sign no border 20px
 {
@@ -94,17 +103,31 @@ export default Button
 }
 
 // Plus sign border 20 px
-{/* <Button
+{
+    /* <Button
     special="plus-btn-border"
     width="5"
     height="5"
     border="2"
     borderRadius="full"
-/> */}
-
-
+/> */
+}
 
 // Plus sign no border 32px
-{/* <Button special="plus-btn" width="8" height="8" borderRadius="full" /> */}
+{
+    /* <Button special="plus-btn" width="8" height="8" borderRadius="full" /> */
+}
 
-
+// Bin button border 32 px
+{
+    /* <Button
+    width="8"
+    height="8"
+    borderRadius="full"
+    bgColor="primary"
+    color="light"
+    border="2"
+    borderColor="primary"
+    notBin={false}
+/> */
+}
