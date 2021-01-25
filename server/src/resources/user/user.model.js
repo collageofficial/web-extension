@@ -1,41 +1,33 @@
-const { v4: uuidv4 } = require('uuid')
 const mongoose = require('mongoose')
+const { v4: uuidv4 } = require('uuid')
 
-const userSchema = new mongoose.Schema(
-    {
-        id: { type: String, default: uuidv4() },
-        email: String,
-        created: { type: Date, default: Date.now },
-        albums: [{ type: mongoose.SchemaTypes.ObjectId, ref: 'Album' }],
-        username: String,
-        name: String,
-        password: String
+const UserSchema = new mongoose.Schema({
+    // id: { 
+    //     type: String, 
+    //     default: uuidv4()
+    //  },
+    name: {
+      type: String,
+      required: true
     },
-    { timestamps: true }
-)
-
-userSchema.statics.toResponse = (user) => {
-    const {
-        email,
-        created,
-        albums,
-        username,
-        name,
-    } = user
-    return {
-        id: user._id,
-        email,
-        created,
-        albums,
-        username,
-        name,
+    username: {
+        type: String,
+        required: true
+      },
+    email: {
+      type: String,
+      required: true,
+      unique: true
+    },
+    password: {
+      type: String,
+      required: true
+    },
+    albums: Array,
+    created: {
+      type: Date,
+      default: Date.now
     }
-}
-
-userSchema.statics.fromRequest = ({ id, email, created, albums, username, name, password }) => {
-    return new User({ id, email, created, albums, username, name, password });
-}
-
-const User = mongoose.model('User', userSchema)
-
-module.exports = User
+  })
+  
+  module.exports = mongoose.model('user', UserSchema)

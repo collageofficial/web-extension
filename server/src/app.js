@@ -1,11 +1,10 @@
 require('dotenv').config()
 const express = require('express')
 const app = express()
-const userRouter = require('./resources/user/users')
+const userRouter = require('./resources/user/user.router')
 const authRouter = require('./resources/user/auth')
 
 const imageRouter = require('./resources/images/image.router')
-const profileRouter = require('./resources/user/user.router')
 const albumRouter = require('./resources/album/album.router')
 
 app.use(express.json())

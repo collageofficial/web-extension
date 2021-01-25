@@ -5,8 +5,8 @@ const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs')
 const { check, validationResult } = require('express-validator')
 
-const User = require('./User')
-//GET /auth
+const User = require('./user.model')
+
 router.get('/', auth, async (req, res) => {
     try {
         const user = await User.findById(req.user.id).select('-password')
@@ -16,7 +16,7 @@ router.get('/', auth, async (req, res) => {
         res.status(500).json('Server error')
     }
 })
-//POST /auth
+
 router.post(
     '/',
     [
@@ -42,7 +42,7 @@ router.post(
 
             const isMatch = await bcrypt.compare(password, user.password)
 
-            if(!isMatch) {
+            if (!isMatch) {
                 return res
                     .status(400)
                     .json({ errors: [{ msg: 'Invalid Credentials' }] })
