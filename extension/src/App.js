@@ -7,10 +7,10 @@ import ImageSelect from './Components/Pages/ImageSelect'
 import Checkout from './Components/Pages/Checkout'
 import End from './Components/Pages/End'
 
-//Atoms
 import Button from './Components/Atoms/Button'
 import Text from './Components/Atoms/Text'
-import Input from './Components/Atoms/Input'
+import Input from './Components/Atoms/Input' 
+import DropDownMenu from './Components/Molecules/Dropdown'
 
 const App = () => {
     const context = useContext(Context)
