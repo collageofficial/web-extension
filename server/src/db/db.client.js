@@ -3,7 +3,8 @@ const mongoose = require('mongoose')
 const connect = runServer => {
   mongoose.connect(process.env.MONGO_CONNECTION_STRING, {
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    useCreateIndex: true
   })
   
   const db = mongoose.connection // instance of connection
