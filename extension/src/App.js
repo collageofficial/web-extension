@@ -8,6 +8,7 @@ import End from './Components/Pages/End'
 import Button from './Components/Atoms/Button'
 import Text from './Components/Atoms/Text'
 import Input from './Components/Atoms/Input' 
+import DropDownMenu from './Components/Molecules/Dropdown'
 
 const App = () => {
     const context = useContext(Context)
@@ -171,6 +172,12 @@ const App = () => {
             fontWeight="normal" 
             textSize="small"
             />
+            <DropDownMenu
+             />
+
+        
+
+
         </div>
     )
 }
