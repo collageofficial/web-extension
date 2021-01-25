@@ -1,11 +1,14 @@
 import React from 'react'
+import { TiPlus } from 'react-icons/ti'
 import { BsTrash } from 'react-icons/bs'
 import { FaArrowAltCircleLeft } from 'react-icons/fa'
+
 // special classeName defined in App.css
 
 const Button = ({
     action,
     special,
+    notPlus,
     notBin,
     notBackArrow,
     text,
@@ -46,6 +49,7 @@ const Button = ({
         `}
     >
         {text}
+        {notPlus === false && <TiPlus />}
         {notBin === false && <BsTrash />}
         {notBackArrow === false && <FaArrowAltCircleLeft />}
     </button>
@@ -101,23 +105,43 @@ export default Button
 
 //  Plus sign no border 20px
 {
-    /* <Button special="plus-btn" width="5" height="5" borderRadius="full" /> */
+    /* <Button
+    width="5"
+    height="5"
+    borderRadius="full"
+    bgColor="primary"
+    color="light"
+    textSize="medium"
+    notPlus={false}
+/> */
 }
 
 // Plus sign border 20 px
 {
     /* <Button
-    special="plus-btn-border"
     width="5"
     height="5"
-    border="2"
     borderRadius="full"
+    bgColor="light"
+    color="primary"
+    border="2"
+    borderColor="primary"
+    textSize="medium"
+    notPlus={false}
 /> */
 }
 
 // Plus sign no border 32px
 {
-    /* <Button special="plus-btn" width="8" height="8" borderRadius="full" /> */
+    /* <Button
+    width="8"
+    height="8"
+    borderRadius="full"
+    bgColor="primary"
+    color="light"
+    textSize="large"
+    notPlus={false}
+/> */
 }
 
 // Bin button border 32px
@@ -136,7 +160,8 @@ export default Button
 }
 
 // Back arrow border 32px
-{/* <Button
+{
+    /* <Button
     width="8"
     height="8"
     borderRadius="full"
@@ -146,4 +171,5 @@ export default Button
     borderColor="primary"
     textSize="large"
     notBackArrow={false}
-/> */}
+/> */
+}

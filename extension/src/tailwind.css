@@ -23,36 +23,3 @@ body {
     background-color: lightblue;
 }
 
-/* plus button no border*/
-.plus-btn {
-    background: linear-gradient(var(--light), var(--light)),
-        linear-gradient(var(--light), var(--light)), var(--primary);
-    background-position: center;
-    /*thickness = 2px, length = 50% of width or height*/
-    background-size: 50% 2px, 2px 50%;
-    background-repeat: no-repeat;
-}
-.plus-btn:hover {
-    background: linear-gradient(var(--primary), var(--primary)),
-        linear-gradient(var(--primary), var(--primary)), var(--light);
-    background-position: center;
-    background-size: 50% 2px, 2px 50%;
-    background-repeat: no-repeat;
-}
-/* plus button border */
-.plus-btn-border {
-    background: linear-gradient(var(--light), var(--light)),
-        linear-gradient(var(--light), var(--light)), var(--primary);
-    background-position: center;
-    background-size: 60% 2px, 2px 60%;
-    background-repeat: no-repeat;
-    border-color: var(--light);
-}
-.plus-btn-border:hover {
-    background: linear-gradient(var(--primary), var(--primary)),
-        linear-gradient(var(--primary), var(--primary)), var(--light);
-    background-position: center;
-    background-size: 60% 2px, 2px 60%;
-    background-repeat: no-repeat;
-    border-color: var(--primary);
-}
