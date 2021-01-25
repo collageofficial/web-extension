@@ -5,9 +5,9 @@ import ImageSelect from './Components/Pages/ImageSelect'
 import Checkout from './Components/Pages/Checkout'
 import End from './Components/Pages/End'
 
-/* import Button from './Components/Atoms/Button'
+import Button from './Components/Atoms/Button'
 import Text from './Components/Atoms/Text'
-import Input from './Components/Atoms/Input' */
+import Input from './Components/Atoms/Input' 
 
 const App = () => {
     const context = useContext(Context)
@@ -18,7 +18,7 @@ const App = () => {
             {context.selectPage && <ImageSelect />}
             {context.checkoutPage && <Checkout/>}
             {context.endPage && <End/>} */}
-            {/*  <Button
+             <Button
                 text="Button"
                 color="light"
                 textSize="medium"
@@ -80,7 +80,97 @@ const App = () => {
                 border="2"
                 borderColor="grey"
                 borderRadius = 'small'
-            /> */}
+            />
+            <Text 
+            text="Primary 24" 
+            color="primary" 
+            fontWeight="normal" 
+            textSize="large" 
+            />
+            <Text 
+            text="White 24"
+            color="light"
+            fontWeight="normal" 
+            textSize="large"
+            />
+            <Text 
+            text="Grey 24"
+            color="grey"
+            fontWeight="normal" 
+            textSize="large"
+            />
+            <Text 
+            text="Dark 24"
+            color="dark"
+            fontWeight="normal" 
+            textSize="large"
+            />
+            {/* text size medium  */}
+            <hr />
+            <Text 
+            text="Primary 18" 
+            color="primary" 
+            fontWeight="normal" 
+            textSize="medium" 
+            />
+            <Text 
+            text="White 18"
+            color="light"
+            fontWeight="normal" 
+            textSize="medium"
+            />
+            <Text 
+            text="Grey 18"
+            color="grey"
+            fontWeight="normal" 
+            textSize="medium"
+            />
+            <Text 
+            text="Dark 18"
+            color="dark"
+            fontWeight="normal" 
+            textSize="medium"
+            />
+            {/* text size small bold  */}
+            <hr />
+            <Text 
+            text="Primary 12" 
+            color="primary" 
+            fontWeight="bold" 
+            textSize="small" 
+            />
+            <Text 
+            text="White 12"
+            color="light"
+            fontWeight="bold" 
+            textSize="small"
+            />
+            <Text 
+            text="Grey 12"
+            color="grey"
+            fontWeight="bold" 
+            textSize="small"
+            />
+            <Text 
+            text="Dark 12"
+            color="dark"
+            fontWeight="bold" 
+            textSize="small"
+            />
+            {/* text size small normal  */}
+            <hr />
+            <Text 
+            text="White 12"
+            color="light"
+            fontWeight="normal" 
+            textSize="small"
+            />
+            <Text 
+            text="Dark 12"
+            color="dark"
+            fontWeight="normal" 
+            textSize="small"
+            />
         </div>
     )
 }
