@@ -12,7 +12,7 @@ router.route('/').get(async (req, res) => {
 })
 
 router.route('/:id').get(async (req, res) => {
-    const profile = await profileService.getProfileById(req.params.id)
+    const profile = await (await profileService.getProfileById(req.params.id)).populate('Thing')
     if (!profile) {
         res.status('404')
     }

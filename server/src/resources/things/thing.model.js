@@ -6,7 +6,7 @@ const thingSchema = new mongoose.Schema(
         id: { type: String, default: uuidv4() },
         created: { type: Date, default: Date.now },
         profileId: {
-            type: mongoose.SchemaTypes.ObjectId,
+            type: mongoose.Schema.Types.ObjectId,
             ref: 'Profile'
         },
         image: {

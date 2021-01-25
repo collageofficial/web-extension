@@ -3,17 +3,17 @@ const thingService = require('./thing.service')
 const Thing = require('./thing.model')
 const mongoose = require('mongoose')
 
-router.route('/').get(async (req, res) => {
-    console.log(req.params.profileId, 'OOOOOOOOOOO')
-    const things = await thingService.getAll(req.params.profile)
+router.route('/:profileId/').get(async (req, res) => {
+    console.log(req.params, 'OOOOOOOOOOO')
+    const things = await thingService.getAll(req.params.profileId).populate('Thing')
     if (!things) {
         res.status('404')
     }
     res.json(things)
 })
 
-router.route('/:id').get(async (req, res) => {
-    console.log(req.params, 'IIIIIIIIIIIIIII')
+router.route('/:profileId/:id').get(async (req, res) => {
+    console.log(req.params.profileId, 'IIIIIIIIIIIIIII')
     const thing = await thingService.getThingById(req.params.profileId, req.params.id)
     if (!thing) {
         res.status('404')
@@ -24,7 +24,7 @@ router.route('/:id').get(async (req, res) => {
 router.route('/').post(async (req, res) => {
     const thing = await thingService.createThing(
         new Thing({
-            profile: mongoose.SchemaTypes.ObjectId,
+            profileId: mongoose.SchemaTypes.ObjectId,
             image: mongoose.SchemaTypes.ObjectId,
             origin: req.body.origin,
             type: req.body.type,
@@ -36,6 +36,7 @@ router.route('/').post(async (req, res) => {
         }),
         req.params.profileId
     )
+    console.log(req.params.profileId)
     res.json(thing)
 })
 

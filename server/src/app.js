@@ -19,6 +19,5 @@ app.use('/', (req, res, next) => {
 app.use('/image', imageRouter)
 app.use('/profile', profileRouter)
 // app.use('/things', thingRouter)
-app.use('/profile/:profileId/things', thingRouter)
-
+app.use('/things', thingRouter)
 module.exports = app

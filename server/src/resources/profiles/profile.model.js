@@ -17,11 +17,12 @@ const profileSchema = new mongoose.Schema(
         //     enum : ['user','admin'],
         //     default: 'user'
         // },
+        albums: [{ type: mongoose.SchemaTypes.ObjectId, ref: 'Thing' }],
         featured: Boolean,
         username: String,
         name: String,
         description: String,
-        url: String, 
+        url: String,
         country: String,
         currency: String,
         devices: [],
@@ -32,7 +33,7 @@ const profileSchema = new mongoose.Schema(
         is_highlight_mix: Boolean,
         website: String,
         official_email: String,
-        title_tags:  [],
+        title_tags: [],
         // image: [{
         //     type: mongoose.SchemaTypes.ObjectId,
         //     ref: 'Image'
@@ -41,39 +42,39 @@ const profileSchema = new mongoose.Schema(
     { timestamps: true }
 )
 
-profileSchema.statics.toResponse = profile => {
+profileSchema.statics.toResponse = (profile) => {
     const {
-         created, 
-         type, 
-         approved, 
-         applied, 
-         commission, 
-         featured, 
-         username,
-         name,
-         description,
-         url,
-         country,
-         currency,
-         devices,
-         is_active,
-         is_promoted,
-         promoted_tag,
-         is_highlight,
-         is_highlight_mix,
-         website,
-         official_email,
-         title_tags,
+        created,
+        type,
+        approved,
+        applied,
+        commission,
+        featured,
+        username,
+        name,
+        description,
+        url,
+        country,
+        currency,
+        devices,
+        is_active,
+        is_promoted,
+        promoted_tag,
+        is_highlight,
+        is_highlight_mix,
+        website,
+        official_email,
+        title_tags,
         //  image
-        } = profile
-    return { 
+    } = profile
+    return {
         id: profile._id,
-        created, 
-        type, 
-        approved, 
-        applied, 
-        commission, 
-        featured, 
+        created,
+        type,
+        approved,
+        applied,
+        commission,
+        featured,
         username,
         name,
         description,
@@ -90,7 +91,7 @@ profileSchema.statics.toResponse = profile => {
         official_email,
         title_tags,
         // image
-     }
+    }
 }
 
 const Profile = mongoose.model('Profile', profileSchema, 'profile')
