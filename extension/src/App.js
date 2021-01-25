@@ -14,10 +14,10 @@ const App = () => {
 
     return (
         <div>
-            {context.loginPage && <Login/>}
+            {/* {context.loginPage && <Login/>}
             {context.selectPage && <ImageSelect />}
             {context.checkoutPage && <Checkout/>}
-            {context.endPage && <End/>}
+            {context.endPage && <End/>} */}
             {/*  <Button
                 text="Button"
                 color="light"
