@@ -13,12 +13,14 @@ import End from './Components/Pages/End'
 import Text from './Components/Atoms/Text'
 import Input from './Components/Atoms/Input'
 import Image from './Components/Atoms/Image'
+import ClickDrop from './Components/Atoms/ClickDrop'
 import Hr from './Components/Atoms/Hr'
 import Logo from './Components/Atoms/Logo'
 
 // molecules
 import DropDownMenu from './Components/Molecules/Dropdown'
 import SignIn from './Components/Molecules/SignIn'
+import DragDrop from './Components/Molecules/DragDrop'
 
 const App = () => {
     const context = useContext(Context)
