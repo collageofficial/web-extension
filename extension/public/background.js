@@ -4,26 +4,7 @@ chrome.browserAction.onClicked.addListener(function (tab) {
     })
 })
 
-/* chrome.runtime.onMessage.addListener(function (
-    message,
-    sender,
-    sendResponse
-  ) {;
-    alert(message.message);
-  });
-
-  chrome.runtime.onMessage.addListener(
-    function(request, sender, sendResponse) {
-      if( request.message === "message 1" ) {
-       alert("hello");console.log("started")
-           }
-    }
-  ); */
-
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-    alert(message.message)
-    chrome.runtime.sendMessage({from:"background", message:message.message});
-
     JSON.parse(message.message).map((image, index) =>
         window.localStorage.setItem(
             `${index}`,

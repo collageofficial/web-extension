@@ -61,25 +61,10 @@ const getData = () => {
         )
     }
     const sendImages = async () => {
-        /* THIS IS A DIFFERENT DOM. I NEED TO PASS IT TO POPUP.JS */
-        /* console.log(imagesToSend)
-        imagesToSend.map((image, index) =>
-            window.localStorage.setItem(
-                `${index}`,
-                JSON.stringify({
-                    caption: image.caption,
-                    filename: image.filename,
-                    origin: image.origin,
-                    size: {
-                        width: image.size.width,
-                        height: image.size.height,
-                    },
-                    ratio: image.ratio,
-                    src: image.src,
-                })
-            )
-        ) */
-        chrome.runtime.sendMessage({from:"content",message:JSON.stringify(imagesToSend)})
+        chrome.runtime.sendMessage({
+            from: 'content',
+            message: JSON.stringify(imagesToSend),
+        })
     }
 
     getImages().then(sortImages().then(sendImages()))
