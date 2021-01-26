@@ -58,8 +58,10 @@ router.post(
             return res.status(400).json({ errors: errors.array() })
         }
         const profileFields = {
-            user: req.user.id,
-            name: req.user.name,
+            autor: {
+                user: req.user.id,
+                name: req.user.name,
+            },
             ...req.body,
         }
         try {

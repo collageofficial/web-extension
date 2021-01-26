@@ -7,12 +7,8 @@ const Album = require('./album.model')
 
 //GET /profile/albums
 router.route('/albums').get(async (req, res) => {
-    console.log(req.params, req.body)
     try {
-        const albums = await Album.find().populate('Profile', ['username'])
-        if(!albums.length) {
-                res.status(400).json({ msg: 'There is no album for this profile' })
-        }
+        const albums = await Album.find().populate('User')
         res.status(200).json(albums)
     } catch (err) {
         console.error(err.message)
@@ -23,8 +19,8 @@ router.route('/albums').get(async (req, res) => {
 router.get('/album', auth, async (req, res) => {
     try {
         const album = await Album.findOne({
-            profile: req.profile.id,
-        }).populate('Profile', ['username'])
+            author: req.user.id,
+        }).populate('User')
 
         if (!album) {
             res.status(400).json({ msg: 'There is no album for this profile' })
@@ -61,13 +57,13 @@ router.post(
             return res.status(400).json({ errors: errors.array() })
         }
         const profileFields = {
-            profile: req.user.id,
+            author: req.user.id,
             ...req.body,
         }
         try {
             // Using upsert option (creates new doc if no match is found):
             const album = await Album.findOneAndUpdate(
-                { profile: req.user.id },
+                { author: req.user.id },
                 { $set: profileFields },
                 { new: true, upsert: true, setDefaultsOnInsert: true }
             )

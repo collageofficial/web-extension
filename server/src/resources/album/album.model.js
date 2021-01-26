@@ -3,9 +3,9 @@ const mongoose = require('mongoose')
 
 const albumSchema = new mongoose.Schema(
     {
-        profile: {
+        author: {
             type: mongoose.Schema.Types.ObjectId,
-            ref: 'Profile'
+            ref: 'User'
         },
         album_name: {
             type: String,
