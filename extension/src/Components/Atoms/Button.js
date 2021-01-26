@@ -26,27 +26,27 @@ const Button = ({
     <button
         onClick={action}
         className={`
-          ${special}
-          flex
-          justify-center
-          items-center
-          font-main
-          font-${textWeight}
-          text-center
-          align-middle
-          bg-${bgColor} 
-          text-${color}
-          text-${textSize} 
-          w-${width} 
-          h-${height} 
-          border-${border} 
-          border-${borderColor} 
-          rounded-${borderRadius}
-          hover:bg-${color}
-          hover:text-${bgColor}
-          transition duration-500
-          focus:outline-none
-          active:outline-none
+            ${special}
+            flex
+            justify-center
+            items-center
+            font-main
+            font-${textWeight}
+            text-center
+            align-middle
+            bg-${bgColor} 
+            text-${color}
+            text-${textSize} 
+            w-${width} 
+            h-${height} 
+            border-${border} 
+            border-${borderColor} 
+            rounded-${borderRadius}
+            hover:bg-${color}
+            hover:text-${bgColor}
+            transition duration-500
+            focus:outline-none
+            active:outline-none
         `}
     >
         {text}

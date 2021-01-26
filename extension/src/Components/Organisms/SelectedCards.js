@@ -17,6 +17,7 @@ const SelectedCards = () => {
                     <div className="flexRow">
                         {context.picturesToSave.map((picture, index) => (
                             <Card
+                                filename={picture.filename}
                                 key={index}
                                 url={picture.src}
                                 action={() => {
