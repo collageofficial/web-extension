@@ -9,6 +9,7 @@ const User = require('../user/user.model')
 //Private
 // GET /profile/me  
 // gets current users profile based on user_id and token
+
 router.get('/me', auth, async (req, res) => {
     try {
         const profile = await Profile.findOne({
@@ -26,8 +27,10 @@ router.get('/me', auth, async (req, res) => {
     }
 })
 
-//GET /profile 
+// Public
+// GET /profiles 
 // gets all exists profiles
+
 router.get('/', async (req, res) => {
     try {
         const profiles = await Profile.find().populate('User', ['name'])
@@ -39,7 +42,7 @@ router.get('/', async (req, res) => {
 })
 
 // Private
-// POST /profile
+// POST /profiles
 // Creates or updates profile
 
 router.post(
@@ -80,8 +83,10 @@ router.post(
     }
 )
 
-// GET /profile/user/:user_id
-// gets profile based on user id
+// Public
+// GET /profiles/user/:user_id
+// gets profiles based on user id
+
 router.get('/user/:user_id', async (req, res) => {
     try {
         const profile = await Profile.findOne({

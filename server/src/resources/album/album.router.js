@@ -4,11 +4,13 @@ const auth = require('../../middleware/auth')
 const { check, validationResult } = require('express-validator')
 
 const Album = require('./album.model')
+const Profile = require('../profile/profile.model')
 
 
-
-//GET /profile/albums
+// Public
+// GET /profile/albums
 // gets all exist albums
+
 router.get('/albums',async (req, res) => {
     try {
         const albums = await Album.find()
@@ -19,8 +21,10 @@ router.get('/albums',async (req, res) => {
     }
 })
 
-//GET /profile/my_albums
+// Private
+// GET /profiles/my_albums
 // gets all user albums
+
 router.get('/my_albums', auth, async (req, res) => {
     try {
         const albums = await Album.find({ author: req.user.id }).populate('User')
@@ -31,16 +35,18 @@ router.get('/my_albums', auth, async (req, res) => {
     }
 })
 
-router.get('/album', auth, async (req, res) => {
-    try {
-        const album = await Album.findOne({
-            author: req.user.id,
-        }).populate('User')
+// Public
+// GET /profiles/albums/:album_id
+// gets album by album id
 
+router.get('/albums/:album_id', async (req, res) => {
+    try {
+        const album = await Album.findById({
+            _id: req.params.album_id,
+        })
         if (!album) {
             res.status(400).json({ msg: 'There is no album for this profile' })
         }
-
         res.json(album)
     } catch (err) {
         console.error(err.message)
@@ -48,16 +54,9 @@ router.get('/album', auth, async (req, res) => {
     }
 })
 
-
-
-// router.route('/:profileId/:id').get(async (req, res) => {
-//     console.log(req.params.profileId, 'IIIIIIIIIIIIIII')
-//     const album = await Album.getalbumById(req.params.profileId, req.params.id)
-//     if (!album) {
-//         res.status('404')
-//     }
-//     res.json(album)
-// })
+// Private
+// POST
+// create album
 
 router.post(
     '/albums',
@@ -71,18 +70,20 @@ router.post(
         if (!errors.isEmpty()) {
             return res.status(400).json({ errors: errors.array() })
         }
-        const profileFields = {
-            author: req.user.id,
-            ...req.body,
-        }
+
         try {
-            // Using upsert option (creates new doc if no match is found):
             const album = await Album.create({
                 author: req.user.id,
                 ...req.body
             })
 
-            // await album.save()
+            const profile = await Profile.findOne({
+                user: req.user.id
+            })
+
+            profile['albums'].push(album)
+
+            await profile.save()
 
             res.status(200).json(album)
         } catch (err) {

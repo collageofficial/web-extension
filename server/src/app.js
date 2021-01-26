@@ -18,6 +18,6 @@ app.use('/', (req, res, next) => {
 
 app.use('/user', userRouter)
 app.use('/auth', authRouter)
-app.use('/profile', [profileRouter, albumRouter])
+app.use('/profiles', [profileRouter, albumRouter])
 
 module.exports = app
