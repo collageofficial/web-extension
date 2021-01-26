@@ -31,6 +31,7 @@ const CardGroup = () => {
             {context.browserPictures.length > 0 &&
                 context.browserPictures.map((picture, index) => (
                     <Card
+                        filename={picture.filename}
                         key={index}
                         url={picture.src}
                         action={() => {

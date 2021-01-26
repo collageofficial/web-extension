@@ -22,7 +22,7 @@ const CaptionForm = () => {
                         setReload(true)
                     }}
                 >
-                    <img src={image.src} />
+                    <img src={image.src} alt={image.filename}/>
                     <div>
                         <label htmlFor="filename">Title:</label>
                         <input
