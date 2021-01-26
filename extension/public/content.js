@@ -1,11 +1,46 @@
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-    request.message === 'give me pictures, please' && getData()
+chrome.runtime.onMessage.addListener((request) => {
+    if (request.type === 'popup-modal') {
+        showModal()
+        getData()
+    }
 })
 
-const getData = () => {
-    let imagesToSend = []
-    let imagesOnBrowser = []
+const showModal = () => {
+    const modal = document.createElement('dialog')
+    modal.setAttribute(
+        'style',
+        `
+    height:80vh;
+    width:80vw;
+    position: absolute;
+    top: 50%;
+    margin-top: -40vh;
+    left:50%;
+    margin-left: -40vw;
+    border: none;
+    border-radius:20px;
+    background-color:white;
+     box-shadow: 0px 12px 48px rgba(29, 5, 64, 0.7);
+    `
+    )
+    modal.innerHTML = `<iframe id="popup-content"; style="height:100%; width:100%"></iframe>
+    <div style="position:absolute; top:0px; left:5px;">
+    <button style="padding: 8px 12px; font-size: 16px; border: none; border-radius: 20px;">x</button>
+    </div>`
+    document.body.appendChild(modal)
+    const dialog = document.querySelector('dialog')
+    dialog.showModal()
+    const iframe = document.getElementById('popup-content')
+    iframe.src = chrome.extension.getURL('index.html')
+    iframe.frameBorder = 0
+    dialog.querySelector('button').addEventListener('click', () => {
+        dialog.close()
+    })
+}
 
+const getData = () => {
+    let imagesOnBrowser = []
+    let imagesToSend = []
     const getImages = async () => {
         imagesOnBrowser = Array.from(document.querySelectorAll('img'))
     }
@@ -14,9 +49,7 @@ const getData = () => {
             (image) =>
                 (imagesToSend = [
                     ...imagesToSend,
-                    {/* FIND THOSE DATA */
-                        /* need to filter. i dont need to see small pictures (like logo or stuff like that) */
-                        /* need to hide broken pictures */
+                    {
                         filename: 'filename',
                         caption: 'caption',
                         origin: 'origin',
