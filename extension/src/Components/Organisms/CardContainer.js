@@ -9,20 +9,14 @@ const CardGroup = () => {
     useEffect(() => {
         let images = []
         const saveImages = async () => {
-            if (window.localStorage.length > 0) {
-                for (let i = 0; i < window.localStorage.length; i++) {
-                    images = [
-                        ...images,
-                        JSON.parse(window.localStorage.getItem(i)),
-                    ]
-                }
+            for (let i = 0; i < window.localStorage.length; i++) {
+                images = [...images, JSON.parse(window.localStorage.getItem(i))]
             }
         }
         const saveToContext = async () => {
             context.browserPictures.length !== images.length &&
                 context.setBrowserPictures(images)
         }
-
         saveImages().then(saveToContext())
     }, [context.browserPictures])
 

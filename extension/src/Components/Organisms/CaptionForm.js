@@ -10,7 +10,7 @@ const CaptionForm = () => {
         setReload(false)
     }, [reload])
     return (
-        <div>
+        <section>
             {images.map((image) => (
                 <form
                     onChange={(e) => {
@@ -22,29 +22,25 @@ const CaptionForm = () => {
                         setReload(true)
                     }}
                 >
-                    <img src={image.src} alt={image.filename}/>
-                    <div>
-                        <label htmlFor="filename">Title:</label>
-                        <input
-                            type="text"
-                            id="filename"
-                            value={image.filename}
-                            required
-                        />
-                    </div>
-                    <div>
-                        <label htmlFor="caption">Caption:</label>
-                        <input
-                            type="text"
-                            id="caption"
-                            value={image.caption}
-                            required
-                        />
-                    </div>
+                    <img src={image.src} alt={image.filename} />
+                    <label htmlFor="filename">Title:</label>
+                    <input
+                        type="text"
+                        id="filename"
+                        value={image.filename}
+                        required
+                    />
+                    <label htmlFor="caption">Caption:</label>
+                    <input
+                        type="text"
+                        id="caption"
+                        value={image.caption}
+                        required
+                    />
                     {/* i need a select form to see the moodboards here */}
                 </form>
             ))}
-        </div>
+        </section>
     )
 }
 
