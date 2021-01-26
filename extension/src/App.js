@@ -1,31 +1,35 @@
 import React, { useContext } from 'react'
 import { Context } from './Context/Context'
 import './tailwind.css'
+
+// temporary pages
 import Login from './Components/Pages/Login'
 import ImageSelect from './Components/Pages/ImageSelect'
 import Checkout from './Components/Pages/Checkout'
 import End from './Components/Pages/End'
 
 // atoms
-/* import Button from './Components/Atoms/Button'
+ import Button from './Components/Atoms/Button'
 import Text from './Components/Atoms/Text'
 import Input from './Components/Atoms/Input'
-import Image from './Components/Atoms/Image' */
+import Image from './Components/Atoms/Image'
+import Hr from './Components/Atoms/Hr'
+import Logo from './Components/Atoms/Logo'
 
 // molecules
-/* import DropDownMenu from './Components/Molecules/Dropdown'
-import Hr from './Components/Atoms/Hr' */
+import DropDownMenu from './Components/Molecules/Dropdown'
+import SignIn from './Components/Molecules/SignIn'
 
 const App = () => {
     const context = useContext(Context)
 
     return (
-        <>
-            {context.loginPage && <Login />}
+        <div className="w-full h-full">
+            {/* {context.loginPage && <Login />}
             {context.selectPage && <ImageSelect />}
             {context.checkoutPage && <Checkout />}
-            {context.endPage && <End />}
-        </>
+            {context.endPage && <End />} */}
+        </div>
     )
 }
 
