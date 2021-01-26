@@ -7,6 +7,9 @@ const { check, validationResult } = require('express-validator')
 
 const User = require('./user.model')
 
+
+// GET /auth 
+// gets auth user
 router.get('/', auth, async (req, res) => {
     try {
         const user = await User.findById(req.user.id).select('-password')
@@ -17,6 +20,8 @@ router.get('/', auth, async (req, res) => {
     }
 })
 
+// POST /auth
+// log in
 router.post(
     '/',
     [

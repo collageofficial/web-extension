@@ -1,11 +1,11 @@
 const router = require('express').Router()
-const albumService = require('./album.service')
-const album = require('./album.model')
 const mongoose = require('mongoose')
+
+const Album = require('./album.model')
 
 router.route('/:profileId/').get(async (req, res) => {
     console.log(req.params, 'OOOOOOOOOOO')
-    const albums = await albumService.getAll(req.params.profileId).populate('album')
+    const albums = await Album.getAll(req.params.profileId).populate('album')
     if (!albums) {
         res.status('404')
     }
@@ -14,7 +14,7 @@ router.route('/:profileId/').get(async (req, res) => {
 
 router.route('/:profileId/:id').get(async (req, res) => {
     console.log(req.params.profileId, 'IIIIIIIIIIIIIII')
-    const album = await albumService.getalbumById(req.params.profileId, req.params.id)
+    const album = await Album.getalbumById(req.params.profileId, req.params.id)
     if (!album) {
         res.status('404')
     }
@@ -22,7 +22,7 @@ router.route('/:profileId/:id').get(async (req, res) => {
 })
 
 router.route('/').post(async (req, res) => {
-    const album = await albumService.createalbum(
+    const album = await Album.createalbum(
         new album({
             profileId: mongoose.SchemaTypes.ObjectId,
             image: mongoose.SchemaTypes.ObjectId,

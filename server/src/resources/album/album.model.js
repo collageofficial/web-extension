@@ -3,34 +3,19 @@ const mongoose = require('mongoose')
 
 const albumSchema = new mongoose.Schema(
     {
-        id: { type: String, default: uuidv4() },
-        created: { type: Date, default: Date.now },
-        user_id: {
+        profile: {
             type: mongoose.Schema.Types.ObjectId,
-            ref: 'User'
+            ref: 'Profile'
         },
-        album_name: Boolean,
+        album_name: {
+            type: String,
+            required: true
+        },
         images: Array,
-    },
-    { timestamps: true }
+        created: { type: Date, default: Date.now }
+    }
 )
 
-albumSchema.statics.toResponse = (album) => {
-    const {
-        created,
-        user_id,
-        album_name,
-        images
-    } = album
-    return {
-        id: album._id,
-        created,
-        user_id,
-        album_name,
-        images
-    }
-}
-
-const album = mongoose.model('album', albumSchema)
+const album = mongoose.model('Album', albumSchema)
 
 module.exports = album
