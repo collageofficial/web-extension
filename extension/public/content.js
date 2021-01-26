@@ -1,6 +1,8 @@
 chrome.runtime.onMessage.addListener((request) => {
     if (request.type === 'popup-modal') {
         showModal()
+        console.log("hey")
+        getData()
     }
 })
 
