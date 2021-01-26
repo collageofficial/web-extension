@@ -3,16 +3,16 @@ import React from 'react'
 const Text = ({ text, bgColor, color, textSize, fontWeight, textAlign }) => (
     <p
         className={`
-    text-${color} 
-    bg-${bgColor} 
-    font-main 
-    font-${fontWeight} 
-    text-${textSize}
-    w-max 
-    h-max
-    break-words
-    text-${textAlign}	
-    `}
+            text-${color} 
+            bg-${bgColor} 
+            font-main 
+            font-${fontWeight} 
+            text-${textSize}
+            w-max 
+            h-max
+            break-words
+            text-${textAlign}	
+        `}
     >
         {text}
     </p>

@@ -1,21 +1,15 @@
 import React from 'react'
 
-const Image = ({
-    height,
-    width,
-    borderRadius,
-    url,
-}) => (
+const Image = ({ height, width, borderRadius, url }) => (
     <img
-    className={`
-    h-${height}
-    w-${width}
-    rounded-${borderRadius}
-    `} 
-    src={url}
+        className={`
+            h-${height}
+            w-${width}
+            rounded-${borderRadius}
+        `}
+        src={url}
     />
 )
-
 
 export default Image
 
