@@ -16,6 +16,6 @@
   },
   "permissions": ["storage", "tabs"],
   "web_accessible_resources": ["index.html"],
-  "content_security_policy": "script-src 'self' 'sha256-L+HBeV0C8W1hvGySlV8iloOWPuXsC9chSuEE1lpPSQA='; object-src 'self'",
+  "content_security_policy": "script-src 'self' 'unsafe-eval' 'unsave-inline' 'sha256-L+HBeV0C8W1hvGySlV8iloOWPuXsC9chSuEE1lpPSQA='; object-src 'self'",
   "browser_action": {}
   }
