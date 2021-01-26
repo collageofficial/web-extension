@@ -5,10 +5,25 @@ const { check, validationResult } = require('express-validator')
 
 const Album = require('./album.model')
 
+
+
 //GET /profile/albums
-router.route('/albums').get(async (req, res) => {
+// gets all exist albums
+router.get('/albums',async (req, res) => {
     try {
-        const albums = await Album.find().populate('User')
+        const albums = await Album.find()
+        res.status(200).json(albums)
+    } catch (err) {
+        console.error(err.message)
+        res.status(500).send('Server Error')
+    }
+})
+
+//GET /profile/my_albums
+// gets all user albums
+router.get('/my_albums', auth, async (req, res) => {
+    try {
+        const albums = await Album.find({ author: req.user.id }).populate('User')
         res.status(200).json(albums)
     } catch (err) {
         console.error(err.message)
@@ -62,11 +77,12 @@ router.post(
         }
         try {
             // Using upsert option (creates new doc if no match is found):
-            const album = await Album.findOneAndUpdate(
-                { author: req.user.id },
-                { $set: profileFields },
-                { new: true, upsert: true, setDefaultsOnInsert: true }
-            )
+            const album = await Album.create({
+                author: req.user.id,
+                ...req.body
+            })
+
+            // await album.save()
 
             res.status(200).json(album)
         } catch (err) {
