@@ -11,6 +11,8 @@ import Button from './Components/Atoms/Button'
 import Text from './Components/Atoms/Text'
 import Input from './Components/Atoms/Input' 
 import DropDownMenu from './Components/Molecules/Dropdown'
+import CollageLogo from './Components/Atoms/collageLogo'
+
 
 const App = () => {
     const context = useContext(Context)
@@ -21,6 +23,9 @@ const App = () => {
             {context.selectPage && <ImageSelect />}
             {context.checkoutPage && <Checkout />}
             {context.endPage && <End />} */}
+
+
+        <DropDownMenu />
         </div>
     )
 }
