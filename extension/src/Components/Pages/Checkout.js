@@ -6,7 +6,7 @@ const Checkout = () => {
     const context = useContext(Context)
 
     return (
-        <div>
+        <>
             <button onClick={context.goBackToSelect}>
                 want to change pictures? click here
             </button>
@@ -15,7 +15,7 @@ const Checkout = () => {
             <button onClick={context.exitCheckoutPage}>
                 POST MY PICTURES!!
             </button>
-        </div>
+        </>
     )
 }
 
