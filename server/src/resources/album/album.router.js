@@ -27,7 +27,7 @@ router.get('/albums',async (req, res) => {
 
 router.get('/my_albums', auth, async (req, res) => {
     try {
-        const albums = await Album.find({ author: req.user.id }).populate('User')
+        const albums = await Album.find({ author_id: req.user.id }).populate('User')
         res.status(200).json(albums)
     } catch (err) {
         console.error(err.message)
@@ -71,8 +71,10 @@ router.post(
         }
 
         try {
+            console.log(req.user)
             const album = await Album.create({
-                author: req.user.id,
+                author_id: req.user.id,
+                author_name: req.user.info[0],
                 ...req.body
             })
 

@@ -49,7 +49,6 @@ router.post(
     '/',
     [
         auth,
-        check('username', 'Username is required').not().isEmpty(),
         check('description', 'Description is required').isLength({
             min: 4,
         }),
@@ -59,11 +58,11 @@ router.post(
         if (!errors.isEmpty()) {
             return res.status(400).json({ errors: errors.array() })
         }
+        console.log(req.user)
         const profileFields = {
-            autor: {
                 user: req.user.id,
-                name: req.user.name,
-            },
+                name: req.user.info[0],
+                username: req.user.info[1],
             ...req.body,
         }
         try {
