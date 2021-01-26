@@ -47,7 +47,6 @@ router.post(
     [
         auth,
         check('username', 'Username is required').not().isEmpty(),
-        check('name', 'Name is required').not().isEmpty(),
         check('description', 'Description is required').isLength({
             min: 4,
         }),
@@ -60,6 +59,7 @@ router.post(
         }
         const profileFields = {
             user: req.user.id,
+            name: req.user.name,
             ...req.body,
         }
         try {

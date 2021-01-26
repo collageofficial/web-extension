@@ -4,6 +4,7 @@ const app = express()
 const userRouter = require('./resources/user/user.router')
 const authRouter = require('./resources/user/auth.router')
 const profileRouter = require('./resources/profile/profile.router')
+const albumRouter = require('./resources/album/album.router')
 
 app.use(express.json())
 
@@ -17,6 +18,6 @@ app.use('/', (req, res, next) => {
 
 app.use('/user', userRouter)
 app.use('/auth', authRouter)
-app.use('/profile', profileRouter)
+app.use('/profile', [profileRouter, albumRouter])
 
 module.exports = app
