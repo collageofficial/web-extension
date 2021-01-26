@@ -1,10 +1,17 @@
 import React from 'react'
+import { TiPlus } from 'react-icons/ti'
+import { BsTrash } from 'react-icons/bs'
+import { FaArrowAltCircleLeft } from 'react-icons/fa'
+
 
 // special classeName defined in App.css
 
 const Button = ({
     action,
     special,
+    notPlus,
+    notBin,
+    notBackArrow,
     text,
     textSize,
     textWeight,
@@ -19,34 +26,41 @@ const Button = ({
     <button
         onClick={action}
         className={`
-          ${special}
-          font-main
-          font-${textWeight}
-          text-center
-          align-middle
-          bg-${bgColor} 
-          text-${color}
-          text-${textSize} 
-          w-${width} 
-          h-${height} 
-          border-${border} 
-          border-${borderColor} 
-          rounded-${borderRadius}
-          hover:bg-${color}
-          hover:text-${bgColor}
-          transition duration-500
-          focus:outline-none
-          active:outline-none
+            ${special}
+            flex
+            justify-center
+            items-center
+            font-main
+            font-${textWeight}
+            text-center
+            align-middle
+            bg-${bgColor} 
+            text-${color}
+            text-${textSize} 
+            w-${width} 
+            h-${height} 
+            border-${border} 
+            border-${borderColor} 
+            rounded-${borderRadius}
+            hover:bg-${color}
+            hover:text-${bgColor}
+            transition duration-500
+            focus:outline-none
+            active:outline-none
         `}
     >
         {text}
+        {notPlus === false && <TiPlus />}
+        {notBin === false && <BsTrash />}
+        {notBackArrow === false && <FaArrowAltCircleLeft />}
     </button>
 )
 
 export default Button
 // Basic button width 80px, height 40px translated in tailwind "numbers"
 // Basic primary color button
-{/* <Button
+{
+    /* <Button
     text="Button"
     color="light"
     textSize="medium"
@@ -55,11 +69,12 @@ export default Button
     width="20"
     height="10"
     borderRadius="small"
-/> */}
-
+/> */
+}
 
 // Basic light color button
-{/* <Button
+{
+    /* <Button
     text="Button"
     color="dark"
     textSize="medium"
@@ -70,11 +85,12 @@ export default Button
     border="2"
     borderColor="dark"
     borderRadius="small"
-/> */}
-
+/> */
+}
 
 // Basic inverted primary color button
-{/* <Button
+{
+    /* <Button
     text="Button"
     color="primary"
     textSize="medium"
@@ -85,26 +101,76 @@ export default Button
     border="2"
     borderColor="primary"
     borderRadius="small"
-/> */}
-
+/> */
+}
 
 //  Plus sign no border 20px
 {
-    /* <Button special="plus-btn" width="5" height="5" borderRadius="full" /> */
+    /* <Button
+    width="5"
+    height="5"
+    borderRadius="full"
+    bgColor="primary"
+    color="light"
+    textSize="medium"
+    notPlus={false}
+/> */
 }
 
 // Plus sign border 20 px
-{/* <Button
-    special="plus-btn-border"
+{
+    /* <Button
     width="5"
     height="5"
-    border="2"
     borderRadius="full"
-/> */}
-
-
+    bgColor="light"
+    color="primary"
+    border="2"
+    borderColor="primary"
+    textSize="medium"
+    notPlus={false}
+/> */
+}
 
 // Plus sign no border 32px
-{/* <Button special="plus-btn" width="8" height="8" borderRadius="full" /> */}
+{
+    /* <Button
+    width="8"
+    height="8"
+    borderRadius="full"
+    bgColor="primary"
+    color="light"
+    textSize="large"
+    notPlus={false}
+/> */
+}
 
+// Bin button border 32px
+{
+    /* <Button
+    width="8"
+    height="8"
+    borderRadius="full"
+    bgColor="primary"
+    color="light"
+    border="2"
+    borderColor="primary"
+    textSize="large"
+    notBin={false}
+/> */
+}
 
+// Back arrow border 32px
+{
+    /* <Button
+    width="8"
+    height="8"
+    borderRadius="full"
+    bgColor="primary"
+    color="light"
+    border="1"
+    borderColor="primary"
+    textSize="large"
+    notBackArrow={false}
+/> */
+}

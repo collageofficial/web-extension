@@ -1,3 +1,3 @@
-const End = () => <div>THANK YOU FOR ADDING PICTURES</div>
+const End = () => <>THANK YOU FOR ADDING PICTURES</>
 
 export default End
