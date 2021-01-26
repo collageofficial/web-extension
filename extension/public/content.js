@@ -1,7 +1,6 @@
 chrome.runtime.onMessage.addListener((request) => {
     if (request.type === 'popup-modal') {
         showModal()
-        console.log("hey")
         getData()
     }
 })
@@ -41,11 +40,50 @@ const showModal = () => {
 
 const getData = () => {
     let imagesOnBrowser = []
+    let imagesToSend = []
     const getImages = async () => {
         imagesOnBrowser = Array.from(document.querySelectorAll('img'))
+        console.log("1")
+    }
+    const sortImages = async () => {
+        console.log(imagesOnBrowser)
+        imagesOnBrowser.map(
+            (image) =>
+                (imagesToSend = [
+                    ...imagesToSend,
+                    {
+                        filename: 'filename',
+                        caption: 'caption',
+                        origin: 'origin',
+                        size: { width: image.width, height: image.height },
+                        ratio: 'ratio',
+                        src: image.src,
+                    },
+                ])
+        )
+        console.log("2")
     }
     const sendImages = async () => {
-        console.log(imagesOnBrowser)
+        /* THIS IS A DIFFERENT DOM. I NEED TO PASS IT TO POPUP.JS */
+        console.log(imagesToSend)
+        imagesToSend.map((image, index) =>
+            window.localStorage.setItem(
+                `${index}`,
+                JSON.stringify({
+                    caption: image.caption,
+                    filename: image.filename,
+                    origin: image.origin,
+                    size: {
+                        width: image.size.width,
+                        height: image.size.height,
+                    },
+                    ratio: image.ratio,
+                    src: image.src,
+                })
+            )
+        )
+        console.log("3")
     }
-    getImages().then(sendImages())
+
+    getImages().then(sortImages().then(sendImages().then(console.log(window.localStorage))))
 }
