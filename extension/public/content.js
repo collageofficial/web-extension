@@ -43,10 +43,8 @@ const getData = () => {
     let imagesToSend = []
     const getImages = async () => {
         imagesOnBrowser = Array.from(document.querySelectorAll('img'))
-        console.log("1")
     }
     const sortImages = async () => {
-        console.log(imagesOnBrowser)
         imagesOnBrowser.map(
             (image) =>
                 (imagesToSend = [
@@ -61,11 +59,10 @@ const getData = () => {
                     },
                 ])
         )
-        console.log("2")
     }
     const sendImages = async () => {
         /* THIS IS A DIFFERENT DOM. I NEED TO PASS IT TO POPUP.JS */
-        console.log(imagesToSend)
+        /* console.log(imagesToSend)
         imagesToSend.map((image, index) =>
             window.localStorage.setItem(
                 `${index}`,
@@ -81,9 +78,9 @@ const getData = () => {
                     src: image.src,
                 })
             )
-        )
-        console.log("3")
+        ) */
+        chrome.runtime.sendMessage({from:"content",message:JSON.stringify(imagesToSend)})
     }
 
-    getImages().then(sortImages().then(sendImages().then(console.log(window.localStorage))))
+    getImages().then(sortImages().then(sendImages()))
 }

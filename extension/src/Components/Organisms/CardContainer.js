@@ -7,7 +7,9 @@ const CardGroup = () => {
     const context = useContext(Context)
 
     useEffect(() => {
+        alert('teiko is beautiful')
         let images = []
+        console.log(window.localStorage)
         const saveImages = async () => {
             for (let i = 0; i < window.localStorage.length; i++) {
                 images = [...images, JSON.parse(window.localStorage.getItem(i))]
