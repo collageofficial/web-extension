@@ -13,16 +13,18 @@ import Button from './Components/Atoms/Button'
 import Text from './Components/Atoms/Text'
 import Input from './Components/Atoms/Input'
 import Image from './Components/Atoms/Image'
+import Hr from './Components/Atoms/Hr'
+import Logo from './Components/Atoms/Logo'
 
 // molecules
 import DropDownMenu from './Components/Molecules/Dropdown'
-import Hr from './Components/Atoms/Hr'
+import SignIn from './Components/Molecules/SignIn'
 
 const App = () => {
     const context = useContext(Context)
 
     return (
-        <div>
+        <div className="w-full h-full">
             {/* {context.loginPage && <Login />}
             {context.selectPage && <ImageSelect />}
             {context.checkoutPage && <Checkout />}

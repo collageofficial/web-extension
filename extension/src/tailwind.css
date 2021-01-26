@@ -19,7 +19,10 @@
     --grey: #dddddd;
 }
 
-body {
-    background-color: lightblue;
+#root {
+    background-color: var(--light);
+    border: 2px solid red;
+    width: 800px;
+    height: 600px;
 }
 
