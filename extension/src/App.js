@@ -27,10 +27,10 @@ const App = () => {
 
     return (
         <div className="w-full h-full">
-            {/* {context.loginPage && <Login />}
+            {context.loginPage && <Login />}
             {context.selectPage && <ImageSelect />}
             {context.checkoutPage && <Checkout />}
-            {context.endPage && <End />} */}
+            {context.endPage && <End />}
         </div>
     )
 }
