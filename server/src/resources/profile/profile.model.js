@@ -10,11 +10,11 @@ const profileSchema = new mongoose.Schema(
             type: Date, 
             default: Date.now 
         },
-        // type: {
-        //     type: String,
-        //     enum : ['user','admin'],
-        //     default: 'user'
-        // },
+        type: {
+            type: String,
+            enum : ['user','admin'],
+            default: 'user'
+        },
         featured: {
             type: Boolean
         },
