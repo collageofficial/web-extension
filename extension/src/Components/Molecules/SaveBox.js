@@ -9,7 +9,7 @@ const SaveBox = () => {
     const context = useContext(Context)
 
     return (
-        <div className="w-9/10 h-1/5 flex flex-col bg-grey rounded-small border-2 border-dark justify-between">
+        <div className="w-9/10 h-1/5 flex flex-col bg-light rounded-small border-2 border-dark justify-between">
             <div className="m-small">
                 <Text
                     text="Added images :"
