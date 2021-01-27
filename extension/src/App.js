@@ -25,17 +25,17 @@ import SignIn from './Components/Molecules/SignIn'
 import DragDrop from './Components/Molecules/DragDrop'
 import NewBoard from './Components/Molecules/NewBoard'
 import SaveBox from './Components/Molecules/SaveBox'
+import SavedPicture from './Components/Molecules/SavedPicture'
 
 const App = () => {
     const context = useContext(Context)
 
     return (
         <div className="w-full h-full">
-            {/* {context.loginPage && <Login />}
+            {context.loginPage && <Login />}
             {context.selectPage && <ImageSelect />}
             {context.checkoutPage && <Checkout />}
-            {context.endPage && <End />} */}
-            
+            {context.endPage && <End />}
         </div>
     )
 }
