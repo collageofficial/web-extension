@@ -1,5 +1,5 @@
 import React from 'react'
-import collageLogo from './collage-logo.svg'
+import collageLogo from '../../Images/collage-logo.svg'
 
 const CollageLogo = ({height, width}) => {
     return(
