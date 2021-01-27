@@ -6,7 +6,7 @@ const DropDownMenu = () => {
         <div className="border-2 
         border-dark 
         rounded-small">            
-            <button
+            {/* <button
         onClick={action}
         className={`
           ${special}
@@ -27,8 +27,8 @@ const DropDownMenu = () => {
           transition duration-500
           focus:outline-none
           active:outline-none
-        `}
-    >
+        `} */}
+            />
             <Button
                 text="Button"
                 color="light"
