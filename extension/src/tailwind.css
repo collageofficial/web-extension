@@ -12,17 +12,18 @@
 }
 
 /* specials classes start here */
+/* remember to change inline style inside public --> content.js for modal CSS */
 * {
     --primary: #e60023;
     --light: #ffffff;
     --dark: #000000;
     --grey: #dddddd;
+    --padding-base: 8px;
 }
 
 #root {
-    background-color: var(--light);
-    border: 2px solid red;
-    width: 800px;
-    height: 600px;
+    width: 100%;
+    height: 100%;
+    margin: var(--padding-base);
 }
 

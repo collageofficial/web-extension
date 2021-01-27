@@ -8,7 +8,7 @@ const DragDrop = () => {
     const context = useContext(Context)
 
     return (
-        <div className="w-3/6 h-full flex flex-col items-center bg-grey">
+        <div className="w-3/6 h-full flex flex-col items-center bg-grey rounded-small">
             <div className="w-full h-4/5 flex flex-col justify-end items-center">
                 <RiDragDropLine className="w-16 h-16" />
                 </div>

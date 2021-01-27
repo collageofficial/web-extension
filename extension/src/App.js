@@ -9,7 +9,7 @@ import Checkout from './Components/Pages/Checkout'
 import End from './Components/Pages/End'
 
 // atoms
- import Button from './Components/Atoms/Button'
+import Button from './Components/Atoms/Button'
 import Text from './Components/Atoms/Text'
 import Input from './Components/Atoms/Input'
 import Image from './Components/Atoms/Image'
@@ -23,16 +23,17 @@ import CollageLogo from './Components/Atoms/CollageLogo'
 import CardAdded from './Components/Molecules/CardAdded'
 import SignIn from './Components/Molecules/SignIn'
 import DragDrop from './Components/Molecules/DragDrop'
+import NewBoard from './Components/Molecules/NewBoard'
 
 const App = () => {
     const context = useContext(Context)
 
     return (
         <div className="w-full h-full">
-            {context.loginPage && <Login />}
+            {/* {context.loginPage && <Login />}
             {context.selectPage && <ImageSelect />}
             {context.checkoutPage && <Checkout />}
-            {context.endPage && <End />}           
+            {context.endPage && <End />} */}
         </div>
     )
 }
