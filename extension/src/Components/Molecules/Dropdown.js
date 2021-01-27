@@ -1,47 +1,46 @@
 import React from 'react'
+import Button from '../Atoms/Button'
 
-const DropDownMenu = ({
-    text,
-    textWeight,
-    bgColor,
-    width,
-    height,
-    border,
-    borderColor,
-    borderRadius,
-}) => (
-    <input 
-    aria-haspopup="listbox"
-    aria-expanded="true"
-    aria-labelledby="listbox-label" 
-    placeholder={text}
-    class={`
-    relative
-    w-${width}
-    h-${height}
-    bg-${bgColor}
-    border-${border}
-    border-${borderColor}
-    rounded-${borderRadius}
-    cursor-default 
-    text-left
-    focus:outline-none 
-    focus:ring-1 
-    focus:ring-indigo-500 
-    focus:border-indigo-500
-    
-    `}    
-    />
-
-    // <button type="button"
-    //         
-    //         
-    //         class="
-    //         
-    //         pl-3 
-    //         pr-10 
-    //         py-2 
-    //         sm:text-sm" />
-)
+const DropDownMenu = () => {
+    return (
+        <div className="border-2 
+        border-dark 
+        rounded-small">            
+            {/* <button
+        onClick={action}
+        className={`
+          ${special}
+          font-main
+          font-${textWeight}
+          text-center
+          align-middle
+          bg-${bgColor} 
+          text-${color}
+          text-${textSize} 
+          w-${width} 
+          h-${height} 
+          border-${border} 
+          border-${borderColor} 
+          rounded-${borderRadius}
+          hover:bg-${color}
+          hover:text-${bgColor}
+          transition duration-500
+          focus:outline-none
+          active:outline-none
+        `} */}
+            />
+            <Button
+                text="Button"
+                color="light"
+                textSize="medium"
+                textWeight="normal"
+                bgColor="primary"
+                width="20"
+                height="10"
+               
+            />
+        </div>
+    )
+}
 
 export default DropDownMenu

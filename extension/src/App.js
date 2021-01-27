@@ -19,6 +19,8 @@ import Logo from './Components/Atoms/Logo'
 
 // molecules
 import DropDownMenu from './Components/Molecules/Dropdown'
+import CollageLogo from './Components/Atoms/collageLogo'
+
 import SignIn from './Components/Molecules/SignIn'
 import DragDrop from './Components/Molecules/DragDrop'
 
