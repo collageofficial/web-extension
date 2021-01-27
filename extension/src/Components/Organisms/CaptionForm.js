@@ -6,6 +6,7 @@ const CaptionForm = () => {
     const context = useContext(Context)
     const [images, setImages] = useState(context.picturesToSave)
     const [reload, setReload] = useState(false)
+
     useEffect(() => {
         setReload(false)
     }, [reload])
@@ -19,6 +20,7 @@ const CaptionForm = () => {
                             ? (image.filename = e.target.value)
                             : (image.caption = e.target.value)
                         context.setPicturesToSave(images)
+                        console.log(context.picturesToSave)
                         setReload(true)
                     }}
                 >
@@ -37,10 +39,11 @@ const CaptionForm = () => {
                         value={image.caption}
                         required
                     />
-        <label htmlFor="album">Album:</label>
+                    <label htmlFor="album">Album:</label>
                     <select name="album" id="album" required>
                         <option value="hello1">hello1</option>
                         <option value="goodbye">goodbye</option>
+                        <option value="new">CREATE A NEW ALBUM</option>
                     </select>
                 </form>
             ))}

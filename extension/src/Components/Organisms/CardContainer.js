@@ -5,8 +5,7 @@ import './CardContainer.css'
 
 const CardGroup = () => {
     const context = useContext(Context)
-
-    useEffect(() => {
+    const addPicture = useEffect(() => {
         let images = []
         const saveImages = async () => {
             for (let i = 0; i < window.localStorage.length; i++) {
