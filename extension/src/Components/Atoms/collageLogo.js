@@ -1,13 +1,16 @@
 import React from 'react'
 import collageLogo from './collage-logo.svg'
 
-const CollageLogo = () => {
+const CollageLogo = ({height, width}) => {
     return(
-    <div>
-<img src={collageLogo} className="App-logo" alt="logo" />
-</div>
-    
+<img 
+className={`
+h-${height}
+w-${width}
+`}
+alt="collage-logo"
+src={collageLogo} 
+ />    
     )}
-
-
 export default CollageLogo
+
