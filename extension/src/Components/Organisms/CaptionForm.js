@@ -37,7 +37,11 @@ const CaptionForm = () => {
                         value={image.caption}
                         required
                     />
-                    {/* i need a select form to see the moodboards here */}
+        <label htmlFor="album">Album:</label>
+                    <select name="album" id="album" required>
+                        <option value="hello1">hello1</option>
+                        <option value="goodbye">goodbye</option>
+                    </select>
                 </form>
             ))}
         </section>
