@@ -24,7 +24,7 @@ const profileSchema = new mongoose.Schema(
         },
         username: {
             type: String,
-            required: true
+            ref: 'User'
         },
         // name: {
         //     type: String,
