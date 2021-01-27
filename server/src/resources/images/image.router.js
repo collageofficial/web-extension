@@ -6,10 +6,24 @@ const Img = require('./image.model')
 const Album = require('../album/album.model')
 
 // Public
+// GET /profiles/images
+// gets all exists images from all users
+
+router.get('/images', async (req, res) => {
+    try {
+        const images = await Img.find({})
+        res.status(200).json(images)
+    } catch (err) {
+        console.error(err.message)
+        res.status(500).send('Server error')
+    }
+})
+
+// Public
 // GET /profiles/albums/:album_id/images
 // gets all images from exact album that found by id
 
-router.route('/albums/:album_id/images').get(async (req, res) => {
+router.get('/albums/:album_id/images', async (req, res) => {
     try {
         const album = await Album.findById({
             _id: req.params.album_id,
@@ -18,7 +32,6 @@ router.route('/albums/:album_id/images').get(async (req, res) => {
             res.status(400).json({ msg: 'User has no albums with this ID' })
         }
 
-        console.log(album.images)
         res.json(album.images)
     } catch (err) {
         console.error(err.message)
@@ -71,27 +84,5 @@ router.post(
         }
     }
 )
-
-// router.route('/:id').get(async (req, res) => {
-//     const img = await imageService.getImageById(req.params.id)
-//     if (!img) {
-//         res.status('404')
-//     }
-//     res.json(img)
-// })
-
-// router.route('/').post(async (req, res) => {
-//     const img = await imageService.createImage(
-//         new Img({
-//             filename: req.body.filename,
-//             ratio: req.body.ratio,
-//             size: { width: req.body.width, height: req.body.height },
-//             caption: req.body.caption,
-//             origin: req.body.origin,
-//             is_active: req.body.is_active
-//         })
-//     )
-//     res.json(img)
-// })
 
 module.exports = router
