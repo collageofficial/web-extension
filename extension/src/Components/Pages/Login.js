@@ -6,6 +6,7 @@ const Login = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [reload, setReload] = useState(false)
+    const [loginFailed, setLoginFailed] = useState(false)
 
     const logIn = async (e) => {
         e.preventDefault()
@@ -19,7 +20,7 @@ const Login = () => {
                 password: password,
             }),
         }).then((res) => {
-            console.log(res)
+            res.status !== 200 ? setLoginFailed(true) : context.exitLoginPage()
         })
     }
     const handleChange = (e) => {
@@ -35,6 +36,7 @@ const Login = () => {
     })
     return (
         <>
+            {loginFailed && <p>PLEASE TRY AGAIN</p>}
             <form onChange={handleChange}>
                 <label htmlFor="email">Email:</label>
                 <input type="text" id="email" required />
@@ -47,5 +49,3 @@ const Login = () => {
 }
 
 export default Login
-
-/* {context.exitLoginPage} */
