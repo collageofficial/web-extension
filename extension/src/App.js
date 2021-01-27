@@ -21,16 +21,17 @@ import Logo from './Components/Atoms/Logo'
 import DropDownMenu from './Components/Molecules/Dropdown'
 import SignIn from './Components/Molecules/SignIn'
 import DragDrop from './Components/Molecules/DragDrop'
+import NewBoard from './Components/Molecules/NewBoard'
 
 const App = () => {
     const context = useContext(Context)
 
     return (
         <div className="w-full h-full">
-            {context.loginPage && <Login />}
+            {/* {context.loginPage && <Login />}
             {context.selectPage && <ImageSelect />}
             {context.checkoutPage && <Checkout />}
-            {context.endPage && <End />}
+            {context.endPage && <End />} */}
         </div>
     )
 }
