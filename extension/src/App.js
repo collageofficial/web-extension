@@ -24,6 +24,7 @@ import CardAdded from './Components/Molecules/CardAdded'
 import SignIn from './Components/Molecules/SignIn'
 import DragDrop from './Components/Molecules/DragDrop'
 import NewBoard from './Components/Molecules/NewBoard'
+import SaveBox from './Components/Molecules/SaveBox'
 
 const App = () => {
     const context = useContext(Context)
@@ -34,6 +35,7 @@ const App = () => {
             {context.selectPage && <ImageSelect />}
             {context.checkoutPage && <Checkout />}
             {context.endPage && <End />} */}
+            
         </div>
     )
 }

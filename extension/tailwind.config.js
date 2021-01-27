@@ -21,6 +21,7 @@ module.exports = {
             },
             padding: {
                 DEFAULT:'0',
+                half: '4px',
                 small: '8px',
             },
             fontFamily: {
