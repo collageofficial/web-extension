@@ -5,19 +5,30 @@ const { check, validationResult } = require('express-validator')
 const Img = require('./image.model')
 const Album = require('../album/album.model')
 
+// Public
+// GET /profiles/albums/:album_id/images
+// gets all images from exact album that found by id
+
+router.route('/albums/:album_id/images').get(async (req, res) => {
+    try {
+        const album = await Album.findById({
+            _id: req.params.album_id,
+        })
+        if (!album) {
+            res.status(400).json({ msg: 'User has no albums with this ID' })
+        }
+
+        console.log(album.images)
+        res.json(album.images)
+    } catch (err) {
+        console.error(err.message)
+        res.status(500).send('Server error')
+    }
+})
+
 // Private
-// GET /images
-// gets all  
-
-// router.route('/').post(async (req, res) => {
-//     const images = await Img.create({
-
-//     })
-//     if (!images) {
-//         res.status('404')
-//     }
-//     res.json(images)
-// })
+// POST /profiles/albums/:album_id/uploadimage
+// posts image in exact album that foun by id
 
 router.post(
     '/albums/:album_id/uploadimage',
@@ -28,7 +39,7 @@ router.post(
         check('origin', 'Origin field is required').not().isEmpty(),
         check('src', 'src field is required').not().isEmpty(),
         check('ratio', 'src field is required').isNumeric(),
-        check('size', 'src field is required').not().isEmpty()
+        check('size', 'src field is required').not().isEmpty(),
     ],
     async (req, res) => {
         const errors = validationResult(req)
@@ -40,11 +51,11 @@ router.post(
             const image = await Img.create({
                 author_id: req.user.id,
                 author_name: req.user.info[0],
-                ...req.body
+                ...req.body,
             })
 
             const album = await Album.find({
-                _id: req.params.album_id
+                _id: req.params.album_id,
             })
 
             console.log(album[0].images)
