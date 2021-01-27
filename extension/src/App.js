@@ -9,7 +9,7 @@ import Checkout from './Components/Pages/Checkout'
 import End from './Components/Pages/End'
 
 // atoms
- import Button from './Components/Atoms/Button'
+import Button from './Components/Atoms/Button'
 import Text from './Components/Atoms/Text'
 import Input from './Components/Atoms/Input'
 import Image from './Components/Atoms/Image'

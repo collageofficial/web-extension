@@ -10,22 +10,18 @@ const showModal = () => {
     modal.setAttribute(
         'style',
         `
-    height:80vh;
-    width:80vw;
-    position: absolute;
-    top: 50%;
-    margin-top: -40vh;
-    left:50%;
-    margin-left: -40vw;
+    height: 95vh;
+    width: 95vw;
     border: none;
-    border-radius:20px;
-    background-color:white;
-     box-shadow: 0px 12px 48px rgba(29, 5, 64, 0.7);
+    border-radius: 15px;
+    background-color: white;
+    box-shadow: 0px 0px 5px 50px rgba(0, 0, 0, 0.75);
+    overflow: hidden;
     `
     )
     modal.innerHTML = `<iframe id="popup-content"; style="height:100%; width:100%"></iframe>
-    <div style="position:absolute; top:0px; left:5px;">
-    <button style="padding: 8px 12px; font-size: 16px; border: none; border-radius: 20px;">x</button>
+    <div style="position:absolute; top: 8px; right: 8px;">
+        <button style="width: 30px; height: 30px; border: none; border-radius: 50%; background: linear-gradient(#ffffff, #ffffff), linear-gradient(#ffffff, #ffffff), #e60023; background-position: center; background-size: 50% 2px, 2px 50%; background-repeat: no-repeat; transform: rotate(45deg);" />
     </div>`
     document.body.appendChild(modal)
     const dialog = document.querySelector('dialog')
