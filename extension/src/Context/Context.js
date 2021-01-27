@@ -26,6 +26,7 @@ const Provider = ({ children }) => {
         setCheckoutPage(false)
         setEndPage(true)
     }
+
     return (
         <Context.Provider
             value={{

@@ -3,9 +3,12 @@ const mongoose = require('mongoose')
 
 const albumSchema = new mongoose.Schema(
     {
-        author: {
+        author_id: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'User'
+        },
+        author_name: {
+            type: String
         },
         album_name: {
             type: String,
