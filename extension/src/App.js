@@ -23,6 +23,7 @@ import CollageLogo from './Components/Atoms/collageLogo'
 
 import SignIn from './Components/Molecules/SignIn'
 import DragDrop from './Components/Molecules/DragDrop'
+import NewBoard from './Components/Molecules/NewBoard'
 
 const App = () => {
     const context = useContext(Context)
