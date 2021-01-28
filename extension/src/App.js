@@ -19,7 +19,7 @@ import Logo from './Components/Atoms/Logo'
 
 // molecules
 import DropDownMenu from './Components/Molecules/Dropdown'
-import CollageLogo from './Components/Atoms/collageLogo'
+import CollageLogo from './Components/Atoms/CollageLogo'
 import CardAdded from './Components/Molecules/CardAdded'
 import SignIn from './Components/Molecules/SignIn'
 import DragDrop from './Components/Molecules/DragDrop'
@@ -36,7 +36,7 @@ const App = () => {
             {context.loginPage && <Login />}
             {context.selectPage && <ImageSelect />}
             {context.checkoutPage && <Checkout />}
-            {context.endPage && <End />} */}
+            {context.endPage && <End />}             
         </div>
     )
 }

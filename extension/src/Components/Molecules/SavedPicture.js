@@ -11,7 +11,7 @@ const SavedPicture = () => {
 
     return (
         <div className="w-96 h-96 flex flex-col items-center relative border-2 border-grey rounded-small">
-            <div className="m-small top-0 left-0 ">
+            <div className="m-small top-0 center ">
                 <Text
                     text="Saved to $board :"
                     color="primary"
@@ -19,9 +19,7 @@ const SavedPicture = () => {
                     textSize="medium"
                 />
             </div>
-            <div className="items-center w-full">
-                <Hr thickness="1" margin="small" width="auto" bgColor="grey" />
-            </div>
+            
             <div className="flex border-rounded-small h-56 items-center ">
                 <Image
                     special=""
@@ -34,17 +32,30 @@ const SavedPicture = () => {
             <div className="items-center w-full">
                 <Hr thickness="1" margin="small" width="auto" bgColor="grey" />
             </div>
-                <Button
-                    special="absolute bottom-0 right-0 m-2  "
-                    text="See it now"
-                    color="light"
-                    textSize="medium"
-                    textWeight="normal"
-                    bgColor="primary"
-                    width="24"
-                    height="10"
-                    borderRadius="small"
-                />
+            <Button
+                special="absolute bottom-0 right-0 m-2  "
+                text="Promote your pin"
+                color="light"
+                textSize="small"
+                textWeight="normal"
+                bgColor="primary"
+                width="32"
+                height="10"
+                borderRadius="small"
+            />
+            <Button
+            special="absolute m-2 bottom-0"
+                text="See it now"
+                color="dark"
+                textSize="small"
+                textWeight="normal"
+                bgColor="light"
+                width="20"
+                height="10"
+                border="2"
+                borderColor="dark"
+                borderRadius="small"
+            />
         </div>
     )
 }
