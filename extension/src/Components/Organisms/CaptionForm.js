@@ -65,6 +65,7 @@ const CaptionForm = () => {
                     />
                     <label htmlFor="album">Album:</label>
                     <select name="album" id="album" required>
+                        {/* lalala */}
                         <option value="new">CREATE A NEW ALBUM</option>
                         {userAlbum.map((album) => (
                             <option value={album._id}>

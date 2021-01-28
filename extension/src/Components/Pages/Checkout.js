@@ -1,9 +1,10 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { Context } from './../../Context/Context'
 import CaptionForm from '../Organisms/CaptionForm'
 
 const Checkout = () => {
     const context = useContext(Context)
+    const [uploadFailed, setUploadFailed] = useState(false)
 
     const postPictures = () => {
         context.picturesToSave.map((picture) => {
@@ -27,10 +28,13 @@ const Checkout = () => {
                         src: picture.src,
                     }),
                 }
+            ).then((res) =>
+                res.status !== 201
+                    ? setUploadFailed(true)
+                    /* lalala */
+                    : console.log('finish') && context.exitCheckoutPage
             )
         })
-
-        context.exitCheckoutPage
     }
 
     return (
@@ -39,8 +43,8 @@ const Checkout = () => {
                 want to change pictures? click here
             </button>
             <CaptionForm />
-            {/* with this button i need to sent context.picturesToSave inside the backend */}
             <button onClick={postPictures}>POST MY PICTURES!!</button>
+            {uploadFailed && <p>ERROR</p>}
         </>
     )
 }
