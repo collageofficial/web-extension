@@ -17,7 +17,7 @@ router.get('/me', auth, async (req, res) => {
         }).populate('User', ['name'])
 
         if (!profile) {
-            res.status(400).json({ msg: 'There is no profile for this user' })
+            res.status(404).json({ msg: 'There is no profile for this user' })
         }
 
         res.json(profile)
@@ -73,7 +73,7 @@ router.post(
                 { new: true, upsert: true, setDefaultsOnInsert: true }
             )
 
-            res.status(200).json(profile)
+            res.status(201).json(profile)
         } catch (err) {
             console.error(err.message)
             return res.status(500).send('Server Error')
@@ -93,7 +93,7 @@ router.get('/user/:user_id', async (req, res) => {
 
         if (!profile) {
             return res
-                .status(400)
+                .status(404)
                 .json({ msg: 'There is no profile for this user' })
         }
         res.json(profile)

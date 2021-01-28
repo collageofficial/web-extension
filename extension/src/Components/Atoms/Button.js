@@ -2,7 +2,7 @@ import React from 'react'
 import { TiPlus } from 'react-icons/ti'
 import { BsTrash } from 'react-icons/bs'
 import { FaArrowAltCircleLeft } from 'react-icons/fa'
-
+import { HiOutlineChevronDown } from 'react-icons/hi'
 
 // special classeName defined in App.css
 
@@ -12,6 +12,7 @@ const Button = ({
     notPlus,
     notBin,
     notBackArrow,
+    notDropDown,
     text,
     textSize,
     textWeight,
@@ -53,6 +54,7 @@ const Button = ({
         {notPlus === false && <TiPlus />}
         {notBin === false && <BsTrash />}
         {notBackArrow === false && <FaArrowAltCircleLeft />}
+        {notDropDown === false && <HiOutlineChevronDown />}
     </button>
 )
 
@@ -174,3 +176,18 @@ export default Button
     notBackArrow={false}
 /> */
 }
+
+// dropdown button 
+{/*     <Button
+    special=""
+    text="name  of board"        
+    width="48"
+    height="8"
+    borderRadius="small"
+    bgColor="primary"
+    color="light"
+    border="1"
+    borderColor="primary"
+    textSize="small"
+    notDropDown={false}
+/> */}

@@ -45,7 +45,7 @@ router.get('/albums/:album_id', async (req, res) => {
             _id: req.params.album_id,
         })
         if (!album) {
-            res.status(400).json({ msg: 'There is no album for this profile' })
+            res.status(404).json({ msg: 'There is no album for this profile' })
         }
         res.json(album)
     } catch (err) {
@@ -86,7 +86,7 @@ router.post(
 
             await profile.save()
 
-            res.status(200).json(album)
+            res.status(201).json(album)
         } catch (err) {
             console.error(err.message)
             return res.status(500).send('Server Error')
