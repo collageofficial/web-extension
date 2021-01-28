@@ -46,6 +46,7 @@ const getData = () => {
                 (imagesToSend = [
                     ...imagesToSend,
                     {
+                        album: 'album',
                         filename: 'filename',
                         caption: 'caption',
                         origin: 'origin',
@@ -61,22 +62,8 @@ const getData = () => {
             from: 'content',
             message: JSON.stringify(imagesToSend),
         })
+        console.log(imagesToSend)
     }
 
-    getImages().then((async () => (
-        imagesOnBrowser.map(
-            (image) =>
-                (imagesToSend = [
-                    ...imagesToSend,
-                    {
-                        filename: 'filename',
-                        caption: 'caption',
-                        origin: 'origin',
-                        size: { width: image.width, height: image.height },
-                        ratio: 'ratio',
-                        src: image.src,
-                    },
-                ])
-        )
-    )).then(sendImages()))
+    getImages().then(sortImages().then(sendImages()))
 }

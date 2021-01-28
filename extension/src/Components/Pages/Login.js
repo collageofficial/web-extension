@@ -21,7 +21,8 @@ const Login = () => {
             }),
         }).then((res) => {
             res.status !== 200 ? setLoginFailed(true) : context.exitLoginPage()
-        })
+            return res.json()
+        }).then(data=> context.setToken(data.token))
     }
     const handleChange = (e) => {
         e.preventDefault()
