@@ -18,7 +18,13 @@ const CardGroup = () => {
         }
         saveImages().then(saveToContext())
     }, [context.browserPictures])
-
+    const showEvent = (index) => {
+        !context.picturesToSave.includes(context.browserPictures[index]) &&
+            context.setPicturesToSave([
+                ...context.picturesToSave,
+                context.browserPictures[index],
+            ])
+    }
     return (
         <div className="cardcontainer">
             {context.browserPictures.length > 0 &&
@@ -26,16 +32,9 @@ const CardGroup = () => {
                     <Card
                         filename={picture.filename}
                         key={index}
+                        index={index}
                         url={picture.src}
-                        action={() => {
-                            !context.picturesToSave.includes(
-                                context.browserPictures[index]
-                            ) &&
-                                context.setPicturesToSave([
-                                    ...context.picturesToSave,
-                                    context.browserPictures[index],
-                                ])
-                        }}
+                        action={showEvent}
                     />
                 ))}
         </div>

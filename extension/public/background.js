@@ -9,7 +9,6 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
         window.localStorage.setItem(
             `${index}`,
             JSON.stringify({
-                album_id: "album",
                 caption: image.caption,
                 filename: image.filename,
                 origin: image.origin,

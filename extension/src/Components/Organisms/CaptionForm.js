@@ -6,9 +6,18 @@ const CaptionForm = () => {
     const context = useContext(Context)
     const [images, setImages] = useState(context.picturesToSave)
     const [reload, setReload] = useState(false)
+    const [userAlbum, setUserAlbum] = useState([])
+
+    const fetchAlbums = async () => { /* neeed to put header. no token. autorization denied */
+        fetch('http://localhost:4000/profiles/my_albums')
+            .then((res) => res.json())
+            .then((data) => setUserAlbum(data))
+    }
 
     useEffect(() => {
         setReload(false)
+        fetchAlbums()
+        console.log(userAlbum)
     }, [reload])
     return (
         <section>
@@ -41,8 +50,6 @@ const CaptionForm = () => {
                     />
                     <label htmlFor="album">Album:</label>
                     <select name="album" id="album" required>
-                        <option value="hello1">hello1</option>
-                        <option value="goodbye">goodbye</option>
                         <option value="new">CREATE A NEW ALBUM</option>
                     </select>
                 </form>

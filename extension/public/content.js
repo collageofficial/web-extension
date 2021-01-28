@@ -63,5 +63,20 @@ const getData = () => {
         })
     }
 
-    getImages().then(sortImages().then(sendImages()))
+    getImages().then((async () => (
+        imagesOnBrowser.map(
+            (image) =>
+                (imagesToSend = [
+                    ...imagesToSend,
+                    {
+                        filename: 'filename',
+                        caption: 'caption',
+                        origin: 'origin',
+                        size: { width: image.width, height: image.height },
+                        ratio: 'ratio',
+                        src: image.src,
+                    },
+                ])
+        )
+    )).then(sendImages()))
 }
