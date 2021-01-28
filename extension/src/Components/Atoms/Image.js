@@ -1,8 +1,9 @@
 import React from 'react'
 
-const Image = ({ height, width, borderRadius, url }) => (
+const Image = ({ height, width, borderRadius,special, url}) => (
     <img
         className={`
+            ${special}
             h-${height}
             w-${width}
             rounded-${borderRadius}
