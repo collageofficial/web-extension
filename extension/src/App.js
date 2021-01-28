@@ -26,6 +26,7 @@ import DragDrop from './Components/Molecules/DragDrop'
 import NewBoard from './Components/Molecules/NewBoard'
 import SaveBox from './Components/Molecules/SaveBox'
 import SaveBoard from './Components/Molecules/SaveBoard'
+import BoardHovered from './Components/Molecules/BoardHovered'
 
 const App = () => {
     const context = useContext(Context)
@@ -36,6 +37,7 @@ const App = () => {
             {context.selectPage && <ImageSelect />}
             {context.checkoutPage && <Checkout />}
             {context.endPage && <End />} */}
+            <BoardHovered />
         </div>
     )
 }
