@@ -19,12 +19,13 @@ import Logo from './Components/Atoms/Logo'
 
 // molecules
 import DropDownMenu from './Components/Molecules/Dropdown'
-import CollageLogo from './Components/Atoms/collageLogo'
+import CollageLogo from './Components/Atoms/CollageLogo'
 import CardAdded from './Components/Molecules/CardAdded'
 import SignIn from './Components/Molecules/SignIn'
 import DragDrop from './Components/Molecules/DragDrop'
 import NewBoard from './Components/Molecules/NewBoard'
 import SaveBox from './Components/Molecules/SaveBox'
+import SavedPicture from './Components/Molecules/SavedPicture'
 import SaveBoard from './Components/Molecules/SaveBoard'
 import BoardHovered from './Components/Molecules/BoardHovered'
 
@@ -33,11 +34,10 @@ const App = () => {
 
     return (
         <div className="w-full h-full">
-            {/* {context.loginPage && <Login />}
+            {context.loginPage && <Login />}
             {context.selectPage && <ImageSelect />}
             {context.checkoutPage && <Checkout />}
-            {context.endPage && <End />} */}
-            <BoardHovered />
+            {context.endPage && <End />}             
         </div>
     )
 }

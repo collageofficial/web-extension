@@ -29,7 +29,7 @@ router.get('/albums/:album_id/images', async (req, res) => {
             _id: req.params.album_id,
         })
         if (!album) {
-            res.status(400).json({ msg: 'User has no albums with this ID' })
+            res.status(404).json({ msg: 'User has no albums with this ID' })
         }
 
         res.json(album.images)
@@ -71,13 +71,15 @@ router.post(
                 _id: req.params.album_id,
             })
 
-            console.log(album[0].images)
+            if (!album.length) {
+                res.status(404).json({ msg: 'Album with this ID does not exist' })
+            }
 
             album[0].images.push(image)
 
             await album[0].save()
 
-            res.status(200).json(image)
+            res.status(201).json(image)
         } catch (err) {
             console.error(err.message)
             return res.status(500).send('Server Error')
