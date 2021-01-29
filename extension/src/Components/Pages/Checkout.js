@@ -32,7 +32,7 @@ const Checkout = () => {
                 res.status !== 201
                     ? setUploadFailed(true)
                     /* lalala */
-                    : console.log('finish') && context.exitCheckoutPage
+                    : context.exitCheckoutPage()
             )
         })
     }
