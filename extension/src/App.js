@@ -36,7 +36,7 @@ const App = () => {
             {context.loginPage && <Login />}
             {context.selectPage && <ImageSelect />}
             {context.checkoutPage && <Checkout />}
-            {context.endPage && <End />}             
+            {context.endPage && <End />}
         </div>
     )
 }

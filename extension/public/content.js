@@ -46,11 +46,12 @@ const getData = () => {
                 (imagesToSend = [
                     ...imagesToSend,
                     {
+                        album: 'album',
                         filename: 'filename',
                         caption: 'caption',
                         origin: 'origin',
-                        size: { width: image.width, height: image.height },
-                        ratio: 'ratio',
+                        size: { width: 1 /* image.width */, height: 1 /* image.height */ },
+                        ratio: 1,
                         src: image.src,
                     },
                 ])
@@ -61,6 +62,7 @@ const getData = () => {
             from: 'content',
             message: JSON.stringify(imagesToSend),
         })
+        console.log(imagesToSend)
     }
 
     getImages().then(sortImages().then(sendImages()))

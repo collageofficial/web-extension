@@ -6,8 +6,31 @@ const CaptionForm = () => {
     const context = useContext(Context)
     const [images, setImages] = useState(context.picturesToSave)
     const [reload, setReload] = useState(false)
+    const [userAlbum, setUserAlbum] = useState([])
+
+    /* const fetchAlbums = async () => {
+        fetch('http://localhost:4000/profiles/my_albums')
+            .then((res) => res.json())
+            .then((data) => {setUserAlbum(data)
+            console.log(data)})
+    } */
+    const fetchAlbums = async () => {
+        fetch('http://localhost:4000/profiles/my_albums', {
+            method: 'GET',
+            headers: new Headers({
+                'Content-Type': 'application/json',
+                'x-auth-token': context.token,
+            }),
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                setUserAlbum(data)
+            })
+    }
+
     useEffect(() => {
         setReload(false)
+        fetchAlbums()
     }, [reload])
     return (
         <section>
@@ -17,8 +40,11 @@ const CaptionForm = () => {
                         e.preventDefault()
                         e.target.id === 'filename'
                             ? (image.filename = e.target.value)
-                            : (image.caption = e.target.value)
+                            : e.target.id === 'caption'
+                            ? (image.caption = e.target.value)
+                            : (image.album = e.target.value)
                         context.setPicturesToSave(images)
+                        console.log(context.picturesToSave)
                         setReload(true)
                     }}
                 >
@@ -37,10 +63,15 @@ const CaptionForm = () => {
                         value={image.caption}
                         required
                     />
-        <label htmlFor="album">Album:</label>
+                    <label htmlFor="album">Album:</label>
                     <select name="album" id="album" required>
-                        <option value="hello1">hello1</option>
-                        <option value="goodbye">goodbye</option>
+                        {/* lalala */}
+                        <option value="new">CREATE A NEW ALBUM</option>
+                        {userAlbum.map((album) => (
+                            <option value={album._id}>
+                                {album.album_name}
+                            </option>
+                        ))}
                     </select>
                 </form>
             ))}
