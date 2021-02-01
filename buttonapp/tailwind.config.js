@@ -7,7 +7,7 @@ module.exports = {
         extend: {
           // remember to update colors also in tailwind.css for special classes
             colors: {
-                primary: '#E60023',
+                primary: '#D6B891',
                 light: '#ffffff',
                 dark: '#000000',
                 grey: '#DDDDDD',
