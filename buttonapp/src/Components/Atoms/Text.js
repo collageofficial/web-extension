@@ -8,8 +8,8 @@ const Text = ({ text, bgColor, color, textSize, fontWeight, textAlign }) => (
             font-main 
             font-${fontWeight} 
             text-${textSize}
-            w-max 
-            h-max
+            w-full 
+            h-full
             break-words
             text-${textAlign}	
         `}

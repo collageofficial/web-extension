@@ -27,6 +27,38 @@ const Provider = ({ children }) => {
     //     setEndPage(true)
     // }
 
+    const [plusBtnHovered, setPlusBtnIsHovered] = useState(false)
+    const [modalOpen, setModalOpen] = useState(false)
+    const [modalSelectOpen, setModalSelectOpen] = useState(false)
+    const [addUrl, setAddUrl] = useState(false)
+    const [urlValue, setUrlValue] = useState('')
+    const [urlValueSecondPage, setUrlValueSecondPage] = useState('')
+
+    const plusBtnHoverToggle = () => setPlusBtnIsHovered(!plusBtnHovered)
+
+    const modalOpenToggle = () => {
+        setModalOpen(true)
+        setModalSelectOpen(false)
+    }
+
+    const modalSelectOpenToggle = () => {
+        setModalOpen(!modalOpen)
+        setModalSelectOpen(!modalSelectOpen)
+    }
+
+    const addUrlToggle = () => setAddUrl(!addUrl)
+
+    const getUrlValue = (e) => setUrlValue(e.target.value)
+
+    const deleteUrlValue = () => setUrlValue('')
+
+    const getUrlValueSecondPage = (e) => setUrlValueSecondPage(e.target.value)
+
+    const matchUrlsValue = () => {
+        setUrlValue(urlValueSecondPage)
+        setUrlValueSecondPage('')
+    }
+
     return (
         <Context.Provider
             value={{
@@ -42,6 +74,21 @@ const Provider = ({ children }) => {
                 // exitSelectPage,
                 // goBackToSelect,
                 // exitCheckoutPage,
+                plusBtnHovered,
+                plusBtnHoverToggle,
+                modalOpen,
+                modalOpenToggle,
+                modalSelectOpen,
+                modalSelectOpenToggle,
+                addUrl,
+                addUrlToggle,
+                urlValue,
+                setUrlValue,
+                getUrlValue,
+                deleteUrlValue,
+                urlValueSecondPage,
+                getUrlValueSecondPage,
+                matchUrlsValue,
             }}
         >
             {children}

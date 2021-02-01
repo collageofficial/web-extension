@@ -11,6 +11,8 @@ const Input = ({
     border,
     borderColor,
     borderRadius,
+    value,
+    onChange,
 }) => (
     <div
         className={`
@@ -28,6 +30,8 @@ const Input = ({
     >
         <input
             placeholder={text}
+            value={value}
+            onChange={onChange}
             className={`
                 font-main
                 font-${textWeight} 
@@ -41,7 +45,7 @@ const Input = ({
                 active: outline-none
             `}
         />
-        { noGlass === false && (
+        {noGlass === false && (
             <button>
                 <FaSearch />
             </button>
@@ -52,7 +56,8 @@ const Input = ({
 export default Input
 
 // Input standard
-{/* <Input
+{
+    /* <Input
     text="E.g. “Places to go” or “Recipes to make”"
     textWeight="200"
     bgColor="light"
@@ -61,10 +66,12 @@ export default Input
     border="2"
     borderColor="grey"
     borderRadius="small"
-/> */}
+/> */
+}
 
 // Input with magnifying glass
-{/* <Input
+{
+    /* <Input
     text="Search"
     noGlass={false}
     textWeight="200"
@@ -74,4 +81,5 @@ export default Input
     border="2"
     borderColor="grey"
     borderRadius="small"
-/> */}
+/> */
+}

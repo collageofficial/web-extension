@@ -12,25 +12,24 @@ import HoverText from './Components/Molecules/HoverText'
 
 // Organism
 import ModalInsertImage from './Components/Organisms/ModalInsertImage'
+import ModalSelectImage from './Components/Organisms/ModalSelectImage'
+
 const App = () => {
     const context = useContext(Context)
-
-    const [plusBtnHovered, setPlusBtnIsHovered] = useState(false)
-    const [modalOpen, setModalOpen] = useState(false)
-
-    const plusBtnHoverToggle = () => setPlusBtnIsHovered(!plusBtnHovered)
-    const modalOpenToggle = () => setModalOpen(true)
 
     return (
         <div className="w-screen h-screen static flex justify-center items-center">
             <div
                 className={`absolute bottom-10 right-5 flex gap-8 p-small cursor-pointer ${
-                    plusBtnHovered && 'border-grey border-2 rounded-full'
+                    context.plusBtnHovered &&
+                    'border-grey border-2 rounded-full'
                 }`}
-                onMouseEnter={plusBtnHoverToggle}
-                onMouseLeave={plusBtnHoverToggle}
+                onMouseEnter={context.plusBtnHoverToggle}
+                onMouseLeave={context.plusBtnHoverToggle}
             >
-                {plusBtnHovered && <HoverText action={modalOpenToggle} />}
+                {context.plusBtnHovered && (
+                    <HoverText action={context.modalOpenToggle} />
+                )}
                 <Button
                     width="8"
                     height="8"
@@ -41,8 +40,14 @@ const App = () => {
                     notPlus={false}
                 />
             </div>
-            {modalOpen && <ModalInsertImage />}
-            
+            {context.modalOpen && <ModalInsertImage />}
+            {context.modalSelectOpen && (
+                <ModalSelectImage
+                    border="2"
+                    borderColor="grey"
+                    borderRadius="small"
+                />
+            )}
         </div>
     )
 }

@@ -14,6 +14,7 @@ const DragDrop = () => {
                     color="dark"
                     fontWeight="bold"
                     textSize="medium"
+                    textAlign="center"
                 />
             </div>
             <div className="w-full h-full flex flex-col justify-end items-center mb-8">
@@ -22,6 +23,7 @@ const DragDrop = () => {
                     color="dark"
                     fontWeight="normal"
                     textSize="small"
+                    textAlign='center'
                 />
             </div>
         </div>

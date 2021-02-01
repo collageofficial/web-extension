@@ -1,6 +1,6 @@
 import React from 'react'
 
-const TextArea = ({ text, textWeight, bgColor }) => (
+const TextArea = ({ text, textWeight, width, height, bgColor, border, borderColor, borderRadius, rows }) => (
     <div>
         <textarea
             placeholder={text}
@@ -9,9 +9,13 @@ const TextArea = ({ text, textWeight, bgColor }) => (
                 font-${textWeight} 
                 text-left
                 align-middle
-                w-full
-                h-full
+                w-${width}
+                h-${height}
+                rows-${rows}
                 bg-${bgColor}
+                border-${border}
+                border-${borderColor}
+                rounded-${borderRadius}
                 p-small
                 focus: outline-none
                 active: outline-none    
