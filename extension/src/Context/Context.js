@@ -5,6 +5,7 @@ export const Context = React.createContext()
 const Provider = ({ children }) => {
     const [browserPictures, setBrowserPictures] = useState([])
     const [picturesToSave, setPicturesToSave] = useState([])
+    const [token, setToken] = useState()
     const [loginPage, setLoginPage] = useState(true)
     const [selectPage, setSelectPage] = useState(false)
     const [checkoutPage, setCheckoutPage] = useState(false)
@@ -34,6 +35,8 @@ const Provider = ({ children }) => {
                 setBrowserPictures,
                 picturesToSave,
                 setPicturesToSave,
+                token,
+                setToken,
                 loginPage,
                 selectPage,
                 checkoutPage,
