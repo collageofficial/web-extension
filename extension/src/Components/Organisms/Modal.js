@@ -6,13 +6,14 @@ import Hr from '../Atoms/Hr'
 import Button from '../Atoms/Button'
 import Image from '../Atoms/Image'
 import Input from '../Atoms/Input'
+import NewBoard from '../Molecules/NewBoard'
 
 const Modal = () => {
     const context = useContext(Context)
 
     return (
         <div className="h-screen flex flex-row  relative">
-            {/* right block  */}
+            {/* right block with images  */}
             <div className="w-96 h-full flex flex-col items-center ">
                 <Image
                     height="72"
@@ -59,6 +60,7 @@ const Modal = () => {
                                 url="https://i.pinimg.com/originals/18/70/90/1870902fae654106f55f581624a64c1b.jpg"
                             />
                             <Text
+                            special="hover:text-primary"
                                 text="Mood Boards 1"
                                 color="dark"
                                 fontWeight="normal"
@@ -66,6 +68,7 @@ const Modal = () => {
                             />
                         </div>
                     </div>
+                    {/* 2pack of img and description to picture  */}
                     <div className="w-full m-small">
                         <Hr thickness="2" width="full" bgColor="grey" />
                         <Text
@@ -85,6 +88,7 @@ const Modal = () => {
                                 url="https://i.pinimg.com/originals/18/70/90/1870902fae654106f55f581624a64c1b.jpg"
                             />
                             <Text
+                            special="hover:text-primary"
                                 text="Mood Boards"
                                 color="dark"
                                 fontWeight="normal"
@@ -98,24 +102,7 @@ const Modal = () => {
                         <div>
                             <Hr thickness="2" width="full" bgColor="grey" />
                             <div className="flex items-center m-small">
-                                <Button
-                                    width="5"
-                                    height="5"
-                                    borderRadius="full"
-                                    bgColor="light"
-                                    color="primary"
-                                    border="2"
-                                    borderColor="primary"
-                                    textSize="medium"
-                                    notPlus={false}
-                                />
-                                <Text
-                                    special="m-small"
-                                    text="Create Mood Boards"
-                                    color="dark"
-                                    fontWeight="normal"
-                                    textSize="large"
-                                />
+                                <NewBoard />
                             </div>
                         </div>
                     </div>
