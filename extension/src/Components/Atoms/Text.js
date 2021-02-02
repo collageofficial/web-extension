@@ -1,8 +1,9 @@
 import React from 'react'
 
-const Text = ({ text, bgColor, color, textSize, fontWeight, textAlign }) => (
+const Text = ({ text, bgColor, color, textSize, fontWeight, textAlign, special }) => (
     <p
         className={`
+            ${special}
             text-${color} 
             bg-${bgColor} 
             font-main 
