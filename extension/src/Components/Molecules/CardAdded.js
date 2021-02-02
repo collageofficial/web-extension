@@ -5,7 +5,7 @@ import Image from '../Atoms/Image'
 
 const CardAdded = () => {
     return (
-        <div className="w-full h-full flex flex-col items-center relative">
+        <div className="w-14 h-20 flex flex-col items-center relative">
             <Image
                 height=""
                 width=""
@@ -23,19 +23,6 @@ const CardAdded = () => {
                 height="6"
                 borderRadius="small"
             />
-            {/* <Button
-    special="absolute top-0 right-0"
-    text="Button"
-    color="primary"
-    textSize="medium"
-    textWeight="normal"
-    bgColor="light"
-    width="20"
-    height="10"
-    border="2"
-    borderColor="primary"
-    borderRadius="small"
-    /> */}
         </div>
     )
 }
