@@ -38,8 +38,7 @@ const App = () => {
             {/* {context.loginPage && <Login />}
             {context.selectPage && <ImageSelect />}
             {context.checkoutPage && <Checkout />}
-            {context.endPage && <End />}     */}
-            <ExtenActivated />         
+    {context.endPage && <End /> */}
         </div>
     )
 }

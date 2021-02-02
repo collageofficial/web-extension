@@ -3,11 +3,11 @@ import Button from '../Atoms/Button'
 
 const DropDownMenu = () => {
     return (
-        <div className="border-2 
+        <div
+            className="border-2 
         border-dark 
-        rounded-small">            
-           
-           
+        rounded-small"
+        >
             <Button
                 text="Button"
                 color="light"
@@ -16,7 +16,6 @@ const DropDownMenu = () => {
                 bgColor="primary"
                 width="20"
                 height="10"
-               
             />
         </div>
     )
