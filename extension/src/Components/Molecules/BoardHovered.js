@@ -1,35 +1,39 @@
-import { react, useContext } from 'react'
+import { react, useContext, useState } from 'react'
 import { Context } from '../../Context/Context'
 
 import Text from '../Atoms/Text'
 import Button from '../Atoms/Button'
 import Image from '../Atoms/Image'
 
-const SaveBox = () => {
+const BoardHovered = () => {
     const context = useContext(Context)
 
+    let [displayButton, setDisplay] = useState(['bg-light', 'hidden'])
+
     return (
-        <div className="p-small w-full h-full flex flex-col bg-light rounded-small border-2 border-dark justify-center">
-            <div className="m-small">
-                <Text
-                    text="Added images :"
-                    color="primary"
-                    fontWeight="normal"
-                    textSize="medium"
-                />
-            </div>
-            {/* remenber to write some logic with ratio for fit image  */}
-            <div className="h-2/5 ml-small">
-                {<Image
+        <div
+            className={`w-1/4 h-16 flex flex-row items-center justify-between ${displayButton[0]} border-2 p-small`}
+            onMouseEnter={() => setDisplay(['bg-grey', 'visible'])}
+            onMouseLeave={() => setDisplay(['bg-light', 'hidden'])}
+        >
+            <div className=" flex items-center h-full space-x-5">
+                <Image
                     height="full"
                     width="auto"
                     borderRadius="small"
                     url="https://i.pinimg.com/originals/18/70/90/1870902fae654106f55f581624a64c1b.jpg"
-                /> }
+                />
+
+                <Text
+                    text="My mood board"
+                    color="dark"
+                    fontWeight="bold"
+                    textSize="small"
+                />
             </div>
-            <div className="flex justify-end">
+            <div className={displayButton[1]}>
                 <Button
-                    text="Save in Mood boards"
+                    text="Add to the board"
                     color="light"
                     textSize="medium"
                     textWeight="normal"
@@ -45,4 +49,4 @@ const SaveBox = () => {
     )
 }
 
-export default SaveBox
+export default BoardHovered

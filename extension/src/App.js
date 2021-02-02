@@ -19,7 +19,7 @@ import Logo from './Components/Atoms/Logo'
 
 // molecules
 import DropDownMenu from './Components/Molecules/Dropdown'
-import CollageLogo from './Components/Atoms/CollageLogo'
+import CollageLogo from './Components/Molecules/collageLogo'
 import CardAdded from './Components/Molecules/CardAdded'
 import SignIn from './Components/Molecules/SignIn'
 import DragDrop from './Components/Molecules/DragDrop'
@@ -27,6 +27,8 @@ import NewBoard from './Components/Molecules/NewBoard'
 import SaveBox from './Components/Molecules/SaveBox'
 import SavedPicture from './Components/Molecules/SavedPicture'
 import SaveBoard from './Components/Molecules/SaveBoard'
+import BoardHovered from './Components/Molecules/BoardHovered'
+import ExtenActivated from './Components/Organisms/ExtenActivated'
 
 // organism 
 import Modal from './Components/Organisms/Modal'
@@ -40,7 +42,8 @@ const App = () => {
             {context.loginPage && <Login />}
             {context.selectPage && <ImageSelect />}
             {context.checkoutPage && <Checkout />}
-            {context.endPage && <End />}
+    {context.endPage && <End /> */}
+    
         </div>
     )
 }
