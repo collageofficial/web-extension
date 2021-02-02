@@ -28,12 +28,16 @@ import SaveBox from './Components/Molecules/SaveBox'
 import SavedPicture from './Components/Molecules/SavedPicture'
 import SaveBoard from './Components/Molecules/SaveBoard'
 
+// organism 
+import Modal from './Components/Organisms/Modal'
+
 const App = () => {
     const context = useContext(Context)
 
     return (
         <div className="w-full h-full">
-            {/* {context.loginPage && <Login />}
+           
+            {context.loginPage && <Login />}
             {context.selectPage && <ImageSelect />}
             {context.checkoutPage && <Checkout />}
             {context.endPage && <End />}
