@@ -4,6 +4,7 @@ import { Context } from '../../Context/Context'
 import Text from '../Atoms/Text'
 import Image from '../Atoms/Image'
 import SaveBox from '../Molecules/SaveBox'
+import CardAdded from '../Molecules/CardAdded'
 
 const ExtenActivated = () => {
     const context = useContext(Context)
@@ -19,82 +20,61 @@ const ExtenActivated = () => {
                     textSize="large"
                 />
             </div>
-            <div className="h-1/5 ml-small flex flex-row space-x-5">
-                <Image
-                    height="full"
-                    width="auto"
-                    borderRadius="small"
-                    url="https://i.pinimg.com/originals/18/70/90/1870902fae654106f55f581624a64c1b.jpg"
-                />
-                <Image
-                    height="full"
-                    width="auto"
-                    borderRadius="small"
-                    url="https://i.pinimg.com/originals/18/70/90/1870902fae654106f55f581624a64c1b.jpg"
-                />
-                <Image
-                    height="full"
-                    width="auto"
-                    borderRadius="small"
-                    url="https://i.pinimg.com/originals/18/70/90/1870902fae654106f55f581624a64c1b.jpg"
-                />
-                <Image
-                    height="full"
-                    width="auto"
-                    borderRadius="small"
-                    url="https://i.pinimg.com/originals/18/70/90/1870902fae654106f55f581624a64c1b.jpg"
-                />
-                <Image
-                    height="full"
-                    width="auto"
-                    borderRadius="small"
-                    url="https://i.pinimg.com/originals/18/70/90/1870902fae654106f55f581624a64c1b.jpg"
-                />
-                <Image
-                    height="full"
-                    width="auto"
-                    borderRadius="small"
-                    url="https://i.pinimg.com/originals/18/70/90/1870902fae654106f55f581624a64c1b.jpg"
-                />
-                <Image
-                    height="full"
-                    width="auto"
-                    borderRadius="small"
-                    url="https://i.pinimg.com/originals/18/70/90/1870902fae654106f55f581624a64c1b.jpg"
-                />
-                <Image
-                    height="full"
-                    width="auto"
-                    borderRadius="small"
-                    url="https://i.pinimg.com/originals/18/70/90/1870902fae654106f55f581624a64c1b.jpg"
-                />
-                <Image
-                    height="full"
-                    width="auto"
-                    borderRadius="small"
-                    url="https://i.pinimg.com/originals/18/70/90/1870902fae654106f55f581624a64c1b.jpg"
-                />
-                <Image
-                    height="full"
-                    width="auto"
-                    borderRadius="small"
-                    url="https://i.pinimg.com/originals/18/70/90/1870902fae654106f55f581624a64c1b.jpg"
-                />
-                <Image
-                    height="full"
-                    width="auto"
-                    borderRadius="small"
-                    url="https://i.pinimg.com/originals/18/70/90/1870902fae654106f55f581624a64c1b.jpg"
-                />
-                <Image
-                    height="full"
-                    width="auto"
-                    borderRadius="small"
-                    url="https://i.pinimg.com/originals/18/70/90/1870902fae654106f55f581624a64c1b.jpg"
-                />
+
+            <div className="p-small flex flex-wrap w-auto  h-full space-x-5 ">
+                <div className="h-1/6 w-auto">
+                    <CardAdded
+                        height="full"
+                        width="auto"
+                        borderRadius="small"
+                        url="https://i.pinimg.com/originals/18/70/90/1870902fae654106f55f581624a64c1b.jpg"
+                    />
+                </div>
+                <div className="h-1/6 w-auto">
+                    <CardAdded
+                        height="full"
+                        width="auto"
+                        borderRadius="small"
+                        url="https://i.pinimg.com/originals/18/70/90/1870902fae654106f55f581624a64c1b.jpg"
+                    />
+                </div>
+                <div className="h-1/6 w-auto">
+                    <CardAdded
+                        height="full"
+                        width="auto"
+                        borderRadius="small"
+                        url="https://i.pinimg.com/originals/18/70/90/1870902fae654106f55f581624a64c1b.jpg"
+                    />
+                </div>
+                <div className="h-1/6 w-auto">
+                    <CardAdded
+                        height="full"
+                        width="auto"
+                        borderRadius="small"
+                        url="https://i.pinimg.com/originals/18/70/90/1870902fae654106f55f581624a64c1b.jpg"
+                    />
+                </div>
+                <div className="h-1/6 w-auto">
+                    <CardAdded
+                        height="full"
+                        width="auto"
+                        borderRadius="small"
+                        url="https://i.pinimg.com/originals/18/70/90/1870902fae654106f55f581624a64c1b.jpg"
+                    />
+                </div>
+                <div className="h-1/6 w-auto">
+                    <CardAdded
+                        height="full"
+                        width="auto"
+                        borderRadius="small"
+                        url="https://i.pinimg.com/originals/18/70/90/1870902fae654106f55f581624a64c1b.jpg"
+                    />
+                </div>
             </div>
-               <div>
-            <SaveBox />
+            <div className="flex justify-center">
+                <div className="fixed bottom-0 h-1/5 w-11/12 ">
+                    <SaveBox />
+                </div>
             </div>
         </div>
     )

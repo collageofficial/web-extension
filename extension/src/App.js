@@ -39,6 +39,7 @@ const App = () => {
             {context.selectPage && <ImageSelect />}
             {context.checkoutPage && <Checkout />}
     {context.endPage && <End /> */}
+    
         </div>
     )
 }

@@ -5,10 +5,10 @@ import Image from '../Atoms/Image'
 
 const CardAdded = () => {
     return (
-        <div className="w-14 h-20 flex flex-col items-center relative">
+        <div className="w-auto h-full flex flex-col items-center relative">
             <Image
-                height=""
-                width=""
+                height="full"
+                width="auto"
                 borderRadius="small"
                 url="https://i.pinimg.com/originals/18/70/90/1870902fae654106f55f581624a64c1b.jpg"
             />
