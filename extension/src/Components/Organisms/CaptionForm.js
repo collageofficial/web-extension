@@ -1,6 +1,8 @@
 import { findAllByTitle } from '@testing-library/react'
 import React, { useContext, useState, useEffect } from 'react'
 import { Context } from './../../Context/Context'
+import Input from '../Atoms/Input'
+import Image from '../Atoms/Image'
 
 const CaptionForm = () => {
     const context = useContext(Context)
@@ -8,12 +10,6 @@ const CaptionForm = () => {
     const [reload, setReload] = useState(false)
     const [userAlbum, setUserAlbum] = useState([])
 
-    /* const fetchAlbums = async () => {
-        fetch('http://localhost:4000/profiles/my_albums')
-            .then((res) => res.json())
-            .then((data) => {setUserAlbum(data)
-            console.log(data)})
-    } */
     const fetchAlbums = async () => {
         fetch('http://localhost:4000/profiles/my_albums', {
             method: 'GET',
@@ -33,7 +29,7 @@ const CaptionForm = () => {
         fetchAlbums()
     }, [reload])
     return (
-        <section>
+        <div className="h-1/2 w-3/4 flex flex-column flex-wrap items-center">
             {images.map((image) => (
                 <form
                     onChange={(e) => {
@@ -48,34 +44,54 @@ const CaptionForm = () => {
                         setReload(true)
                     }}
                 >
-                    <img src={image.src} alt={image.filename} />
+                    <div className="m-small flex flex-col items-center">
+                        <Image
+                            height="auto"
+                            width="full"
+                            borderRadius="small"
+                            url={image.src}
+                            filename={image.filename}
+                        />
                     <label htmlFor="filename">Title:</label>
-                    <input
+                    <Input
+                        text="Title"
+                        textWeight="200"
+                        bgColor="light"
+                        width="96"
+                        height="14"
+                        border="2"
+                        borderColor="grey"
+                        borderRadius="small"
                         type="text"
                         id="filename"
                         value={image.filename}
-                        required
                     />
                     <label htmlFor="caption">Caption:</label>
-                    <input
+                    <Input
+                        text="Caption"
+                        textWeight="200"
+                        bgColor="light"
+                        width="96"
+                        height="14"
+                        border="2"
+                        borderColor="grey"
+                        borderRadius="small"
                         type="text"
                         id="caption"
                         value={image.caption}
-                        required
                     />
                     <label htmlFor="album">Album:</label>
                     <select name="album" id="album" required>
-                        {/* lalala */}
-                        <option value="new">CREATE A NEW ALBUM</option>
                         {userAlbum.map((album) => (
                             <option value={album._id}>
                                 {album.album_name}
                             </option>
                         ))}
                     </select>
+                    </div>
                 </form>
             ))}
-        </section>
+        </div>
     )
 }
 

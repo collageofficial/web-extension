@@ -1,12 +1,15 @@
-import { react, useContext } from 'react'
+import React, { useEffect, useContext, useState } from 'react'
 import { Context } from '../../Context/Context'
-
 import Text from '../Atoms/Text'
 import Button from '../Atoms/Button'
 import Image from '../Atoms/Image'
 
 const SaveBox = () => {
     const context = useContext(Context)
+    const [images, setImages] = useState([])
+    useEffect(() => {
+        setImages(context.picturesToSave)
+    }, [images])
 
     return (
         <div className="p-small w-full h-full flex flex-col bg-light rounded-small border-2 border-dark justify-center">
@@ -20,12 +23,21 @@ const SaveBox = () => {
             </div>
             {/* remenber to write some logic with ratio for fit image  */}
             <div className="h-2/5 ml-small">
-                {<Image
-                    height="full"
-                    width="auto"
-                    borderRadius="small"
-                    url="https://i.pinimg.com/originals/18/70/90/1870902fae654106f55f581624a64c1b.jpg"
-                /> }
+                {context.picturesToSave.map((picture, index) => (
+                    <Image
+                        height="full"
+                        width="auto"
+                        borderRadius="small"
+                        filename={picture.filename}
+                        key={index}
+                        url={picture.src}
+                        action={() => {
+                            context.picturesToSave.splice(index, 1)
+                            context.setPicturesToSave(context.picturesToSave)
+                            setImages([])
+                        }}
+                    />
+                ))}
             </div>
             <div className="flex justify-end">
                 <Button
@@ -39,6 +51,7 @@ const SaveBox = () => {
                     border="2"
                     borderColor="primary"
                     borderRadius="small"
+                    action={context.exitSelectPage}
                 />
             </div>
         </div>

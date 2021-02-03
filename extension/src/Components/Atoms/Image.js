@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Image = ({ height, width, borderRadius,special, url, filename}) => (
+const Image = ({ height, width, borderRadius,special, url, filename, action}) => (
     <img
         className={`
             ${special}
@@ -10,6 +10,7 @@ const Image = ({ height, width, borderRadius,special, url, filename}) => (
         `}
         src={url}
         alt={filename}
+        onClick={() => action()}
     />
 )
 

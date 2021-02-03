@@ -1,6 +1,9 @@
 import React, { useContext, useState } from 'react'
 import { Context } from './../../Context/Context'
 import CaptionForm from '../Organisms/CaptionForm'
+import Button from '../Atoms/Button'
+import Hr from '../Atoms/Hr'
+import Text from '../Atoms/Text'
 
 const Checkout = () => {
     const context = useContext(Context)
@@ -31,20 +34,57 @@ const Checkout = () => {
             ).then((res) =>
                 res.status !== 201
                     ? setUploadFailed(true)
-                    /* lalala */
-                    : context.exitCheckoutPage()
+                    : /* lalala */
+                      context.exitCheckoutPage()
             )
         })
     }
 
     return (
         <>
-            <button onClick={context.goBackToSelect}>
+            <div className="flex justify-start w-1/2 m-small">
+                <Button
+                    special=""
+                    text="Cancel"
+                    color="light"
+                    textSize="medium"
+                    textWeight="normal"
+                    bgColor="primary"
+                    width="20"
+                    height="10"
+                    borderRadius="small"
+                    action={context.goBackToSelect}
+                />
+            </div>
+            {/* <button onClick={context.goBackToSelect}>
                 want to change pictures? click here
-            </button>
+            </button> */}
             <CaptionForm />
+            <Hr thickness="2" width="full" bgColor="grey" />
             <button onClick={postPictures}>POST MY PICTURES!!</button>
-            {uploadFailed && <p>ERROR</p>}
+            <div className="flex justify-start w-1/2 m-small">
+                <Button
+                    special=""
+                    text="Post"
+                    color="light"
+                    textSize="medium"
+                    textWeight="normal"
+                    bgColor="primary"
+                    width="20"
+                    height="10"
+                    borderRadius="small"
+                    action={postPictures}
+                />
+            </div>
+            {uploadFailed && (
+                <Text
+                    special="m-small"
+                    text="ERROR"
+                    color="dark"
+                    fontWeight="normal"
+                    textSize="medium"
+                />
+            )}
         </>
     )
 }
