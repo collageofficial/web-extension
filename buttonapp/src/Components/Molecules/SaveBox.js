@@ -8,7 +8,7 @@ const SaveBox = () => {
     const context = useContext(Context)
 
     return (
-        <div className="w-full h-4/5 flex rounded-small border-2 border-primary justify-between items-center p-small">
+        <div className="w-full h-full flex rounded-small border-2 border-primary justify-between items-center p-small">
             <div className="h-full">
                 <Image
                     height="full"

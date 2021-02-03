@@ -4,13 +4,14 @@ import { Context } from '../../../../buttonapp/src/Context/Context'
 import Text from '../Atoms/Text'
 import Button from '../Atoms/Button'
 import Input from '../Atoms/Input'
+import Spinner from '../Atoms/Spinner'
 import SaveBox from '../Molecules/SaveBox'
 
 const ModalSelectImage = () => {
     const context = useContext(Context)
 
     return (
-        <div className="w-3/5 h-4/5 p-small border-2 border-primary rounded-small">
+        <div className="w-3/5 h-4/5 p-small">
             <Button
                 action={context.modalSelectOpenToggle}
                 width="8"
@@ -38,11 +39,9 @@ const ModalSelectImage = () => {
                     textAlign="center"
                 />
             </div>
-            <div className="w-full h-1/5">
+            <div className="w-full mb-small">
                 {context.urlValue ? (
-                    <div
-                        className="w-full flex justify-between items-center gap-2 border-2 border-primary rounded-full"
-                    >
+                    <div className="w-full flex justify-between items-center gap-2 border-2 border-primary rounded-full">
                         <div className="w-4/5 h-full p-small">
                             <Text
                                 text={context.urlValue}
@@ -89,9 +88,17 @@ const ModalSelectImage = () => {
                         />
                     </div>
                 )}
-                <div>
-                    <p>images</p>
-                </div>
+            </div>
+            <div className="w-full h-3/5 mb-small">
+                {context.browserPictures.length > 1 ? (
+                    <p>image are here</p>
+                ) : (
+                    <div className="w-full h-full flex justify-center items-center">
+                        <Spinner />
+                    </div>
+                )}
+            </div>
+            <div className="w-full h-1/5">
                 <SaveBox />
             </div>
         </div>

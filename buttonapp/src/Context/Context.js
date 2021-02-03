@@ -3,7 +3,6 @@ import React, { useState } from 'react'
 export const Context = React.createContext()
 
 const Provider = ({ children }) => {
-    const [browserPictures, setBrowserPictures] = useState([])
     // const [picturesToSave, setPicturesToSave] = useState([])
 
     // const [selectPage, setSelectPage] = useState(false)
@@ -28,7 +27,7 @@ const Provider = ({ children }) => {
     // }
 
     const [loginPage, setLoginPage] = useState(true)
-    const [plusBtn, setPlusButton] = useState(false) // set this to true when be is connected
+    const [plusBtn, setPlusButton] = useState(false)
     const [token, setToken] = useState()
     const [plusBtnHovered, setPlusBtnIsHovered] = useState(false)
     const [modalOpen, setModalOpen] = useState(false)
@@ -38,8 +37,11 @@ const Provider = ({ children }) => {
     const [urlValueSecondPage, setUrlValueSecondPage] = useState('')
     const [altText, setAltText] = useState(true)
 
-    // hooks for dragDrop componentfor uploading an image
+    // hook for dragDrop component for uploading an image
     const [files, setFiles] = useState([])
+
+    // hook for fetching images from BE
+    const [browserPictures, setBrowserPictures] = useState([])
 
     const closeLoginToggle = () => {
         setLoginPage(false)
@@ -80,6 +82,7 @@ const Provider = ({ children }) => {
     const getUrlValueSecondPage = (e) => setUrlValueSecondPage(e.target.value)
 
     const matchUrlsValue = () => {
+        setBrowserPictures([])
         fetch('http://localhost:4000/puppeteer', {
             method: 'POST',
             headers: new Headers({
@@ -93,6 +96,8 @@ const Provider = ({ children }) => {
             .then((data) => {
                 setBrowserPictures(data.images)
             })
+        setUrlValue(urlValueSecondPage)
+        setUrlValueSecondPage('')
     }
 
     const altTextToggle = () => setAltText(!altText)
@@ -100,7 +105,6 @@ const Provider = ({ children }) => {
     return (
         <Context.Provider
             value={{
-                browserPictures,
                 // picturesToSave,
                 // setPicturesToSave,
                 // loginPage,
@@ -133,6 +137,7 @@ const Provider = ({ children }) => {
                 matchUrlsValue,
                 files,
                 setFiles,
+                browserPictures,
                 altText,
                 altTextToggle,
             }}
