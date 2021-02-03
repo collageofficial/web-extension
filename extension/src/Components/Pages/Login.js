@@ -95,7 +95,7 @@ const Login = () => {
                         border="2"
                         borderColor="grey"
                         borderRadius="small"
-                        type="text"
+                        type="password"
                         id="password"
                         required
                     />
