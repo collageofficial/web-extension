@@ -6,7 +6,7 @@ import Button from '../Atoms/Button'
 import Input from '../Atoms/Input'
 import SaveBox from '../Molecules/SaveBox'
 
-const ModalSelectImage = ({ border, borderColor, borderRadius }) => {
+const ModalSelectImage = () => {
     const context = useContext(Context)
 
     return (
@@ -41,9 +41,9 @@ const ModalSelectImage = ({ border, borderColor, borderRadius }) => {
             <div className="w-full h-1/5">
                 {context.urlValue ? (
                     <div
-                        className={`w-full flex justify-between items-center gap-2 border-${border} border-${borderColor} rounded-${borderRadius}`}
+                        className="w-full flex justify-between items-center gap-2 border-2 border-primary rounded-full"
                     >
-                        <div className="w-4/5 h-full">
+                        <div className="w-4/5 h-full p-small">
                             <Text
                                 text={context.urlValue}
                                 color="dark"
@@ -74,7 +74,7 @@ const ModalSelectImage = ({ border, borderColor, borderRadius }) => {
                             height="10"
                             border="2"
                             borderColor="grey"
-                            borderRadius={borderRadius}
+                            borderRadius="full"
                         />
                         <Button
                             action={context.matchUrlsValue}

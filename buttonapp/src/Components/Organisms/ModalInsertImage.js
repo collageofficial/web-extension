@@ -14,9 +14,7 @@ const ModalInsertImage = () => {
             <div className="h-full w-auto flex-1 flex flex-col justify-between items-center gap-8">
                 <DragDrop />
                 {context.addUrl ? (
-                    <div
-                        className="flex w-full justify-between items-center gap-1"
-                    >
+                    <div className="flex w-full justify-between items-center gap-1">
                         <Button
                             action={context.addUrlToggle}
                             width="8"
@@ -34,7 +32,7 @@ const ModalInsertImage = () => {
                             text="Enter website"
                             textWeight="normal"
                             bgColor="light"
-                            width="4/5"
+                            width="3/6"
                             height="10"
                             border="2"
                             borderColor="grey"
@@ -47,7 +45,7 @@ const ModalInsertImage = () => {
                             textSize="medium"
                             textWeight="normal"
                             bgColor="primary"
-                            width="1/5"
+                            width="2/6"
                             height="10"
                             borderRadius="small"
                         />
@@ -99,16 +97,43 @@ const ModalInsertImage = () => {
                         borderRadius="small"
                         rows="4"
                     />
-                    <Button
-                        text="Add alt text"
-                        color="light"
-                        textSize="medium"
-                        textWeight="normal"
-                        bgColor="primary"
-                        width="2/5"
-                        height="10"
-                        borderRadius="small"
-                    />
+                    {context.altText ? (
+                        <Button
+                            action={context.altTextToggle}
+                            text="Add alt text"
+                            color="light"
+                            textSize="medium"
+                            textWeight="normal"
+                            bgColor="primary"
+                            width="2/5"
+                            height="10"
+                            borderRadius="small"
+                        />
+                    ) : (
+                        <div className="w-full flex justify-between items-center gap-2">
+                            <Input
+                                text="Add alternative text"
+                                textWeight="normal"
+                                bgColor="light"
+                                width="5/6"
+                                height="10"
+                                border="2"
+                                borderColor="grey"
+                                borderRadius="small"
+                            />
+                            <Button
+                                action={context.altTextToggle}
+                                width="8"
+                                height="8"
+                                borderRadius="full"
+                                bgColor="primary"
+                                color="light"
+                                borderColor="primary"
+                                textSize="large"
+                                notCancel={false}
+                            />
+                        </div>
+                    )}
                     <Input
                         text="Add a destination link"
                         textWeight="normal"
