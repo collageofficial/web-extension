@@ -11,6 +11,8 @@ const Input = ({
     border,
     borderColor,
     borderRadius,
+    type,
+    id
 }) => (
     <div
         className={`
@@ -40,6 +42,9 @@ const Input = ({
                 focus: outline-none
                 active: outline-none
             `}
+            type={type}
+            id={id}
+            required
         />
         { noGlass === false && (
             <button>

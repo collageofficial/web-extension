@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 export const Context = React.createContext()
 
 const Provider = ({ children }) => {
-    // const [browserPictures, setBrowserPictures] = useState([])
+    const [browserPictures, setBrowserPictures] = useState([])
     // const [picturesToSave, setPicturesToSave] = useState([])
 
     // const [selectPage, setSelectPage] = useState(false)
@@ -54,6 +54,19 @@ const Provider = ({ children }) => {
     }
 
     const modalSelectOpenToggle = () => {
+        fetch('http://localhost:4000/puppeteer', {
+            method: 'POST',
+            headers: new Headers({
+                'Content-Type': 'application/json',
+            }),
+            body: JSON.stringify({
+                url: urlValue,
+            }),
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                setBrowserPictures(data.images)
+            })
         setModalOpen(!modalOpen)
         setModalSelectOpen(!modalSelectOpen)
     }
@@ -67,8 +80,19 @@ const Provider = ({ children }) => {
     const getUrlValueSecondPage = (e) => setUrlValueSecondPage(e.target.value)
 
     const matchUrlsValue = () => {
-        setUrlValue(urlValueSecondPage)
-        setUrlValueSecondPage('')
+        fetch('http://localhost:4000/puppeteer', {
+            method: 'POST',
+            headers: new Headers({
+                'Content-Type': 'application/json',
+            }),
+            body: JSON.stringify({
+                url: urlValueSecondPage,
+            }),
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                setBrowserPictures(data.images)
+            })
     }
 
     const altTextToggle = () => setAltText(!altText)
@@ -76,8 +100,7 @@ const Provider = ({ children }) => {
     return (
         <Context.Provider
             value={{
-                // browserPictures,
-                // setBrowserPictures,
+                browserPictures,
                 // picturesToSave,
                 // setPicturesToSave,
                 // loginPage,

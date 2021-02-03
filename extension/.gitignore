@@ -108,3 +108,5 @@ dist
 
 #Tailwind
 src/tailwind.output.css
+
+.env
