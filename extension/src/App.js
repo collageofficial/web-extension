@@ -4,7 +4,7 @@ import './tailwind.css'
 
 // temporary pages
 import Login from './Components/Pages/Login'
-import ImageSelect from './Components/Pages/ImageSelect'
+import ExtenActivated from './Components/Organisms/ExtenActivated'
 import Checkout from './Components/Pages/Checkout'
 import End from './Components/Pages/End'
 
@@ -28,7 +28,6 @@ import SaveBox from './Components/Molecules/SaveBox'
 import SavedPicture from './Components/Molecules/SavedPicture'
 import SaveBoard from './Components/Molecules/SaveBoard'
 import BoardHovered from './Components/Molecules/BoardHovered'
-import ExtenActivated from './Components/Organisms/ExtenActivated'
 
 // organism
 import Modal from './Components/Organisms/Modal'
@@ -39,7 +38,7 @@ const App = () => {
     return (
         <div className="w-full h-full">
             {context.loginPage && <Login />}
-            {context.selectPage && <ImageSelect />}
+            {context.selectPage && <ExtenActivated />}
             {context.checkoutPage && <Checkout />}
             {context.endPage && <End />}
         </div>
