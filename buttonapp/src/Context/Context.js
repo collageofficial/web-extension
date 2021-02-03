@@ -53,7 +53,6 @@ const Provider = ({ children }) => {
         })
             .then((res) => res.json())
             .then((data) => {
-                console.log(data)
                 setBrowserPictures(data.images)
             })
         setModalOpen(!modalOpen)
@@ -80,7 +79,6 @@ const Provider = ({ children }) => {
         })
             .then((res) => res.json())
             .then((data) => {
-                console.log(data)
                 setBrowserPictures(data.images)
             })
     }

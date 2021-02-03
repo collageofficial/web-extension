@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Image = ({ height, width, borderRadius,special, url}) => (
+const Image = ({ height, width, borderRadius,special, url, filename}) => (
     <img
         className={`
             ${special}
@@ -9,6 +9,7 @@ const Image = ({ height, width, borderRadius,special, url}) => (
             rounded-${borderRadius}
         `}
         src={url}
+        alt={filename}
     />
 )
 

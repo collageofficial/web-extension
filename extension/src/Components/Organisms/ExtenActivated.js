@@ -1,14 +1,32 @@
-import { react, useContext } from 'react'
+import React, { useEffect, useContext } from 'react'
 import { Context } from '../../Context/Context'
 
 import Text from '../Atoms/Text'
-import Image from '../Atoms/Image'
 import SaveBox from '../Molecules/SaveBox'
 import CardAdded from '../Molecules/CardAdded'
 
 const ExtenActivated = () => {
     const context = useContext(Context)
-
+    /* const addPicture =  */ useEffect(() => {
+        let images = []
+        const saveImages = async () => {
+            for (let i = 0; i < window.localStorage.length; i++) {
+                images = [...images, JSON.parse(window.localStorage.getItem(i))]
+            }
+        }
+        const saveToContext = async () => {
+            context.browserPictures.length !== images.length &&
+                context.setBrowserPictures(images)
+        }
+        saveImages().then(saveToContext())
+    }, [context.browserPictures])
+    const showEvent = (index) => {
+        !context.picturesToSave.includes(context.browserPictures[index]) &&
+            context.setPicturesToSave([
+                ...context.picturesToSave,
+                context.browserPictures[index],
+            ])
+    }
     return (
         <div>
             <div className="flex flex-row m-small space-x-5">
@@ -22,54 +40,20 @@ const ExtenActivated = () => {
             </div>
 
             <div className="p-small flex flex-wrap w-auto  h-full space-x-5 ">
-                <div className="h-1/6 w-auto">
-                    <CardAdded
-                        height="full"
-                        width="auto"
-                        borderRadius="small"
-                        url="https://i.pinimg.com/originals/18/70/90/1870902fae654106f55f581624a64c1b.jpg"
-                    />
-                </div>
-                <div className="h-1/6 w-auto">
-                    <CardAdded
-                        height="full"
-                        width="auto"
-                        borderRadius="small"
-                        url="https://i.pinimg.com/originals/18/70/90/1870902fae654106f55f581624a64c1b.jpg"
-                    />
-                </div>
-                <div className="h-1/6 w-auto">
-                    <CardAdded
-                        height="full"
-                        width="auto"
-                        borderRadius="small"
-                        url="https://i.pinimg.com/originals/18/70/90/1870902fae654106f55f581624a64c1b.jpg"
-                    />
-                </div>
-                <div className="h-1/6 w-auto">
-                    <CardAdded
-                        height="full"
-                        width="auto"
-                        borderRadius="small"
-                        url="https://i.pinimg.com/originals/18/70/90/1870902fae654106f55f581624a64c1b.jpg"
-                    />
-                </div>
-                <div className="h-1/6 w-auto">
-                    <CardAdded
-                        height="full"
-                        width="auto"
-                        borderRadius="small"
-                        url="https://i.pinimg.com/originals/18/70/90/1870902fae654106f55f581624a64c1b.jpg"
-                    />
-                </div>
-                <div className="h-1/6 w-auto">
-                    <CardAdded
-                        height="full"
-                        width="auto"
-                        borderRadius="small"
-                        url="https://i.pinimg.com/originals/18/70/90/1870902fae654106f55f581624a64c1b.jpg"
-                    />
-                </div>
+                {context.browserPictures.length > 0 &&
+                    context.browserPictures.map((picture, index) => (
+                        <div className="h-1/6 w-auto">
+                            <CardAdded
+                                height="full"
+                                width="auto"
+                                borderRadius="small"
+                                filename={picture.filename}
+                                key={index}
+                                url={picture.src}
+                                action={()=> showEvent(index) }
+                            />
+                        </div>
+                    ))}
             </div>
             <div className="flex justify-center">
                 <div className="fixed bottom-0 h-1/5 w-11/12 ">

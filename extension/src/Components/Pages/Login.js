@@ -40,8 +40,6 @@ const Login = () => {
             ? setEmail(e.target.value)
             : setPassword(e.target.value)
         setReload(true)
-        console.log(email)
-        console.log(password)
     }
 
     useEffect(() => {
