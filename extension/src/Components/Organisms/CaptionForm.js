@@ -52,42 +52,45 @@ const CaptionForm = () => {
                             url={image.src}
                             filename={image.filename}
                         />
-                    <label htmlFor="filename">Title:</label>
-                    <Input
-                        text="Title"
-                        textWeight="200"
-                        bgColor="light"
-                        width="96"
-                        height="14"
-                        border="2"
-                        borderColor="grey"
-                        borderRadius="small"
-                        type="text"
-                        id="filename"
-                        value={image.filename}
-                    />
-                    <label htmlFor="caption">Caption:</label>
-                    <Input
-                        text="Caption"
-                        textWeight="200"
-                        bgColor="light"
-                        width="96"
-                        height="14"
-                        border="2"
-                        borderColor="grey"
-                        borderRadius="small"
-                        type="text"
-                        id="caption"
-                        value={image.caption}
-                    />
-                    <label htmlFor="album">Album:</label>
-                    <select name="album" id="album" required>
-                        {userAlbum.map((album) => (
-                            <option value={album._id}>
-                                {album.album_name}
+                        <label htmlFor="filename">Title:</label>
+                        <Input
+                            text="Title"
+                            textWeight="200"
+                            bgColor="light"
+                            width="96"
+                            height="14"
+                            border="2"
+                            borderColor="grey"
+                            borderRadius="small"
+                            type="text"
+                            id="filename"
+                            value={image.filename}
+                        />
+                        <label htmlFor="caption">Caption:</label>
+                        <Input
+                            text="Caption"
+                            textWeight="200"
+                            bgColor="light"
+                            width="96"
+                            height="14"
+                            border="2"
+                            borderColor="grey"
+                            borderRadius="small"
+                            type="text"
+                            id="caption"
+                            value={image.caption}
+                        />
+                        <label htmlFor="album">Album:</label>
+                        <select name="album" id="album" required>
+                            <option value="" selected disabled hidden>
+                                Choose here
                             </option>
-                        ))}
-                    </select>
+                            {userAlbum.map((album, index) => (
+                                <option value={album._id}>
+                                    {album.album_name}
+                                </option>
+                            ))}
+                        </select>
                     </div>
                 </form>
             ))}

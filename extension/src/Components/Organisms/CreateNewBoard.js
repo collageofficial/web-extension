@@ -8,7 +8,7 @@ import Image from '../Atoms/Image'
 import Input from '../Atoms/Input'
 import NewBoard from '../Molecules/NewBoard'
 
-const CreateNewBoard = () => {
+const CreateNewBoard = ({action}) => {
     const context = useContext(Context)
 
     return (
@@ -92,6 +92,7 @@ const CreateNewBoard = () => {
                         width="20"
                         height="10"
                         borderRadius="small"
+                        action={action}
                     />
                 </div>
                 <div className="flex justify-end w-1/2 m-small">
