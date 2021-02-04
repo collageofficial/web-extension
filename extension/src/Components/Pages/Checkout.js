@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react'
 import { Context } from './../../Context/Context'
+import CreateNewBoard from '../Organisms/CreateNewBoard'
 import CaptionForm from '../Organisms/CaptionForm'
 import Button from '../Atoms/Button'
 import Hr from '../Atoms/Hr'
@@ -8,6 +9,8 @@ import Text from '../Atoms/Text'
 const Checkout = () => {
     const context = useContext(Context)
     const [uploadFailed, setUploadFailed] = useState(false)
+    const [isModalOpen, setIsModalOpen] = useState(false)
+    const toggleModal = () => setIsModalOpen(!isModalOpen)
 
     const postPictures = () => {
         context.picturesToSave.map((picture) => {
@@ -42,39 +45,61 @@ const Checkout = () => {
 
     return (
         <>
-            <div className="flex justify-start w-1/2 m-small">
-                <Button
-                    special=""
-                    text="Cancel"
-                    color="light"
-                    textSize="medium"
-                    textWeight="normal"
-                    bgColor="primary"
-                    width="20"
-                    height="10"
-                    borderRadius="small"
-                    action={context.goBackToSelect}
-                />
-            </div>
-            {/* <button onClick={context.goBackToSelect}>
+            <div className="w-full h-full flex justify-center items-center flex-wrap">
+                {isModalOpen ? (
+                    <CreateNewBoard action={toggleModal} />
+                ) : (
+                    <>
+                        <div className="flex justify-start w-1/2 m-small">
+                            <Button
+                                special=""
+                                text="Create a new moodboard"
+                                color="light"
+                                textSize="medium"
+                                textWeight="normal"
+                                bgColor="primary"
+                                width="20"
+                                height="10"
+                                borderRadius="small"
+                                action={toggleModal}
+                            />
+                            <Button
+                                special=""
+                                text="Cancel"
+                                color="light"
+                                textSize="medium"
+                                textWeight="normal"
+                                bgColor="primary"
+                                width="20"
+                                height="10"
+                                borderRadius="small"
+                                action={context.goBackToSelect}
+                            />
+                        </div>
+                        {/* <button onClick={context.goBackToSelect}>
                 want to change pictures? click here
             </button> */}
-            <CaptionForm />
-            <Hr thickness="2" width="full" bgColor="grey" />
-            <button onClick={postPictures}>POST MY PICTURES!!</button>
-            <div className="flex justify-start w-1/2 m-small">
-                <Button
-                    special=""
-                    text="Post"
-                    color="light"
-                    textSize="medium"
-                    textWeight="normal"
-                    bgColor="primary"
-                    width="20"
-                    height="10"
-                    borderRadius="small"
-                    action={postPictures}
-                />
+                        <CaptionForm />
+                        <Hr thickness="2" width="full" bgColor="grey" />
+                        <button onClick={postPictures}>
+                            POST MY PICTURES!!
+                        </button>
+                        <div className="flex justify-start w-1/2 m-small">
+                            <Button
+                                special=""
+                                text="Post"
+                                color="light"
+                                textSize="medium"
+                                textWeight="normal"
+                                bgColor="primary"
+                                width="20"
+                                height="10"
+                                borderRadius="small"
+                                action={postPictures}
+                            />
+                        </div>
+                    </>
+                )}
             </div>
             {uploadFailed && (
                 <Text
