@@ -21,7 +21,12 @@ const DragDrop = () => {
     })
 
     const thumbs = context.files.map((file) => (
-        <img src={file.preview} key={file.name} className="rounded-small" />
+        <img
+            src={file.preview}
+            key={file.name}
+            alt={file.name}
+            className="rounded-small"
+        />
     ))
 
     useEffect(
