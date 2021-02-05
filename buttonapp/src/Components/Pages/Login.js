@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { Context } from './../../Context/Context'
+import { get, post } from '../../util/fetch'
 
 const Login = () => {
     const context = useContext(Context)
@@ -10,23 +11,31 @@ const Login = () => {
 
     const logIn = async (e) => {
         e.preventDefault()
-        fetch('http://localhost:4000/auth', {
-            method: 'POST',
-            headers: new Headers({
-                'Content-Type': 'application/json',
-            }),
-            body: JSON.stringify({
-                email: email,
-                password: password,
-            }),
-        })
-            .then((res) => {
-                res.status !== 200
-                    ? setLoginFailed(true)
-                    : context.closeLoginToggle()
-                return res.json()
-            })
-            .then((data) => context.setToken(data.token))
+
+        // post never crashes,
+        // you either get something
+        // or you get nothing or error
+
+        // token, and expires are available if succeed
+        const { error, token, expires } = await post(`profiles/${email}/auths`)(
+            {
+                body: { password: password },
+            }
+        )
+        if (error) {
+            // TODO show error to user
+            // error.message
+            // or
+            // throw error
+            setLoginFailed(true)
+            return
+        }
+        const profile = await get('me')({ token: token })
+        context.closeLoginToggle()
+        context.setToken(token)
+        context.setProfile(profile)
+        // we should save token to cookie / localstorage for session persistance
+        // preferable with flag 'secure'
     }
     const handleChange = (e) => {
         e.preventDefault()
