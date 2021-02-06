@@ -4,7 +4,7 @@ import Text from '../Atoms/Text'
 import Button from '../Atoms/Button'
 import Image from '../Atoms/Image'
 
-const SaveBox = () => {
+const SaveBox = ({conteinerPictures, imageSetting }) => {
     const context = useContext(Context)
     const [images, setImages] = useState([])
     useEffect(() => {
@@ -22,9 +22,10 @@ const SaveBox = () => {
                 />
             </div>
             {/* remenber to write some logic with ratio for fit image  */}
-            <div className="h-2/5 ml-small">
+            <div className={`h-2/5 ml-small ${conteinerPictures}`}>
                 {context.picturesToSave.map((picture, index) => (
                     <Image
+                        special={`${imageSetting}`}
                         height="full"
                         width="auto"
                         borderRadius="small"
