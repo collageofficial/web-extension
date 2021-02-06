@@ -48,7 +48,7 @@ const SaveBox = ({conteinerPictures, imageSetting }) => {
                     textWeight="normal"
                     bgColor="primary"
                     width="25"
-                    height="10"
+                    height="8"
                     border="2"
                     borderColor="primary"
                     borderRadius="small"
