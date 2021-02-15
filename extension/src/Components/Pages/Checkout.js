@@ -45,20 +45,20 @@ const Checkout = () => {
 
     return (
         <>
-            <div className="w-full h-full flex justify-center items-center flex-wrap">
+            <div className="w-full h-full flex justify-center items-center flex-wrap relative">
                 {isModalOpen ? (
                     <CreateNewBoard action={toggleModal} />
                 ) : (
                     <>
-                        <div className="flex justify-start w-1/2 m-small">
+                        <div className="flex justify-start w-1/2 m-small justify-around absolute top-0">
                             <Button
                                 special=""
                                 text="Create a new moodboard"
                                 color="light"
-                                textSize="medium"
+                                textSize="small"
                                 textWeight="normal"
                                 bgColor="primary"
-                                width="20"
+                                width="28"
                                 height="10"
                                 borderRadius="small"
                                 action={toggleModal}
@@ -79,24 +79,30 @@ const Checkout = () => {
                         {/* <button onClick={context.goBackToSelect}>
                 want to change pictures? click here
             </button> */}
-                        <CaptionForm />
-                        <Hr thickness="2" width="full" bgColor="grey" />
-                        <button onClick={postPictures}>
-                            POST MY PICTURES!!
-                        </button>
-                        <div className="flex justify-start w-1/2 m-small">
-                            <Button
-                                special=""
-                                text="Post"
-                                color="light"
-                                textSize="medium"
-                                textWeight="normal"
-                                bgColor="primary"
-                                width="20"
-                                height="10"
-                                borderRadius="small"
-                                action={postPictures}
+                         
+                            <CaptionForm
+                            
                             />
+                        
+                        <div className="absolute bottom-0">
+                            <Hr thickness="2" width="full" bgColor="grey" />
+                            <button onClick={postPictures}>
+                                POST MY PICTURES!!
+                            </button>
+                            <div className="flex justify-start w-1/2 m-small">
+                                <Button
+                                    special=""
+                                    text="Post"
+                                    color="light"
+                                    textSize="medium"
+                                    textWeight="normal"
+                                    bgColor="primary"
+                                    width="20"
+                                    height="10"
+                                    borderRadius="small"
+                                    action={postPictures}
+                                />
+                            </div>
                         </div>
                     </>
                 )}
