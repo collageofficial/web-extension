@@ -7,7 +7,6 @@ const Provider = ({ children }) => {
     const [picturesToSave, setPicturesToSave] = useState([])
     const [token, setToken] = useState()
     // const [loginPage, setLoginPage] = useState(true)
-    
     // const [selectPage, setSelectPage] = useState(false)
     const [loginPage, setLoginPage] = useState(false)    //to delete later
     const [selectPage, setSelectPage] = useState(true)   //to delete later
