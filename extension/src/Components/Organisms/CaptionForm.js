@@ -29,7 +29,7 @@ const CaptionForm = () => {
         fetchAlbums()
     }, [reload])
     return (
-        <div className="h-1/2 w-3/4 flex flex-column flex-wrap items-center">
+        <div className="h-1/2 w-5/6 flex flex-row  items-center justify-between overflow-x-auto">
             {images.map((image) => (
                 <form
                     onChange={(e) => {
@@ -44,53 +44,61 @@ const CaptionForm = () => {
                         setReload(true)
                     }}
                 >
-                    <div className="m-small flex flex-col items-center">
+                    <div className="h-4/5 m-small flex flex-col items-center ">
                         <Image
-                            height="auto"
-                            width="full"
+                            height="1/2"
+                            width="auto"
                             borderRadius="small"
                             url={image.src}
                             filename={image.filename}
                         />
-                        <label htmlFor="filename">Title:</label>
-                        <Input
-                            text="Title"
-                            textWeight="200"
-                            bgColor="light"
-                            width="96"
-                            height="14"
-                            border="2"
-                            borderColor="grey"
-                            borderRadius="small"
-                            type="text"
-                            id="filename"
-                            value={image.filename}
-                        />
-                        <label htmlFor="caption">Caption:</label>
-                        <Input
-                            text="Caption"
-                            textWeight="200"
-                            bgColor="light"
-                            width="96"
-                            height="14"
-                            border="2"
-                            borderColor="grey"
-                            borderRadius="small"
-                            type="text"
-                            id="caption"
-                            value={image.caption}
-                        />
-                        <label htmlFor="album">Album:</label>
-                        <select name="album" id="album" required>
-                            <option value="" selected disabled hidden>
-                                Choose here
-                            </option>
-                            {userAlbum.map((album, index) => (
-                                <option value={album._id}>
-                                    {album.album_name}
-                                </option>
-                            ))}
-                        </select>
+                        <div>
+                            <div>
+                                <label htmlFor="filename">Title:</label>
+                                <Input
+                                    text="Title"
+                                    textWeight="200"
+                                    bgColor="light"
+                                    width="96"
+                                    height="8"
+                                    border="2"
+                                    borderColor="grey"
+                                    borderRadius="small"
+                                    type="text"
+                                    id="filename"
+                                    value={image.filename}
+                                />
+                            </div>
+                            <div>
+                                <label htmlFor="caption">Caption:</label>
+                                <Input
+                                    text="Caption"
+                                    textWeight="200"
+                                    bgColor="light"
+                                    width="96"
+                                    height="8"
+                                    border="2"
+                                    borderColor="grey"
+                                    borderRadius="small"
+                                    type="text"
+                                    id="caption"
+                                    value={image.caption}
+                                />
+                            </div>
+                            <div>
+                                <label htmlFor="album">Album:</label>
+                                <select name="album" id="album" required>
+                                    <option value="" selected disabled hidden>
+                                        Choose here
+                                    </option>
+                                    {userAlbum.map((album, index) => (
+                                        <option value={album._id}>
+                                            {album.album_name}
+                                        </option>
+                                    ))}
+                                </select>
+                            </div>
+                        </div>
                     </div>
                 </form>
             ))}
