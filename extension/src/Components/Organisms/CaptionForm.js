@@ -91,11 +91,14 @@ const CaptionForm = () => {
                                     <option value="" selected disabled hidden>
                                         Choose here
                                     </option>
-                                    {userAlbum.map((album, index) => (
+                                    {/* {userAlbum.map((album, index) => (
                                         <option value={album._id}>
                                             {album.album_name}
                                         </option>
-                                    ))}
+                                    ))} */}  
+                                       {/* activate this later */}
+                                       <option>placeholder</option>
+                                       <option>placeholder</option>
                                 </select>
                             </div>
                         </div>
