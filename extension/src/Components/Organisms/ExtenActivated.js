@@ -30,7 +30,7 @@ const ExtenActivated = () => {
     }
     return (
         <div>
-            <div className="flex flex-row m-small space-x-5">
+            <div className="flex flex-row m-small space-x-5 items-center justify-between">
                 <CollageLogo />
                 <Text
                     text="Add one more images to your Mood Boards"
@@ -40,10 +40,10 @@ const ExtenActivated = () => {
                 />
             </div>
 
-            <div className="p-small flex flex-wrap w-auto  h-full space-x-5 ">
+            <div className="p-small flex flex-wrap flex-row w-auto h-full space-x-5 justify-around items-center overflow-y-auto">
                 {context.browserPictures.length > 0 &&
                     context.browserPictures.map((picture, index) => (
-                        <div className="h-1/6 mt-small w-auto">
+                        <div className="h-1/6 mt-small ml-small w-auto">
                             <CardAdded
                                 height="full"
                                 width="auto"
@@ -57,7 +57,7 @@ const ExtenActivated = () => {
                     ))}
             </div>
             <div className="flex justify-center">
-                <div className="fixed bottom-0 h-1/5 w-11/12 ">
+                <div className="fixed bottom-0 h-1/3 w-11/12 ">
                     <SaveBox 
                     conteinerPictures="flex flex-row overflow-x-auto"
                     imageSetting="ml-small" />

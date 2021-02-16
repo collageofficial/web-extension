@@ -12,7 +12,7 @@ const SaveBox = ({conteinerPictures, imageSetting }) => {
     }, [images])
 
     return (
-        <div className="p-small w-full h-full flex flex-col bg-light rounded-small border-2 border-dark justify-center">
+        <div className=" w-full h-full flex flex-col bg-light rounded-small border-2 border-dark justify-center">
             <div className="m-small">
                 <Text
                     text="Added images :"
@@ -22,7 +22,7 @@ const SaveBox = ({conteinerPictures, imageSetting }) => {
                 />
             </div>
             {/* remenber to write some logic with ratio for fit image  */}
-            <div className={`h-2/5 ml-small ${conteinerPictures}`}>
+            <div className={`h-4/5 ml-small ${conteinerPictures}`}>
                 {context.picturesToSave.map((picture, index) => (
                     <Image
                         special={`${imageSetting}`}
@@ -40,7 +40,7 @@ const SaveBox = ({conteinerPictures, imageSetting }) => {
                     />
                 ))}
             </div>
-            <div className="flex justify-end">
+            <div className="flex justify-end m-small">
                 <Button
                     text="Save in Mood boards"
                     color="light"
