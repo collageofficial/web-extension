@@ -11,7 +11,7 @@ const showModal = () => {
         'style',
         `
     height: 95vh;
-    width: 95vw;
+    width: 90vw;
     border: none;
     border-radius: 15px;
     background-color: white;

@@ -40,7 +40,7 @@ const ExtenActivated = () => {
                 />
             </div>
 
-            <div className="p-small flex flex-wrap w-auto justify-between h-full ">
+            <div className="p-small pr-3.5 flex flex-wrap w-auto justify-between h-full ">
                 {context.browserPictures.length > 0 &&
                     context.browserPictures.map((picture, index) => (
                         <div className="h-1/6 mt-small ml-small w-auto">
@@ -55,14 +55,16 @@ const ExtenActivated = () => {
                             />
                         </div>
                     ))}
-            </div>
-            <div className="flex justify-center">
-                <div className="fixed bottom-0 h-1/3 w-full ">
+                     <div className="fixed pr-12 bottom-0 h-1/3 w-full ">
                     <SaveBox 
                     conteinerPictures="flex flex-row overflow-x-auto"
                     imageSetting="ml-small" />
                 </div>
             </div>
+
+            {/* <div className="flex justify-center">
+               
+            </div> */}
         </div>
     )
 }
