@@ -84,13 +84,10 @@ const Checkout = () => {
 
                         <div className="absolute bottom-0">
                             <Hr thickness="2" width="full" bgColor="grey" />
-                            <button onClick={postPictures}>
-                                POST MY PICTURES!!
-                            </button>
                             <div className="flex justify-start w-1/2 m-small">
                                 <Button
                                     special=""
-                                    text="Post"
+                                    text="POST MY PICTURES"
                                     color="light"
                                     textSize="medium"
                                     textWeight="normal"
