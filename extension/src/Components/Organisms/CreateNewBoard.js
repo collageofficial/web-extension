@@ -12,7 +12,7 @@ const CreateNewBoard = ({action}) => {
     const context = useContext(Context)
 
     return (
-        <div className="h-1/2 w-3/4 flex flex-column relative content-around ">
+        <div className="h-full w-full flex flex-column relative items-center justify-around ">
             {/* upper container with img & boards  */}
             <div className="flex flex-column ">
                 {/* container with image  */}

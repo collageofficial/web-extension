@@ -8,9 +8,18 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    outline: none;
+    outline: none;   
 }
-
+body::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Hide scrollbar for IE, Edge and Firefox */
+  body {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+  
 /* specials classes start here */
 /* remember to change inline style inside public --> content.js for modal CSS */
 * {

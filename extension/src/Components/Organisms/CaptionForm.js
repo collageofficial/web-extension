@@ -29,7 +29,7 @@ const CaptionForm = () => {
         fetchAlbums()
     }, [reload])
     return (
-        <div className="h-1/2 w-5/6 flex flex-row  items-center justify-between overflow-x-auto">
+        <div className="h-4/5 w-5/6 flex flex-row flex-wrap  items-center justify-around overflow-x-auto">
             {images.map((image) => (
                 <form
                     onChange={(e) => {
@@ -44,7 +44,7 @@ const CaptionForm = () => {
                         setReload(true)
                     }}
                 >
-                    <div className="h-4/5 m-small flex flex-col items-center ">
+                    <div className="h-3/5 m-small flex flex-col flex-wrap items-center justify-around">
                         <Image
                             height="1/2"
                             width="auto"
@@ -53,13 +53,13 @@ const CaptionForm = () => {
                             filename={image.filename}
                         />
                         <div>
-                            <div>
+                            <div className="m-small">
                                 <label htmlFor="filename">Title:</label>
                                 <Input
                                     text="Title"
                                     textWeight="200"
                                     bgColor="light"
-                                    width="96"
+                                    width="52"
                                     height="8"
                                     border="2"
                                     borderColor="grey"
@@ -69,13 +69,13 @@ const CaptionForm = () => {
                                     value={image.filename}
                                 />
                             </div>
-                            <div>
+                            <div className="m-small">
                                 <label htmlFor="caption">Caption:</label>
                                 <Input
                                     text="Caption"
                                     textWeight="200"
                                     bgColor="light"
-                                    width="96"
+                                    width="52"
                                     height="8"
                                     border="2"
                                     borderColor="grey"

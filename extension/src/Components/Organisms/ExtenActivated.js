@@ -40,7 +40,7 @@ const ExtenActivated = () => {
                 />
             </div>
 
-            <div className="p-small flex flex-wrap flex-row w-auto h-full space-x-5 justify-around items-center overflow-y-auto">
+            <div className="p-small flex flex-wrap flex-row w-auto h-full space-x-5 justify-around items-center overflow-hidden">
                 {context.browserPictures.length > 0 &&
                     context.browserPictures.map((picture, index) => (
                         <div className="h-1/6 mt-small ml-small w-auto">

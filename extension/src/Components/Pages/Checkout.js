@@ -53,18 +53,6 @@ const Checkout = () => {
                         <div className="flex justify-start w-1/2 m-small justify-around absolute top-0">
                             <Button
                                 special=""
-                                text="Create a new moodboard"
-                                color="light"
-                                textSize="small"
-                                textWeight="normal"
-                                bgColor="primary"
-                                width="28"
-                                height="10"
-                                borderRadius="small"
-                                action={toggleModal}
-                            />
-                            <Button
-                                special=""
                                 text="Cancel"
                                 color="light"
                                 textSize="medium"
@@ -75,15 +63,25 @@ const Checkout = () => {
                                 borderRadius="small"
                                 action={context.goBackToSelect}
                             />
+                            <Button
+                                special=""
+                                text="Create a new moodboard"
+                                color="light"
+                                textSize="small"
+                                textWeight="normal"
+                                bgColor="primary"
+                                width="28"
+                                height="10"
+                                borderRadius="small"
+                                action={toggleModal}
+                            />
                         </div>
                         {/* <button onClick={context.goBackToSelect}>
                 want to change pictures? click here
             </button> */}
-                         
-                            <CaptionForm
-                            
-                            />
-                        
+
+                        <CaptionForm />
+
                         <div className="absolute bottom-0">
                             <Hr thickness="2" width="full" bgColor="grey" />
                             <button onClick={postPictures}>
