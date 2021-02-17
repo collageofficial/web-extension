@@ -3,6 +3,7 @@ import React, { useContext, useState, useEffect } from 'react'
 import { Context } from './../../Context/Context'
 import Input from '../Atoms/Input'
 import Image from '../Atoms/Image'
+import Text from '../Atoms/Text'
 
 const CaptionForm = () => {
     const context = useContext(Context)
@@ -54,7 +55,12 @@ const CaptionForm = () => {
                         />
                         <div>
                             <div className="m-small">
-                                <label htmlFor="filename">Title:</label>
+                                <Text
+                                    text="Title:"
+                                    color="dark"
+                                    fontWeight="normal"
+                                    textSize="small"
+                                />
                                 <Input
                                     text="Title"
                                     textWeight="200"
@@ -70,7 +76,12 @@ const CaptionForm = () => {
                                 />
                             </div>
                             <div className="m-small">
-                                <label htmlFor="caption">Caption:</label>
+                                <Text
+                                    text="Caption:"
+                                    color="dark"
+                                    fontWeight="normal"
+                                    textSize="small"
+                                />
                                 <Input
                                     text="Caption"
                                     textWeight="200"
@@ -86,19 +97,39 @@ const CaptionForm = () => {
                                 />
                             </div>
                             <div>
-                                <label htmlFor="album">Album:</label>
-                                <select name="album" id="album" required>
+                                <select
+                                    name="album"
+                                    id="album"
+                                    required
+                                    className={`
+                                font-main
+                                font-normal
+                                text-center
+                                align-middle
+                                bg-primary 
+                                text-light
+                                text-small 
+                                w-36 
+                                h-8 
+                                rounded-small
+                                hover:bg-grey
+                                hover:text-primary
+                                transition duration-500
+                                focus:outline-none
+                                active:outline-none
+                            `}
+                                >
                                     <option value="" selected disabled hidden>
-                                        Choose here
+                                        Choose album
                                     </option>
                                     {/* {userAlbum.map((album, index) => (
                                         <option value={album._id}>
                                             {album.album_name}
                                         </option>
-                                    ))} */}  
-                                       {/* activate this later */}
-                                       <option>placeholder</option>
-                                       <option>placeholder</option>
+                                    ))} */}
+                                    {/* activate this later */}
+                                    <option>placeholder</option>
+                                    <option>placeholder</option>
                                 </select>
                             </div>
                         </div>
