@@ -82,9 +82,9 @@ const Checkout = () => {
 
                         <CaptionForm />
 
-                        <div className="absolute bottom-0">
+                        <div className="absolute w-full items-center bottom-0">
                             <Hr thickness="2" width="full" bgColor="grey" />
-                            <div className="flex justify-start w-1/2 m-small">
+                            <div className="flex justify-center w-full m-small">
                                 <Button
                                     special=""
                                     text="POST MY PICTURES"
@@ -92,7 +92,7 @@ const Checkout = () => {
                                     textSize="medium"
                                     textWeight="normal"
                                     bgColor="primary"
-                                    width="20"
+                                    width="52"
                                     height="10"
                                     borderRadius="small"
                                     action={postPictures}
