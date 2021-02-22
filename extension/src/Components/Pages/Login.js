@@ -46,8 +46,8 @@ const Login = () => {
         setReload(false), [reload]
     })
     return (
-        <div className="w-full h-full flex flex-col items-center">
-            <div className="w-full h-2/5 flex flex-col justify-evenly items-center">
+        <div className="w-full h-full flex flex-col items-center overflow-y-hidden">
+            <div className="w-full h-2/5 flex flex-col justify-evenly items-center m-small">
                 <Logo />
                 <Text
                     text="Welcome to Collage"
@@ -71,47 +71,52 @@ const Login = () => {
                 )}
             </div>
             <form onChange={handleChange}>
-                <div className="w-full h-1/6 flex flex-col justify-evenly items-center">
-                    <label htmlFor="email"></label>
-                    <Input
-                        text="Your email"
-                        textWeight="200"
-                        bgColor="light"
-                        width="72"
-                        height="10"
-                        border="2"
-                        borderColor="grey"
-                        borderRadius="small"
-                        type="text"
-                        id="email"
-                    />
-                    <label htmlFor="password"></label>
-                    <Input
-                        text="Password"
-                        textWeight="200"
-                        bgColor="light"
-                        width="72"
-                        height="10"
-                        border="2"
-                        borderColor="grey"
-                        borderRadius="small"
-                        type="text"
-                        id="password"
-                        required
-                    />
-                </div>
-                <div className="w-full h-1/5 flex flex-col justify-center items-center">
-                    <Button
-                        text="Go to next step"
-                        color="light"
-                        textSize="medium"
-                        textWeight="normal"
-                        bgColor="primary"
-                        width="72"
-                        height="10"
-                        borderRadius="small"
-                        action={logIn}
-                    />
+                <div className="w-full flex flex-col justify-around items-center m-small">
+                    <div className="m-small">
+                        <label htmlFor="email"></label>
+                        <Input
+                            text="Your email"
+                            textWeight="200"
+                            bgColor="light"
+                            width="72"
+                            height="10"
+                            border="2"
+                            borderColor="grey"
+                            borderRadius="small"
+                            type="text"
+                            id="email"
+                        />
+                    </div>
+                    <div className="m-small">
+                        <label htmlFor="password"></label>
+                        <Input
+                            text="Password"
+                            textWeight="200"
+                            bgColor="light"
+                            width="72"
+                            height="10"
+                            border="2"
+                            borderColor="grey"
+                            borderRadius="small"
+                            type="password"
+                            id="password"
+                            required
+                        />
+                    </div>
+                    <div className="w-full h-1/5 flex flex-col justify-center items-center m-small">
+                        <Button
+                            special="m-small"
+                            text="Go to next step"
+                            color="light"
+                            textSize="medium"
+                            textWeight="normal"
+                            bgColor="primary"
+                            width="72"
+                            height="10"
+                            borderRadius="small"
+                            action={logIn}
+                        />
+                    </div>
                 </div>
             </form>
         </div>

@@ -146,7 +146,8 @@ const ModalInsertImage = () => {
                     />
                 </div>
                 <Button
-                    text="Save"
+                    action={context.uploadPicture}
+                    text="Save!!"
                     color="light"
                     textSize="medium"
                     textWeight="normal"
