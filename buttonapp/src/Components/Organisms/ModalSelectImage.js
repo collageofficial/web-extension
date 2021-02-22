@@ -5,6 +5,7 @@ import Text from '../Atoms/Text'
 import Button from '../Atoms/Button'
 import Input from '../Atoms/Input'
 import Spinner from '../Atoms/Spinner'
+import CardAdded from '../Molecules/CardAdded'
 import SaveBox from '../Molecules/SaveBox'
 
 const ModalSelectImage = () => {
@@ -90,10 +91,19 @@ const ModalSelectImage = () => {
                 )}
             </div>
             <div className="w-full h-3/5 mb-small">
-                {context.browserPictures.length > 1 ? (
-                    <p>image are here</p>
+                {context.browserPictures.length > 1 ? (<div className="w-full h-full overflow-x-auto">
+                    {context.browserPictures.map((img, index) => (
+                        <div key={index} className="w-1/5 h-1/3 inline-block pl-2">
+                            <CardAdded
+                                key={index}
+                                borderRadius="small"
+                                url={img.imageSrc}
+                            />
+                        </div>
+                    ))}
+                    </div>
                 ) : (
-                    <div className="w-full h-full flex justify-center items-center">
+                    <div className="w-full h-3/5 flex justify-center items-center">
                         <Spinner />
                     </div>
                 )}

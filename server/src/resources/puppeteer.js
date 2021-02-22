@@ -18,7 +18,13 @@ async function scraper(url) {
                 Math.round((img.naturalWidth / img.naturalHeight) * 100) / 100,
         }))
     )
-    myPictures = images
+    myPictures = images.filter(
+    (item) =>
+        item.imageWidth > 100 &&
+        item.imageHeight > 100 &&
+        item.imageSrc.includes('image/gif') === false
+)
+
     await browser.close()
 }
 
