@@ -4,12 +4,17 @@ import Text from '../Atoms/Text'
 import Button from '../Atoms/Button'
 import Image from '../Atoms/Image'
 
-const SaveBox = ({conteinerPictures, imageSetting }) => {
+const SaveBox = ({ conteinerPictures, imageSetting }) => {
     const context = useContext(Context)
     const [images, setImages] = useState([])
     useEffect(() => {
         setImages(context.picturesToSave)
     }, [images])
+    const handleSubmit = () => {
+        if (context.picturesToSave.length > 0) {
+            context.exitSelectPage()
+        }
+    }
 
     return (
         <div className=" w-full h-full flex flex-col bg-light rounded-small border-2 border-dark justify-center">
@@ -52,7 +57,7 @@ const SaveBox = ({conteinerPictures, imageSetting }) => {
                     border="2"
                     borderColor="primary"
                     borderRadius="small"
-                    action={context.exitSelectPage}
+                    action={handleSubmit}
                 />
             </div>
         </div>

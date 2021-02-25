@@ -6,12 +6,11 @@ const Provider = ({ children }) => {
     const [browserPictures, setBrowserPictures] = useState([])
     const [picturesToSave, setPicturesToSave] = useState([])
     const [token, setToken] = useState()
-    // const [loginPage, setLoginPage] = useState(true)
-    // const [selectPage, setSelectPage] = useState(false)
-    const [loginPage, setLoginPage] = useState(false)    //to delete later
-    const [selectPage, setSelectPage] = useState(true)   //to delete later
+    const [loginPage, setLoginPage] = useState(true)
+    const [selectPage, setSelectPage] = useState(false)
     const [checkoutPage, setCheckoutPage] = useState(false)
     const [endPage, setEndPage] = useState(false)
+    const [newBoard, setNewBoard] = useState(null)
 
     const exitLoginPage = () => {
         setLoginPage(false)
@@ -47,6 +46,8 @@ const Provider = ({ children }) => {
                 exitSelectPage,
                 goBackToSelect,
                 exitCheckoutPage,
+                newBoard,
+                setNewBoard
             }}
         >
             {children}

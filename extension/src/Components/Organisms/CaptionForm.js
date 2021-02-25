@@ -41,7 +41,6 @@ const CaptionForm = () => {
                             ? (image.caption = e.target.value)
                             : (image.album = e.target.value)
                         context.setPicturesToSave(images)
-                        console.log(context.picturesToSave)
                         setReload(true)
                     }}
                 >
@@ -122,14 +121,11 @@ const CaptionForm = () => {
                                     <option value="" selected disabled hidden>
                                         Choose album
                                     </option>
-                                    {/* {userAlbum.map((album, index) => (
-                                        <option value={album._id}>
+                                    {userAlbum.map((album, index) => (
+                                        <option key={index} value={album._id}>
                                             {album.album_name}
                                         </option>
-                                    ))} */}
-                                    {/* activate this later */}
-                                    <option>placeholder</option>
-                                    <option>placeholder</option>
+                                    ))}
                                 </select>
                             </div>
                         </div>
