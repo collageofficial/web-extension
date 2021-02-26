@@ -41,21 +41,37 @@ const getData = () => {
         imagesOnBrowser = Array.from(document.querySelectorAll('img'))
     }
     const sortImages = async () => {
-        imagesOnBrowser.map(
-            (image) =>
-                (imagesToSend = [
+        console.log(imagesOnBrowser)
+        imagesOnBrowser.map((image) => {
+            // put puppeteer here
+            if (image.dataset.src) {
+                imagesToSend = [
                     ...imagesToSend,
                     {
-                        album: 'album',
-                        filename: 'filename',
-                        caption: 'caption',
-                        origin: 'origin',
-                        size: { width: 1 /* image.width */, height: 1 /* image.height */ },
+                        album: '',
+                        filename: image.name,
+                        caption: '',
+                        origin: image.baseURI,
+                        size: { width: image.width, height: image.height },
+                        ratio: 1,
+                        src: image.dataset.src,
+                    },
+                ]
+            } else if (image.src !== '') {
+                imagesToSend = [
+                    ...imagesToSend,
+                    {
+                        album: '',
+                        filename: image.name,
+                        caption: '',
+                        origin: image.baseURI,
+                        size: { width: image.width, height: image.height },
                         ratio: 1,
                         src: image.src,
                     },
-                ])
-        )
+                ]
+            }
+        })
     }
     const sendImages = async () => {
         chrome.runtime.sendMessage({
