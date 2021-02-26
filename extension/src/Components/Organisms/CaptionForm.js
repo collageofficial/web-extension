@@ -10,7 +10,6 @@ const CaptionForm = ({ action }) => {
     const [images, setImages] = useState(context.picturesToSave)
     const [reload, setReload] = useState(false)
     const [userAlbum, setUserAlbum] = useState([])
-    const [moodboard, setMoodboard] = useState()
 
     const fetchAlbums = async () => {
         fetch('http://localhost:4000/profiles/my_albums', {
@@ -33,17 +32,14 @@ const CaptionForm = ({ action }) => {
             ? (images[index].caption = e.target.value)
             : (images[index].album = e.target.value)
         context.setPicturesToSave(images)
+        console.log(context.picturesToSave)
         setReload(true)
     }
-    // lala
     useEffect(() => {
-        setMoodboard(context.newBoard)
-    }, [context.newBoard])
-    // lala
-    useEffect(() => {
+        console.log('looop')
         setReload(false)
         fetchAlbums()
-    }, [reload])
+    }, [])
 
     return (
         <div className="h-4/5 w-5/6 flex flex-row flex-wrap  items-center justify-around overflow-x-auto">
@@ -126,51 +122,21 @@ const CaptionForm = ({ action }) => {
                                 active:outline-none
                             `}
                                 >
-                                    {!context.newBoard ? (
-                                        <>
-                                            <option
-                                                value={moodboard}
-                                                selected
-                                                disabled
-                                                hidden
-                                            >
-                                                Choose album
+                                    <>
+                                        <option
+                                            value=""
+                                            selected
+                                            disabled
+                                            hidden
+                                        >
+                                            Choose album
+                                        </option>
+                                        {userAlbum.map((album, ind) => (
+                                            <option key={ind} value={album._id}>
+                                                {album.album_name}
                                             </option>
-                                            {userAlbum.map((album, ind) => (
-                                                <option
-                                                    key={ind}
-                                                    value={album._id}
-                                                >
-                                                    {album.album_name}
-                                                </option>
-                                            ))}
-                                        </>
-                                    ) : (
-                                        <>
-                                            <option
-                                                value={moodboard}
-                                                selected
-                                                disabled
-                                                hidden
-                                            >
-                                                {moodboard}
-                                            </option>
-                                            {userAlbum
-                                                .filter(
-                                                    (e) =>
-                                                        e.album_name !==
-                                                        moodboard
-                                                )
-                                                .map((album, ind) => (
-                                                    <option
-                                                        key={ind}
-                                                        value={album._id}
-                                                    >
-                                                        {album.album_name}
-                                                    </option>
-                                                ))}
-                                        </>
-                                    )}
+                                        ))}
+                                    </>
                                 </select>
                             </div>
                         </div>

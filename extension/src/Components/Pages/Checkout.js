@@ -16,33 +16,41 @@ const Checkout = () => {
     }
 
     const postPictures = () => {
-        context.picturesToSave.map((picture) => {
-            fetch(
-                `http://localhost:4000/profiles/albums/${picture.album}/uploadimage`,
-                {
-                    method: 'POST',
-                    headers: new Headers({
-                        'Content-Type': 'application/json',
-                        'x-auth-token': context.token,
-                    }),
-                    body: JSON.stringify({
-                        file_name: picture.filename,
-                        caption: picture.caption,
-                        origin: picture.origin,
-                        size: {
-                            width: picture.size.width,
-                            height: picture.size.height,
-                        },
-                        ratio: picture.ratio,
-                        src: picture.src,
-                    }),
-                }
-            ).then((res) =>
-                res.status !== 201
-                    ? setUploadFailed(true)
-                    : context.exitCheckoutPage()
-            )
-        })
+        console.log(context.picturesToSave)
+        if (
+            context.picturesToSave.filter((e) => e.album === '').length === 0 &&
+            context.picturesToSave.filter((e) => e.caption === '').length ===
+                0 &&
+            context.picturesToSave.filter((e) => e.filename === '').length === 0
+        ) {
+            context.picturesToSave.map((picture) => {
+                fetch(
+                    `http://localhost:4000/profiles/albums/${picture.album}/uploadimage`,
+                    {
+                        method: 'POST',
+                        headers: new Headers({
+                            'Content-Type': 'application/json',
+                            'x-auth-token': context.token,
+                        }),
+                        body: JSON.stringify({
+                            file_name: picture.filename,
+                            caption: picture.caption,
+                            origin: picture.origin,
+                            size: {
+                                width: picture.size.width,
+                                height: picture.size.height,
+                            },
+                            ratio: picture.ratio,
+                            src: picture.src,
+                        }),
+                    }
+                ).then((res) =>
+                    res.status !== 201
+                        ? setUploadFailed(true)
+                        : context.exitCheckoutPage()
+                )
+            })
+        } else alert('scrivi')
     }
 
     return (
