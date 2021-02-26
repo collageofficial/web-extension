@@ -33,13 +33,15 @@ const CaptionForm = ({ action }) => {
             : (images[index].album = e.target.value)
         context.setPicturesToSave(images)
         console.log(context.picturesToSave)
-        setReload(true)
+        setReload(!reload)
     }
     useEffect(() => {
-        console.log('looop')
-        setReload(false)
+        console.log('fetch')
         fetchAlbums()
     }, [])
+    useEffect(() => {
+        console.log('reload')
+    }, [reload])
 
     return (
         <div className="h-4/5 w-5/6 flex flex-row flex-wrap  items-center justify-around overflow-x-auto">
@@ -65,7 +67,7 @@ const CaptionForm = ({ action }) => {
                                     textSize="small"
                                 />
                                 <Input
-                                    text="Title"
+                                    text={image.filename}
                                     textWeight="200"
                                     bgColor="light"
                                     width="52"
@@ -86,7 +88,7 @@ const CaptionForm = ({ action }) => {
                                     textSize="small"
                                 />
                                 <Input
-                                    text="Caption"
+                                    text={image.caption}
                                     textWeight="200"
                                     bgColor="light"
                                     width="52"
