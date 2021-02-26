@@ -5,11 +5,12 @@ import Input from '../Atoms/Input'
 import Image from '../Atoms/Image'
 import Text from '../Atoms/Text'
 
-const CaptionForm = () => {
+const CaptionForm = ({ action }) => {
     const context = useContext(Context)
     const [images, setImages] = useState(context.picturesToSave)
     const [reload, setReload] = useState(false)
     const [userAlbum, setUserAlbum] = useState([])
+    const [moodboard, setMoodboard] = useState()
 
     const fetchAlbums = async () => {
         fetch('http://localhost:4000/profiles/my_albums', {
@@ -24,25 +25,32 @@ const CaptionForm = () => {
                 setUserAlbum(data)
             })
     }
-
+    const handleOnChange = (e, index) => {
+        e.preventDefault()
+        e.target.id === 'filename'
+            ? (images[index].filename = e.target.value)
+            : e.target.id === 'caption'
+            ? (images[index].caption = e.target.value)
+            : (images[index].album = e.target.value)
+        context.setPicturesToSave(images)
+        setReload(true)
+    }
+    // lala
+    useEffect(() => {
+        setMoodboard(context.newBoard)
+    }, [context.newBoard])
+    // lala
     useEffect(() => {
         setReload(false)
         fetchAlbums()
     }, [reload])
+
     return (
         <div className="h-4/5 w-5/6 flex flex-row flex-wrap  items-center justify-around overflow-x-auto">
-            {images.map((image) => (
+            {images.map((image, index) => (
                 <form
-                    onChange={(e) => {
-                        e.preventDefault()
-                        e.target.id === 'filename'
-                            ? (image.filename = e.target.value)
-                            : e.target.id === 'caption'
-                            ? (image.caption = e.target.value)
-                            : (image.album = e.target.value)
-                        context.setPicturesToSave(images)
-                        setReload(true)
-                    }}
+                    onSubmit={action}
+                    onChange={(e) => handleOnChange(e, index)}
                 >
                     <div className="h-3/5 m-small flex flex-col flex-wrap items-center justify-around">
                         <Image
@@ -95,7 +103,7 @@ const CaptionForm = () => {
                                     value={image.caption}
                                 />
                             </div>
-                            <div>
+                            <div className="m-small">
                                 <select
                                     name="album"
                                     id="album"
@@ -118,14 +126,51 @@ const CaptionForm = () => {
                                 active:outline-none
                             `}
                                 >
-                                    <option value="" selected disabled hidden>
-                                        Choose album
-                                    </option>
-                                    {userAlbum.map((album, index) => (
-                                        <option key={index} value={album._id}>
-                                            {album.album_name}
-                                        </option>
-                                    ))}
+                                    {!context.newBoard ? (
+                                        <>
+                                            <option
+                                                value={moodboard}
+                                                selected
+                                                disabled
+                                                hidden
+                                            >
+                                                Choose album
+                                            </option>
+                                            {userAlbum.map((album, ind) => (
+                                                <option
+                                                    key={ind}
+                                                    value={album._id}
+                                                >
+                                                    {album.album_name}
+                                                </option>
+                                            ))}
+                                        </>
+                                    ) : (
+                                        <>
+                                            <option
+                                                value={moodboard}
+                                                selected
+                                                disabled
+                                                hidden
+                                            >
+                                                {moodboard}
+                                            </option>
+                                            {userAlbum
+                                                .filter(
+                                                    (e) =>
+                                                        e.album_name !==
+                                                        moodboard
+                                                )
+                                                .map((album, ind) => (
+                                                    <option
+                                                        key={ind}
+                                                        value={album._id}
+                                                    >
+                                                        {album.album_name}
+                                                    </option>
+                                                ))}
+                                        </>
+                                    )}
                                 </select>
                             </div>
                         </div>

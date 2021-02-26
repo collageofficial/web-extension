@@ -10,7 +10,10 @@ const Checkout = () => {
     const context = useContext(Context)
     const [uploadFailed, setUploadFailed] = useState(false)
     const [isModalOpen, setIsModalOpen] = useState(false)
-    const toggleModal = () => setIsModalOpen(!isModalOpen)
+    const toggleModal = () => {
+        setUploadFailed(true)
+        setIsModalOpen(!isModalOpen)
+    }
 
     const postPictures = () => {
         context.picturesToSave.map((picture) => {
@@ -37,8 +40,7 @@ const Checkout = () => {
             ).then((res) =>
                 res.status !== 201
                     ? setUploadFailed(true)
-                    : /* lalala */
-                      context.exitCheckoutPage()
+                    : context.exitCheckoutPage()
             )
         })
     }
@@ -80,11 +82,20 @@ const Checkout = () => {
                 want to change pictures? click here
             </button> */}
 
-                        <CaptionForm />
+                        <CaptionForm action={postPictures} />
 
                         <div className="absolute w-full items-center bottom-0">
                             <Hr thickness="2" width="full" bgColor="grey" />
                             <div className="flex justify-center w-full m-small">
+                                {uploadFailed && (
+                                    <Text
+                                        special="m-small"
+                                        text="ERROR"
+                                        color="dark"
+                                        fontWeight="normal"
+                                        textSize="medium"
+                                    />
+                                )}
                                 <Button
                                     special=""
                                     text="POST MY PICTURES"
@@ -102,15 +113,6 @@ const Checkout = () => {
                     </>
                 )}
             </div>
-            {uploadFailed && (
-                <Text
-                    special="m-small"
-                    text="ERROR"
-                    color="dark"
-                    fontWeight="normal"
-                    textSize="medium"
-                />
-            )}
         </>
     )
 }

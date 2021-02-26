@@ -6,41 +6,43 @@ import Hr from '../Atoms/Hr'
 import Button from '../Atoms/Button'
 import Image from '../Atoms/Image'
 import Input from '../Atoms/Input'
-import NewBoard from '../Molecules/NewBoard'
+// import NewBoard from '../Molecules/NewBoard'
 
 const CreateNewBoard = ({ action }) => {
     const context = useContext(Context)
-    const [input, setInput] = useState('')
+    const [input, setInput] = useState()
     const [error, setError] = useState(false)
 
     const handleOnChange = (e) => {
         setError(false)
         e.preventDefault()
         if (e.target.id === 'newBoardName') {
-            console.log(e)
             setInput(e.target.value)
-            console.log(context.newBoard)
         }
     }
     const handleOnSubmit = async (e) => {
         e.preventDefault()
-        try {
-            fetch('http://localhost:4000/profiles/albums', {
-                method: 'POST',
-                headers: new Headers({
-                    'Content-Type': 'application/json',
-                    'x-auth-token': context.token,
-                }),
-                body: JSON.stringify({
-                    album_name: input,
-                }),
-            }).then(() => {
-                context.setNewBoard(input)
-                action()
-            })
-        } catch {
-            setError(true)
+        const postAlbum = async () => {
+            try {
+                fetch('http://localhost:4000/profiles/albums', {
+                    method: 'POST',
+                    headers: new Headers({
+                        'Content-Type': 'application/json',
+                        'x-auth-token': context.token,
+                    }),
+                    body: JSON.stringify({
+                        album_name: input,
+                    }),
+                }).then(async () => {
+                    console.log(input)
+                    await context.setNewBoard(input)
+                    action()
+                })
+            } catch {
+                setError(true)
+            }
         }
+        input ? postAlbum() : setError(true)
     }
 
     return (
@@ -64,10 +66,18 @@ const CreateNewBoard = ({ action }) => {
                 >
                     <Text
                         text="Create Board"
-                        color="dark"
+                        color="primary"
                         fontWeight="normal"
                         textSize="large"
                     />
+                    {error && (
+                        <Text
+                            text="Choose a name for your board"
+                            color="dark"
+                            fontWeight="normal"
+                            textSize="small"
+                        />
+                    )}
                     {/* input name  */}
                     <div className="m-small">
                         <Text
@@ -87,6 +97,7 @@ const CreateNewBoard = ({ action }) => {
                             border="2"
                             borderColor="grey"
                             borderRadius="small"
+                            required
                         />
                     </div>
                     {/* container with search input  */}

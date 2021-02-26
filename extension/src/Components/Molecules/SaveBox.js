@@ -30,6 +30,7 @@ const SaveBox = ({ conteinerPictures, imageSetting }) => {
             <div className={`h-4/5 ml-small ${conteinerPictures}`}>
                 {context.picturesToSave.map((picture, index) => (
                     <Image
+                    cursor="cursor-pointer"
                         special={`${imageSetting}`}
                         height="full"
                         width="auto"
