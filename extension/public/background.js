@@ -1,4 +1,10 @@
-chrome.browserAction.onClicked.addListener(function (tab) {
+// chrome.browserAction.onClicked.addListener(function (tab) {
+//     window.localStorage.clear()
+//     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+//         chrome.tabs.sendMessage(tabs[0].id, { type: 'popup-modal' })
+//     })
+// })
+chrome.browserAction.onClicked.addListener((tab) => {
     window.localStorage.clear()
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
         chrome.tabs.sendMessage(tabs[0].id, { type: 'popup-modal' })
@@ -6,7 +12,6 @@ chrome.browserAction.onClicked.addListener(function (tab) {
 })
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-    console.log('2', message.message)
     JSON.parse(message.message).map((image, index) =>
         window.localStorage.setItem(
             `${index}`,

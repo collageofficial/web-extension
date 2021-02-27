@@ -51,7 +51,7 @@ const getData = async () => {
                 return data.images
             })
     } catch {
-        //i'm lazy
+        alert('there was a mistake getting your pictures! PLEASE TRY AGAIN')
     }
     const imagesToSend = await imagesOnBrowser.map((image) => {
         return {
