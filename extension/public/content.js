@@ -40,19 +40,18 @@ const getData = async () => {
         return {
             album: '',
             filename: '',
-            caption: image.imageAlt,
+            caption: image.alt,
             origin: window.location.origin,
             size: {
-                width: image.imageWidth,
-                height: image.imageHeight,
+                width: image.width,
+                height: image.height,
             },
-            ratio: image.ratio,
             src:
                 image.getAttribute('data-lazy-src') ||
                 image.getAttribute('data-src') ||
                 image.getAttribute('src'),
         }
-    })
+    }).filter(image=>image.src && image.size.width > 100 && image.size.height > 100)
     chrome.runtime.sendMessage({
         from: 'content',
         message: JSON.stringify(imagesToSend),

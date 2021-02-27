@@ -24,7 +24,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
                     width: image.size.width,
                     height: image.size.height,
                 },
-                ratio: image.ratio,
+                ratio: image.width/image.height,
                 src: image.src,
             })
         )
