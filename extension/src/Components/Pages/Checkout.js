@@ -10,8 +10,10 @@ const Checkout = () => {
     const context = useContext(Context)
     const [uploadFailed, setUploadFailed] = useState(false)
     const [isModalOpen, setIsModalOpen] = useState(false)
+    const [error, setError] = useState(false)
     const toggleModal = () => {
-        setUploadFailed(true)
+        setUploadFailed(false)
+        setError(false)
         setIsModalOpen(!isModalOpen)
     }
 
@@ -50,7 +52,7 @@ const Checkout = () => {
                         : context.exitCheckoutPage()
                 )
             })
-        } else alert('scrivi')
+        } else setError(true)
     }
 
     return (
@@ -86,16 +88,13 @@ const Checkout = () => {
                                 action={toggleModal}
                             />
                         </div>
-                        {/* <button onClick={context.goBackToSelect}>
-                want to change pictures? click here
-            </button> */}
 
                         <CaptionForm action={postPictures} />
 
                         <div className="absolute w-full items-center bottom-0">
                             <Hr thickness="2" width="full" bgColor="grey" />
                             <div className="flex justify-center w-full m-small">
-                                {uploadFailed && (
+                                {(uploadFailed || error) && (
                                     <Text
                                         special="m-small"
                                         text="ERROR"

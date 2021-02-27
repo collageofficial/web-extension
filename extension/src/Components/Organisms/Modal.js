@@ -14,6 +14,7 @@ const Modal = () => {
                     width=""
                     borderRadius="small"
                     url="https://i.pinimg.com/originals/18/70/90/1870902fae654106f55f581624a64c1b.jpg"
+                    action={() => {}}
                 />
             </div>
             {/* left block  */}
@@ -52,6 +53,7 @@ const Modal = () => {
                                 width=""
                                 borderRadius="small"
                                 url="https://i.pinimg.com/originals/18/70/90/1870902fae654106f55f581624a64c1b.jpg"
+                                action={() => {}}
                             />
                             <Text
                                 special="hover:text-primary"
@@ -80,6 +82,7 @@ const Modal = () => {
                                 width=""
                                 borderRadius="small"
                                 url="https://i.pinimg.com/originals/18/70/90/1870902fae654106f55f581624a64c1b.jpg"
+                                action={() => {}}
                             />
                             <Text
                                 special="hover:text-primary"

@@ -57,6 +57,7 @@ const CaptionForm = ({ action }) => {
                             borderRadius="small"
                             url={image.src}
                             filename={image.filename}
+                            action={() => {}}
                         />
                         <div>
                             <div className="m-small">

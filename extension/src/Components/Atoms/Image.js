@@ -25,12 +25,3 @@ const Image = ({
 )
 
 export default Image
-
-//standard image
-
-/* <Image
-height=""
-width=""
-borderRadius="small"
-url='https://i.pinimg.com/originals/18/70/90/1870902fae654106f55f581624a64c1b.jpg' 
-/>  */

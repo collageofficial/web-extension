@@ -26,7 +26,6 @@ const SaveBox = ({ conteinerPictures, imageSetting }) => {
                     textSize="medium"
                 />
             </div>
-            {/* remenber to write some logic with ratio for fit image  */}
             <div className={`h-4/5 ml-small ${conteinerPictures}`}>
                 {context.picturesToSave.map((picture, index) => (
                     <Image
