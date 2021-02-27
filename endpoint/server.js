@@ -1,7 +1,6 @@
-require("dotenv").config();
 const express = require("express");
 const app = express();
-const port = process.env.port;
+const port = process.env.PORT || 5000
 const puppeteer = require("puppeteer");
 app.use(express.json());
 let myPictures = [];
@@ -18,7 +17,10 @@ let checkLocation = (url) => {
 
 //PUPPETEER
 let scraper = async (url) => {
-  const browser = await puppeteer.launch();
+  const browser = await puppeteer.launch({
+    headless: true,
+    args: ['--no-sandbox','--disable-setuid-sandbox']
+  });
   const page = await browser.newPage();
   await page.setDefaultNavigationTimeout(0);
   await page.goto(url, {
@@ -47,7 +49,7 @@ let scraper = async (url) => {
   );
 
   //filtering and taking only the pictures needed
-  myPictures = images.filter(e=> (e.imageSrc && e.imageWidth>100 && e.imageHeight>100));
+  myPictures = await images.filter(e=> (e.imageSrc && e.imageWidth>100 && e.imageHeight>100));
   console.log(myPictures);
   await browser.close();
   },myTimeOut)
@@ -57,7 +59,9 @@ app.listen(port, () => {
   console.log(`server is running on port ${port}`);
 });
 
-app.post("/puppeteer", async (req, res) => {
+app.get("/", (req, res)=>res.send("hello from endpoint"))
+
+app.post("/", async (req, res) => {
   let link = req.body.url;
   await scraper(link);
   res.status(200).json({ images: myPictures });
