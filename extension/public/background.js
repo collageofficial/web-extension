@@ -13,7 +13,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
                 album: image.album,
                 caption: image.caption,
                 filename: image.filename,
-                origin: image.origin,
+                origin: window.location.origin,
                 size: {
                     width: image.size.width,
                     height: image.size.height,
