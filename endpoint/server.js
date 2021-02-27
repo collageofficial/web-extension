@@ -6,7 +6,7 @@ const puppeteer = require("puppeteer");
 app.use(express.json());
 let myPictures = [];
 
-//fix for pages that have a long spinner
+//fix for pages that have a long spinner. put inside slowPages with spinner DOMAIN.COROMAIN
 const slowPages = [
   "vsco.co"
 ]
@@ -16,7 +16,7 @@ let checkLocation = (url) => {
   return`${location[5]}.${location[6]}`
 }
 
-//main scraper
+//PUPPETEER
 let scraper = async (url) => {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
@@ -26,6 +26,7 @@ let scraper = async (url) => {
     timeout:0
   });
 
+  //check. if it is one of those pages with spinner it is giving the function a timeout
   let myTimeOut = 0
   if(slowPages.includes(checkLocation(url))){
     myTimeOut = 3000
@@ -44,7 +45,9 @@ let scraper = async (url) => {
       ratio: (img.naturalWidth / img.naturalHeight).toFixed(2)
     }))
   );
-  myPictures = images;
+
+  //filtering and taking only the pictures needed
+  myPictures = images.filter(e=> (e.imageSrc && e.imageWidth>100 && e.imageHeight>100));
   console.log(myPictures);
   await browser.close();
   },myTimeOut)
