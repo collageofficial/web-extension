@@ -34,52 +34,41 @@ const showModal = () => {
     })
 }
 
-const getData = () => {
+const getData = async () => {
     let imagesOnBrowser = []
-    let imagesToSend = []
-    const getImages = async () => {
-        imagesOnBrowser = Array.from(document.querySelectorAll('img'))
-    }
-    const sortImages = async () => {
-        console.log(imagesOnBrowser)
-        imagesOnBrowser.map((image) => {
-            // put puppeteer here
-            if (image.dataset.src) {
-                imagesToSend = [
-                    ...imagesToSend,
-                    {
-                        album: '',
-                        filename: image.name,
-                        caption: '',
-                        origin: image.baseURI,
-                        size: { width: image.width, height: image.height },
-                        ratio: 1,
-                        src: image.dataset.src,
-                    },
-                ]
-            } else if (image.src !== '') {
-                imagesToSend = [
-                    ...imagesToSend,
-                    {
-                        album: '',
-                        filename: image.name,
-                        caption: '',
-                        origin: image.baseURI,
-                        size: { width: image.width, height: image.height },
-                        ratio: 1,
-                        src: image.src,
-                    },
-                ]
-            }
+    try {
+        imagesOnBrowser = await fetch('http://localhost:5000/puppeteer', {
+            method: 'POST',
+            headers: new Headers({
+                'Content-Type': 'application/json',
+            }),
+            body: JSON.stringify({
+                url: window.location.href,
+            }),
         })
+            .then((res) => res.status === 200 && res.json())
+            .then((data) => {
+                return data.images
+            })
+    } catch {
+        //i'm lazy
     }
-    const sendImages = async () => {
-        chrome.runtime.sendMessage({
-            from: 'content',
-            message: JSON.stringify(imagesToSend),
-        })
-        console.log(imagesToSend)
-    }
-
-    getImages().then(sortImages().then(sendImages()))
+    const imagesToSend = await imagesOnBrowser.map((image) => {
+        return {
+            album: '',
+            filename: '',
+            caption: image.imageAlt,
+            origin: window.location.origin,
+            size: {
+                width: image.imageWidth,
+                height: image.imageHeight,
+            },
+            ratio: image.ratio,
+            src: image.imageSrc,
+        }
+    })
+    chrome.runtime.sendMessage({
+        from: 'content',
+        message: JSON.stringify(imagesToSend),
+    })
 }

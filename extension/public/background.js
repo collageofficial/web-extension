@@ -6,6 +6,7 @@ chrome.browserAction.onClicked.addListener(function (tab) {
 })
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+    console.log('2', message.message)
     JSON.parse(message.message).map((image, index) =>
         window.localStorage.setItem(
             `${index}`,
@@ -13,7 +14,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
                 album: image.album,
                 caption: image.caption,
                 filename: image.filename,
-                origin: window.location.origin,
+                origin: image.origin,
                 size: {
                     width: image.size.width,
                     height: image.size.height,
