@@ -14,7 +14,7 @@ const ModalSelectImage = () => {
     return (
         <div className="w-3/5 h-4/5 p-small">
             <Button
-                action={context.modalSelectOpenToggle}
+                action={context.resetterToggle}
                 width="8"
                 height="8"
                 borderRadius="full"
@@ -33,7 +33,7 @@ const ModalSelectImage = () => {
                     textAlign="center"
                 />
                 <Text
-                    text="Select desidered images"
+                    text="Select up to 4 desidered images"
                     color="dark"
                     fontWeight="normal"
                     textSize="middle"
@@ -91,16 +91,24 @@ const ModalSelectImage = () => {
                 )}
             </div>
             <div className="w-full h-3/5 mb-small">
-                {context.browserPictures.length > 1 ? (<div className="w-full h-full overflow-x-auto">
-                    {context.browserPictures.map((img, index) => (
-                        <div key={index} className="w-1/5 h-1/3 inline-block pl-2">
-                            <CardAdded
+                {context.browserPictures.length > 1 ? (
+                    <div className="w-full h-full overflow-x-auto">
+                        {context.browserPictures.map((img, index) => (
+                            <div
                                 key={index}
-                                borderRadius="small"
-                                url={img.imageSrc}
-                            />
-                        </div>
-                    ))}
+                                className="w-1/5 h-1/3 inline-block pl-2"
+                            >
+                                <CardAdded
+                                    key={index}
+                                    borderRadius="small"
+                                    url={img.imageSrc}
+                                    text="Add"
+                                    action={() =>
+                                        context.setSaveImageToggle(index)
+                                    }
+                                />
+                            </div>
+                        ))}
                     </div>
                 ) : (
                     <div className="w-full h-3/5 flex justify-center items-center">
@@ -109,7 +117,7 @@ const ModalSelectImage = () => {
                 )}
             </div>
             <div className="w-full h-1/5">
-                <SaveBox />
+                <SaveBox action={context.saveImagesToModalInsertImageToggle} />
             </div>
         </div>
     )

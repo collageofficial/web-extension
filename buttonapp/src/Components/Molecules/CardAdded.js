@@ -2,18 +2,16 @@ import React from 'react'
 import Button from '../Atoms/Button'
 import Image from '../Atoms/Image'
 
-const CardAdded = ({key, url, action}) => {
+const CardAdded = ({ key, url, text, action }) => {
     return (
-        <div key={key} className="w-auto h-full flex flex-col items-center relative">
-            <Image
-                height="full"
-                width="auto"
-                borderRadius="small"
-                url={url}
-            />
+        <div
+            key={key}
+            className="w-auto h-full flex flex-col items-center relative"
+        >
+            <Image height="full" width="auto" borderRadius="small" url={url} />
             <Button
                 special="absolute bottom-0"
-                text="Add"
+                text={text}
                 color="light"
                 textSize="small"
                 textWeight="normal"

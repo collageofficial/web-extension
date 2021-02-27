@@ -4,39 +4,39 @@ import { get, post, uploadS3 } from '../util/fetch'
 export const Context = React.createContext()
 
 const Provider = ({ children }) => {
-    // const [picturesToSave, setPicturesToSave] = useState([])
 
-    // const [selectPage, setSelectPage] = useState(false)
-    // const [checkoutPage, setCheckoutPage] = useState(false)
-    // const [endPage, setEndPage] = useState(false)
-
-    // const exitLoginPage = () => {
-    //     setLoginPage(false)
-    //     setSelectPage(true)
-    // }
-    // const exitSelectPage = () => {
-    //     setSelectPage(false)
-    //     setCheckoutPage(true)
-    // }
-    // const goBackToSelect = () => {
-    //     setSelectPage(true)
-    //     setCheckoutPage(false)
-    // }
-    // const exitCheckoutPage = () => {
-    //     setCheckoutPage(false)
-    //     setEndPage(true)
-    // }
-
+    /* ======== HOOKS ========*/ 
+    // hook for login
     const [loginPage, setLoginPage] = useState(true)
+
+    // hook for plus button toggling (after login)
     const [plusBtn, setPlusButton] = useState(false)
+
+    // hook for token handling from BE
     const [token, setToken] = useState()
+
+    // hook for user profile handling from BE
     const [profile, setProfile] = useState({})
+
+    // hook for plus button hovering
     const [plusBtnHovered, setPlusBtnIsHovered] = useState(false)
+
+    // hook for ModalInsertImage toggling (first page)
     const [modalOpen, setModalOpen] = useState(false)
+
+    // hook for ModalSelectImage toggling (second page)
     const [modalSelectOpen, setModalSelectOpen] = useState(false)
+
+    // hook for Get Images btn UI visibility
     const [addUrl, setAddUrl] = useState(false)
+
+    // hook for URL value handling in ModalInsertImage (first page)
     const [urlValue, setUrlValue] = useState('')
+
+    // hook for URL value handling in modalSelectImage (second page)
     const [urlValueSecondPage, setUrlValueSecondPage] = useState('')
+
+    // hook for Alt Text btn UI visibility
     const [altText, setAltText] = useState(true)
 
     // hook for dragDrop component for uploading an image
@@ -45,41 +45,57 @@ const Provider = ({ children }) => {
     // hook for fetching images from BE
     const [browserPictures, setBrowserPictures] = useState([])
 
+    // hook for save selected images inside savebox
+    const [saveImage, setSaveImage] = useState([])
+
+    /* ======== FUNCTIONS ========*/
+    // function for login and plus btn toggling
     const closeLoginToggle = () => {
         setLoginPage(false)
         setPlusButton(true)
     }
 
+    // function for plus btn hovering
     const plusBtnHoverToggle = () => setPlusBtnIsHovered(!plusBtnHovered)
 
+    // function for ModalInsertImage toggling (first page)
     const modalOpenToggle = () => {
         setModalOpen(true)
         setModalSelectOpen(false)
     }
 
+    // function for ModalSelectImage toggling (second page) and fetching from first URL value
     const modalSelectOpenToggle = () => {
         //TODO should be based on .env variable, for now leave as is.
         // Maybe, change this to GET, because we are requesting not pushing new content in.
         // GET is more intuitive
-        fetch('http://localhost:4000/puppeteer', {
-            method: 'POST',
-            headers: new Headers({
-                'Content-Type': 'application/json',
-            }),
-            body: JSON.stringify({
-                url: urlValue,
-            }),
-        })
-            .then((res) => res.json())
-            .then((data) => {
-                setBrowserPictures(data.images)
+        if (urlValue) {
+            fetch('http://localhost:5000/puppeteer', {
+                method: 'POST',
+                headers: new Headers({
+                    'Content-Type': 'application/json',
+                }),
+                body: JSON.stringify({
+                    url: urlValue,
+                }),
             })
-        setModalOpen(!modalOpen)
-        setModalSelectOpen(!modalSelectOpen)
+                .then((res) => res.json())
+                .then((data) => {
+                    setBrowserPictures(data.images)
+                })
+            setModalOpen(!modalOpen)
+            setModalSelectOpen(!modalSelectOpen)
+        } else {
+            alert('Please insert a valid URL')
+            // TODO check when an URL is valid or not
+        }
     }
 
+    // function for uploading images to BE
     const uploadPicture = async (e) => {
         // ignore event, maybe stop propagation
+        e.stopPropagation()
+        e.preventDefault()
         try {
             // TODO checks if it is there etc, show error if non selected etc.
             const file = files[0]
@@ -170,40 +186,67 @@ const Provider = ({ children }) => {
     const getUrlValueSecondPage = (e) => setUrlValueSecondPage(e.target.value)
 
     const matchUrlsValue = () => {
-        setBrowserPictures([])
-        fetch('http://localhost:4000/puppeteer', {
-            method: 'POST',
-            headers: new Headers({
-                'Content-Type': 'application/json',
-            }),
-            body: JSON.stringify({
-                url: urlValueSecondPage,
-            }),
-        })
-            .then((res) => res.json())
-            .then((data) => {
-                setBrowserPictures(data.images)
+        if (urlValueSecondPage) {
+            setBrowserPictures([])
+            fetch('http://localhost:5000/puppeteer', {
+                method: 'POST',
+                headers: new Headers({
+                    'Content-Type': 'application/json',
+                }),
+                body: JSON.stringify({
+                    url: urlValueSecondPage,
+                }),
             })
-        setUrlValue(urlValueSecondPage)
-        setUrlValueSecondPage('')
+                .then((res) => res.json())
+                .then((data) => {
+                    setBrowserPictures(data.images)
+                })
+            setUrlValue(urlValueSecondPage)
+            setUrlValueSecondPage('')
+        } else {
+            alert('Please insert a valid URL')
+            // TODO check when an URL is valid or not
+        }
     }
 
     const altTextToggle = () => setAltText(!altText)
+
+    // function for save selected image in savebox (second page)
+    // logic for keeping saveImage array length to maximum 4 elements
+    const setSaveImageToggle = (num) => {
+        saveImage.length >= 4 && saveImage.pop()
+        setSaveImage([...saveImage, browserPictures[num]])
+    }
+
+    // function for remove selected image from savebox (second page)
+    const removeSaveImageToggle = (num) => {
+        saveImage.splice(num, 1)
+        setSaveImage([...saveImage])
+    }
+
+    // function for going back from ModalSelectImage (second page) to ModalInsertImage (first page) and clear the saveImage array and remove all previous data, soft resetter to app
+    const resetterToggle = () => {
+        setModalOpen(true)
+        setModalSelectOpen(false)
+        setAddUrl(false)
+        setUrlValue('')
+        setUrlValueSecondPage('')
+        setAltText(true)
+        setFiles([])
+        setBrowserPictures([])
+        setSaveImage([])
+    }
+
+    // function for add selected pictures inside savebox (second page) to ModalInsertImage (first page)
+    const saveImagesToModalInsertImageToggle = () => {
+        setModalOpen(!modalOpen)
+        setModalSelectOpen(!modalSelectOpen)
+    }
 
     return (
         <Context.Provider
             value={{
                 browserPictures,
-                /* picturesToSave, */
-                // setPicturesToSave,
-                // loginPage,
-                // selectPage,
-                // checkoutPage,
-                // endPage,
-                // exitLoginPage,
-                // exitSelectPage,
-                // goBackToSelect,
-                // exitCheckoutPage,
                 uploadPicture,
                 loginPage,
                 closeLoginToggle,
@@ -231,6 +274,11 @@ const Provider = ({ children }) => {
                 setFiles,
                 altText,
                 altTextToggle,
+                saveImage,
+                setSaveImageToggle,
+                removeSaveImageToggle,
+                resetterToggle,
+                saveImagesToModalInsertImageToggle,
             }}
         >
             {children}
