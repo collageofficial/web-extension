@@ -5,6 +5,8 @@ const port = process.env.port;
 const puppeteer = require("puppeteer");
 app.use(express.json());
 let myPictures = [];
+
+//fix for pages that have a long spinner
 const slowPages = [
   "vsco.co"
 ]
@@ -13,6 +15,8 @@ let checkLocation = (url) => {
   location = regex.exec(url)
   return`${location[5]}.${location[6]}`
 }
+
+//main scraper
 let scraper = async (url) => {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
@@ -21,10 +25,12 @@ let scraper = async (url) => {
     waitUntil:"load",
     timeout:0
   });
+
   let myTimeOut = 0
   if(slowPages.includes(checkLocation(url))){
     myTimeOut = 3000
   } 
+
   setTimeout(async () => {
     const images = await page.$$eval("img", imgs =>
     imgs.map(img => ({

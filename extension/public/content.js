@@ -35,25 +35,8 @@ const showModal = () => {
 }
 
 const getData = async () => {
-    let imagesOnBrowser = []
-    try {
-        imagesOnBrowser = await fetch('http://localhost:5000/puppeteer', {
-            method: 'POST',
-            headers: new Headers({
-                'Content-Type': 'application/json',
-            }),
-            body: JSON.stringify({
-                url: window.location.href,
-            }),
-        })
-            .then((res) => res.status === 200 && res.json())
-            .then((data) => {
-                return data.images
-            })
-    } catch {
-        alert('there was a mistake getting your pictures! PLEASE TRY AGAIN')
-    }
-    const imagesToSend = await imagesOnBrowser.map((image) => {
+    const imagesOnBrowser = Array.from(document.querySelectorAll('img'))
+    const imagesToSend = imagesOnBrowser.map((image) => {
         return {
             album: '',
             filename: '',
@@ -64,7 +47,10 @@ const getData = async () => {
                 height: image.imageHeight,
             },
             ratio: image.ratio,
-            src: image.imageSrc,
+            src:
+                image.getAttribute('data-lazy-src') ||
+                image.getAttribute('data-src') ||
+                image.getAttribute('src'),
         }
     })
     chrome.runtime.sendMessage({
