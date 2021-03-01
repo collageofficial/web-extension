@@ -70,7 +70,7 @@ const Provider = ({ children }) => {
         // Maybe, change this to GET, because we are requesting not pushing new content in.
         // GET is more intuitive
         if (urlValue) {
-            fetch('http://localhost:5000/puppeteer', {
+            fetch('http://localhost:5000', {
                 method: 'POST',
                 headers: new Headers({
                     'Content-Type': 'application/json',
@@ -188,7 +188,7 @@ const Provider = ({ children }) => {
     const matchUrlsValue = () => {
         if (urlValueSecondPage) {
             setBrowserPictures([])
-            fetch('http://localhost:5000/puppeteer', {
+            fetch('http://localhost:5000/', {
                 method: 'POST',
                 headers: new Headers({
                     'Content-Type': 'application/json',
