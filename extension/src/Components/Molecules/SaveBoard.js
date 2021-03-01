@@ -21,15 +21,15 @@ const SaveBoard = () => {
                 />
             </div>
             <div>
-            <Hr thickness="2" margin="small" width="9/10" bgColor="grey" />
+                <Hr thickness="2" margin="small" width="9/10" bgColor="grey" />
             </div>
             <div className="h-2/5 ml-small flex justify-center item-center">
-                {/* remenber to write some logic with ratio for fit image  */}
                 <Image
                     height="full"
                     width="auto"
                     borderRadius="small"
                     url="https://i.pinimg.com/originals/18/70/90/1870902fae654106f55f581624a64c1b.jpg"
+                    action={() => {}}
                 />
             </div>
             <div>

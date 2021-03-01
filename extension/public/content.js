@@ -11,7 +11,7 @@ const showModal = () => {
         'style',
         `
     height: 95vh;
-    width: 95vw;
+    width: 90vw;
     border: none;
     border-radius: 15px;
     background-color: white;
@@ -34,36 +34,26 @@ const showModal = () => {
     })
 }
 
-const getData = () => {
-    let imagesOnBrowser = []
-    let imagesToSend = []
-    const getImages = async () => {
-        imagesOnBrowser = Array.from(document.querySelectorAll('img'))
-    }
-    const sortImages = async () => {
-        imagesOnBrowser.map(
-            (image) =>
-                (imagesToSend = [
-                    ...imagesToSend,
-                    {
-                        album: 'album',
-                        filename: 'filename',
-                        caption: 'caption',
-                        origin: 'origin',
-                        size: { width: 1 /* image.width */, height: 1 /* image.height */ },
-                        ratio: 1,
-                        src: image.src,
-                    },
-                ])
-        )
-    }
-    const sendImages = async () => {
-        chrome.runtime.sendMessage({
-            from: 'content',
-            message: JSON.stringify(imagesToSend),
-        })
-        console.log(imagesToSend)
-    }
-
-    getImages().then(sortImages().then(sendImages()))
+const getData = async () => {
+    const imagesOnBrowser = Array.from(document.querySelectorAll('img'))
+    const imagesToSend = imagesOnBrowser.map((image) => {
+        return {
+            album: '',
+            filename: '',
+            caption: image.alt,
+            origin: window.location.origin,
+            size: {
+                width: image.width,
+                height: image.height,
+            },
+            src:
+                image.getAttribute('data-lazy-src') ||
+                image.getAttribute('data-src') ||
+                image.getAttribute('src'),
+        }
+    }).filter(image=>image.src && image.size.width > 100 && image.size.height > 100)
+    chrome.runtime.sendMessage({
+        from: 'content',
+        message: JSON.stringify(imagesToSend),
+    })
 }

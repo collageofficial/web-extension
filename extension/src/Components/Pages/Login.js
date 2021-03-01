@@ -15,7 +15,6 @@ const Login = () => {
 
     const logIn = async (e) => {
         e.preventDefault()
-        setLoginFailed(true)
         fetch('http://localhost:4000/auth', {
             method: 'POST',
             headers: new Headers({

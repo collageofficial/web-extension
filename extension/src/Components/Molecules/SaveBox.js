@@ -4,15 +4,20 @@ import Text from '../Atoms/Text'
 import Button from '../Atoms/Button'
 import Image from '../Atoms/Image'
 
-const SaveBox = () => {
+const SaveBox = ({ conteinerPictures, imageSetting }) => {
     const context = useContext(Context)
     const [images, setImages] = useState([])
     useEffect(() => {
         setImages(context.picturesToSave)
     }, [images])
+    const handleSubmit = () => {
+        if (context.picturesToSave.length > 0) {
+            context.exitSelectPage()
+        }
+    }
 
     return (
-        <div className="p-small w-full h-full flex flex-col bg-light rounded-small border-2 border-dark justify-center">
+        <div className=" w-full h-full flex flex-col bg-light rounded-small border-2 border-dark justify-center">
             <div className="m-small">
                 <Text
                     text="Added images :"
@@ -21,10 +26,11 @@ const SaveBox = () => {
                     textSize="medium"
                 />
             </div>
-            {/* remenber to write some logic with ratio for fit image  */}
-            <div className="h-2/5 ml-small">
+            <div className={`h-4/5 ml-small ${conteinerPictures}`}>
                 {context.picturesToSave.map((picture, index) => (
                     <Image
+                    cursor="cursor-pointer"
+                        special={`${imageSetting}`}
                         height="full"
                         width="auto"
                         borderRadius="small"
@@ -39,7 +45,7 @@ const SaveBox = () => {
                     />
                 ))}
             </div>
-            <div className="flex justify-end">
+            <div className="flex justify-end m-small">
                 <Button
                     text="Save in Mood boards"
                     color="light"
@@ -47,11 +53,11 @@ const SaveBox = () => {
                     textWeight="normal"
                     bgColor="primary"
                     width="25"
-                    height="10"
+                    height="8"
                     border="2"
                     borderColor="primary"
                     borderRadius="small"
-                    action={context.exitSelectPage}
+                    action={handleSubmit}
                 />
             </div>
         </div>

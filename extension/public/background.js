@@ -1,4 +1,5 @@
-chrome.browserAction.onClicked.addListener(function (tab) {
+chrome.browserAction.onClicked.addListener((tab) => {
+    window.localStorage.clear()
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
         chrome.tabs.sendMessage(tabs[0].id, { type: 'popup-modal' })
     })
@@ -17,7 +18,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
                     width: image.size.width,
                     height: image.size.height,
                 },
-                ratio: image.ratio,
+                ratio: image.size.width/image.size.height,
                 src: image.src,
             })
         )
