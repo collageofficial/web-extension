@@ -3,7 +3,7 @@ import React from 'react'
 import Button from '../Atoms/Button'
 import Image from '../Atoms/Image'
 
-const CardAdded = ({filename, url, action}) => {
+const CardAdded = ({ filename, url, action }) => {
     return (
         <div className="w-auto h-full flex flex-col items-center relative">
             <Image
@@ -12,6 +12,7 @@ const CardAdded = ({filename, url, action}) => {
                 borderRadius="small"
                 url={url}
                 filename={filename}
+                action={() => {}}
             />
             <Button
                 special="absolute top-0 right-0"

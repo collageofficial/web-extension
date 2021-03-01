@@ -10,6 +10,7 @@ const Provider = ({ children }) => {
     const [selectPage, setSelectPage] = useState(false)
     const [checkoutPage, setCheckoutPage] = useState(false)
     const [endPage, setEndPage] = useState(false)
+    const [newBoard, setNewBoard] = useState()
 
     const exitLoginPage = () => {
         setLoginPage(false)
@@ -45,6 +46,8 @@ const Provider = ({ children }) => {
                 exitSelectPage,
                 goBackToSelect,
                 exitCheckoutPage,
+                newBoard,
+                setNewBoard
             }}
         >
             {children}

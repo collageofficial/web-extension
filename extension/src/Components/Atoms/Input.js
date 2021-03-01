@@ -46,7 +46,6 @@ const Input = ({
             type={type}
             id={id}
             value={value}
-            required
         />
         {noGlass === false && (
             <button>

@@ -1,11 +1,5 @@
 import React, { useEffect, useContext } from 'react'
 import { Context } from '../../Context/Context'
-
-import Text from '../Atoms/Text'
-import Hr from '../Atoms/Hr'
-import Button from '../Atoms/Button'
-import Image from '../Atoms/Image'
-import Input from '../Atoms/Input'
 import NewBoard from '../Molecules/NewBoard'
 
 const Modal = () => {
@@ -20,6 +14,7 @@ const Modal = () => {
                     width=""
                     borderRadius="small"
                     url="https://i.pinimg.com/originals/18/70/90/1870902fae654106f55f581624a64c1b.jpg"
+                    action={() => {}}
                 />
             </div>
             {/* left block  */}
@@ -58,9 +53,10 @@ const Modal = () => {
                                 width=""
                                 borderRadius="small"
                                 url="https://i.pinimg.com/originals/18/70/90/1870902fae654106f55f581624a64c1b.jpg"
+                                action={() => {}}
                             />
                             <Text
-                            special="hover:text-primary"
+                                special="hover:text-primary"
                                 text="Mood Boards 1"
                                 color="dark"
                                 fontWeight="normal"
@@ -86,9 +82,10 @@ const Modal = () => {
                                 width=""
                                 borderRadius="small"
                                 url="https://i.pinimg.com/originals/18/70/90/1870902fae654106f55f581624a64c1b.jpg"
+                                action={() => {}}
                             />
                             <Text
-                            special="hover:text-primary"
+                                special="hover:text-primary"
                                 text="Mood Boards"
                                 color="dark"
                                 fontWeight="normal"

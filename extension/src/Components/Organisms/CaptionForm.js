@@ -3,8 +3,9 @@ import React, { useContext, useState, useEffect } from 'react'
 import { Context } from './../../Context/Context'
 import Input from '../Atoms/Input'
 import Image from '../Atoms/Image'
+import Text from '../Atoms/Text'
 
-const CaptionForm = () => {
+const CaptionForm = ({ action }) => {
     const context = useContext(Context)
     const [images, setImages] = useState(context.picturesToSave)
     const [reload, setReload] = useState(false)
@@ -23,74 +24,125 @@ const CaptionForm = () => {
                 setUserAlbum(data)
             })
     }
-
+    const handleOnChange = (e, index) => {
+        e.preventDefault()
+        e.target.id === 'filename'
+            ? (images[index].filename = e.target.value)
+            : e.target.id === 'caption'
+            ? (images[index].caption = e.target.value)
+            : (images[index].album = e.target.value)
+        context.setPicturesToSave(images)
+        console.log(context.picturesToSave)
+        setReload(!reload)
+    }
     useEffect(() => {
-        setReload(false)
+        console.log('fetch')
         fetchAlbums()
+    }, [])
+    useEffect(() => {
+        console.log('reload')
     }, [reload])
+
     return (
-        <div className="h-1/2 w-3/4 flex flex-column flex-wrap items-center">
-            {images.map((image) => (
+        <div className="h-4/5 w-5/6 flex flex-row flex-wrap  items-center justify-around overflow-x-auto">
+            {images.map((image, index) => (
                 <form
-                    onChange={(e) => {
-                        e.preventDefault()
-                        e.target.id === 'filename'
-                            ? (image.filename = e.target.value)
-                            : e.target.id === 'caption'
-                            ? (image.caption = e.target.value)
-                            : (image.album = e.target.value)
-                        context.setPicturesToSave(images)
-                        console.log(context.picturesToSave)
-                        setReload(true)
-                    }}
+                    onSubmit={action}
+                    onChange={(e) => handleOnChange(e, index)}
                 >
-                    <div className="m-small flex flex-col items-center">
+                    <div className="h-3/5 m-small flex flex-col flex-wrap items-center justify-around">
                         <Image
-                            height="auto"
-                            width="full"
+                            height="1/2"
+                            width="auto"
                             borderRadius="small"
                             url={image.src}
                             filename={image.filename}
+                            action={() => {}}
                         />
-                        <label htmlFor="filename">Title:</label>
-                        <Input
-                            text="Title"
-                            textWeight="200"
-                            bgColor="light"
-                            width="96"
-                            height="14"
-                            border="2"
-                            borderColor="grey"
-                            borderRadius="small"
-                            type="text"
-                            id="filename"
-                            value={image.filename}
-                        />
-                        <label htmlFor="caption">Caption:</label>
-                        <Input
-                            text="Caption"
-                            textWeight="200"
-                            bgColor="light"
-                            width="96"
-                            height="14"
-                            border="2"
-                            borderColor="grey"
-                            borderRadius="small"
-                            type="text"
-                            id="caption"
-                            value={image.caption}
-                        />
-                        <label htmlFor="album">Album:</label>
-                        <select name="album" id="album" required>
-                            <option value="" selected disabled hidden>
-                                Choose here
-                            </option>
-                            {userAlbum.map((album, index) => (
-                                <option value={album._id}>
-                                    {album.album_name}
-                                </option>
-                            ))}
-                        </select>
+                        <div>
+                            <div className="m-small">
+                                <Text
+                                    text="Title:"
+                                    color="dark"
+                                    fontWeight="normal"
+                                    textSize="small"
+                                />
+                                <Input
+                                    text={image.filename}
+                                    textWeight="200"
+                                    bgColor="light"
+                                    width="52"
+                                    height="8"
+                                    border="2"
+                                    borderColor="grey"
+                                    borderRadius="small"
+                                    type="text"
+                                    id="filename"
+                                    value={image.filename}
+                                />
+                            </div>
+                            <div className="m-small">
+                                <Text
+                                    text="Caption:"
+                                    color="dark"
+                                    fontWeight="normal"
+                                    textSize="small"
+                                />
+                                <Input
+                                    text={image.caption}
+                                    textWeight="200"
+                                    bgColor="light"
+                                    width="52"
+                                    height="8"
+                                    border="2"
+                                    borderColor="grey"
+                                    borderRadius="small"
+                                    type="text"
+                                    id="caption"
+                                    value={image.caption}
+                                />
+                            </div>
+                            <div className="m-small">
+                                <select
+                                    name="album"
+                                    id="album"
+                                    required
+                                    className={`
+                                font-main
+                                font-normal
+                                text-center
+                                align-middle
+                                bg-primary 
+                                text-light
+                                text-small 
+                                w-36 
+                                h-8 
+                                rounded-small
+                                hover:bg-grey
+                                hover:text-primary
+                                transition duration-500
+                                focus:outline-none
+                                active:outline-none
+                            `}
+                                >
+                                    <>
+                                        <option
+                                            value=""
+                                            selected
+                                            disabled
+                                            hidden
+                                        >
+                                            Choose album
+                                        </option>
+                                        {userAlbum.map((album, ind) => (
+                                            <option key={ind} value={album._id}>
+                                                {album.album_name}
+                                            </option>
+                                        ))}
+                                    </>
+                                </select>
+                            </div>
+                        </div>
                     </div>
                 </form>
             ))}

@@ -4,6 +4,7 @@ import { Context } from '../../Context/Context'
 import Text from '../Atoms/Text'
 import SaveBox from '../Molecules/SaveBox'
 import CardAdded from '../Molecules/CardAdded'
+import CollageLogo from '../Molecules/collageLogo'
 
 const ExtenActivated = () => {
     const context = useContext(Context)
@@ -29,8 +30,8 @@ const ExtenActivated = () => {
     }
     return (
         <div>
-            <div className="flex flex-row m-small space-x-5">
-                <img src="icon.png" alt="logo"></img>
+            <div className="flex flex-row m-small space-x-5 items-center justify-between">
+                <CollageLogo />
                 <Text
                     text="Add one more images to your Mood Boards"
                     color="primary"
@@ -39,10 +40,10 @@ const ExtenActivated = () => {
                 />
             </div>
 
-            <div className="p-small flex flex-wrap w-auto  h-full space-x-5 ">
+            <div className="p-small pr-3.5 flex flex-wrap w-auto justify-between h-full ">
                 {context.browserPictures.length > 0 &&
                     context.browserPictures.map((picture, index) => (
-                        <div className="h-1/6 w-auto">
+                        <div className="h-1/6 mt-small ml-small w-auto">
                             <CardAdded
                                 height="full"
                                 width="auto"
@@ -54,12 +55,16 @@ const ExtenActivated = () => {
                             />
                         </div>
                     ))}
-            </div>
-            <div className="flex justify-center">
-                <div className="fixed bottom-0 h-1/5 w-11/12 ">
-                    <SaveBox />
+                     <div className="fixed pr-12 bottom-0 h-1/3 w-full ">
+                    <SaveBox 
+                    conteinerPictures="flex flex-row overflow-x-auto"
+                    imageSetting="ml-small" />
                 </div>
             </div>
+
+            {/* <div className="flex justify-center">
+               
+            </div> */}
         </div>
     )
 }

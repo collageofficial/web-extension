@@ -27,6 +27,7 @@ const SavedPicture = () => {
                     width="auto"
                     borderRadius="small"
                     url="https://i.pinimg.com/originals/18/70/90/1870902fae654106f55f581624a64c1b.jpg"
+                    action={() => {}}
                 />
             </div>
             <div className="items-center w-full">

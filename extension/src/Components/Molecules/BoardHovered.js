@@ -1,13 +1,7 @@
-import { react, useContext, useState } from 'react'
-import { Context } from '../../Context/Context'
+import { useState } from 'react'
 
-import Text from '../Atoms/Text'
-import Button from '../Atoms/Button'
-import Image from '../Atoms/Image'
 
 const BoardHovered = () => {
-    const context = useContext(Context)
-
     let [displayButton, setDisplay] = useState(['bg-light', 'hidden'])
 
     return (
@@ -22,6 +16,7 @@ const BoardHovered = () => {
                     width="auto"
                     borderRadius="small"
                     url="https://i.pinimg.com/originals/18/70/90/1870902fae654106f55f581624a64c1b.jpg"
+                    action={()=>{}}
                 />
 
                 <Text
