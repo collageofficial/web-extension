@@ -48,6 +48,9 @@ const Provider = ({ children }) => {
     // hook for save selected images inside savebox
     const [saveImage, setSaveImage] = useState([])
 
+    // hook for GET user albums (mood board)
+    const [userAlbum, setUserAlbum] = useState([])
+
     /* ======== FUNCTIONS ========*/
     // function for login and plus btn toggling
     const closeLoginToggle = () => {
@@ -243,6 +246,34 @@ const Provider = ({ children }) => {
         setModalSelectOpen(!modalSelectOpen)
     }
 
+    // funtion for remove one image from ModalInsertImage (first page), work only after picture are saved in the savebox (second page)
+    const removeImageFromModalInsertImage = (num) => {
+        saveImage.splice(num, 1);
+        setSaveImage([...saveImage]);
+    }
+
+    // function for fetch user albums from BE
+       const fetchAlbums = async () => {
+        // fetch('http://localhost:4000/profiles/my_albums', {
+        //     method: 'GET',
+        //     headers: new Headers({
+        //         'Content-Type': 'application/json',
+        //         'x-auth-token': token,
+        //     }),
+        // })
+        //     .then((res) => res.json())
+        //     .then((data) => {
+        //         setUserAlbum(data)
+        //     })
+
+        //  TODO fetch album from Collage BE
+    }
+
+    // function for save the current image in the selected user album
+    const saveImageToAlbums = async () => {
+
+    }
+
     return (
         <Context.Provider
             value={{
@@ -279,6 +310,9 @@ const Provider = ({ children }) => {
                 removeSaveImageToggle,
                 resetterToggle,
                 saveImagesToModalInsertImageToggle,
+                removeImageFromModalInsertImage,
+                fetchAlbums,
+                saveImageToAlbums
             }}
         >
             {children}
