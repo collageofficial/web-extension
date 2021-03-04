@@ -45,7 +45,7 @@ const Login = () => {
         setReload(true)
     }
 
-    useEffect(() => setReload(false))
+    useEffect(() => setReload(false), [reload])
 
     return (
         <>

@@ -44,12 +44,10 @@ let scraper = async (url) => {
       imageAlt: img.getAttribute("alt"),
       imageWidth: img.naturalWidth,
       imageHeight: img.naturalHeight,
-      ratio: (img.naturalWidth / img.naturalHeight).toFixed(2)
+      ratio: (img.naturalWidth / img.naturalHeight).toFixed(2),
     }))
   );
-
-  //filtering and taking only the pictures needed
-  myPictures = await images.filter(e=> (e.imageSrc && e.imageWidth>100 && e.imageHeight>100));
+  myPictures = await images.filter(img => img.imageSrc && img.imageWidth > 100 && img.imageHeight > 100);
   console.log(myPictures);
   await browser.close();
   },myTimeOut)

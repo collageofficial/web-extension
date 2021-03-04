@@ -5,7 +5,7 @@ module.exports = {
 
     theme: {
         extend: {
-          // remember to update colors also in tailwind.css for special classes
+          // remember to update colors also in tailwind.css for special classes and also in spinner components
             colors: {
                 primary: '#D6B891',
                 light: '#ffffff',

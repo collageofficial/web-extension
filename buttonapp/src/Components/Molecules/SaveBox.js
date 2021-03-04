@@ -3,32 +3,42 @@ import { Context } from '../../Context/Context'
 
 import Button from '../Atoms/Button'
 import Image from '../Atoms/Image'
+import CardAdded from '../Molecules/CardAdded'
 
-const SaveBox = () => {
+const SaveBox = ({ action }) => {
     const context = useContext(Context)
 
     return (
-        <div className="w-full h-4/5 flex rounded-small border-2 border-primary justify-between items-center p-small">
-            <div className="h-full">
-                <Image
-                    height="full"
-                    width="auto"
+        <div className="w-full h-full flex rounded-small border-2 border-primary justify-end items-center gap-2 p-small">
+            {context.saveImage.map((img, index) => (
+                <div
+                    className="h-full w-5/6 flex items-center gap-2"
+                    key={index}
+                >
+                    <CardAdded
+                        key={index}
+                        borderRadius="small"
+                        url={img.imageSrc}
+                        text="Remove"
+                        action={() => context.removeSaveImageToggle(index)}
+                    />
+                </div>
+            ))}
+            <div className="w-1/6 flex justify-end">
+                <Button
+                    text="Add"
+                    color="light"
+                    textSize="medium"
+                    textWeight="normal"
+                    bgColor="primary"
+                    width="20"
+                    height="10"
+                    border="2"
+                    borderColor="primary"
                     borderRadius="small"
-                    url="https://i.pinimg.com/originals/18/70/90/1870902fae654106f55f581624a64c1b.jpg"
+                    action={action}
                 />
             </div>
-            <Button
-                text="Add"
-                color="light"
-                textSize="medium"
-                textWeight="normal"
-                bgColor="primary"
-                width="20"
-                height="10"
-                border="2"
-                borderColor="primary"
-                borderRadius="small"
-            />
         </div>
     )
 }

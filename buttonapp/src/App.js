@@ -25,10 +25,9 @@ const App = () => {
             {context.loginPage && <Login />}
             {context.plusBtn && (
                 <div
-                    className={`absolute bottom-10 right-5 flex gap-8 p-small cursor-pointer ${
-                        context.plusBtnHovered &&
+                    className={`absolute bottom-10 right-5 flex gap-8 p-small cursor-pointer ${context.plusBtnHovered &&
                         'border-grey border-2 rounded-full'
-                    }`}
+                        }`}
                     onMouseEnter={context.plusBtnHoverToggle}
                     onMouseLeave={context.plusBtnHoverToggle}
                 >
@@ -46,7 +45,13 @@ const App = () => {
                     />
                 </div>
             )}
-            {context.modalOpen && <ModalInsertImage />}
+            {context.modalOpen &&
+                <div className="flex flex-wrap p-small gap-2 w-full h-full justify-center items-center overflow-y-auto">
+                    {context.saveImage.length === 0
+                        ? <ModalInsertImage />
+                        : context.saveImage.map((element, index) => <ModalInsertImage key={index} image={element} index={index} />)}
+                </div>
+            }
             {context.modalSelectOpen && (
                 <ModalSelectImage />
             )}
