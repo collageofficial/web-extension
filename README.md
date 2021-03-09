@@ -9,7 +9,7 @@
 - Jacopo Luri https://github.com/JacopoLuri
 - Jean-Loup Cayuela https://github.com/j-loup30400
 
-> Client project made in 2 month for Collage Official during (https://www.wildcodeschool.com/) bootcamp
+> Client project made in 2 month for Collage Official (https://collageofficial.com/) during (https://www.wildcodeschool.com/) bootcamp
 
 ## Install for ButtonApp
 ```bash
