@@ -46,7 +46,7 @@ $ npm run build
 - React Router
 - Context
 - Api Call 
-- -Tailwind CSS
+- Tailwind CSS
 - chokidar-cli
 - react-dropzone
 - Express
