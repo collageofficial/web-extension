@@ -3,44 +3,41 @@
 ![React](https://aleen42.github.io/badges/src/react.svg)
 
 ## Made by 5 students of the Wild Code School Bootcamp as last project with 
-- Roxana Florea https://github.com/roxana-florea
-- Fabien Lallement https://github.com/Befa222
-- Dean Leonard https://github.com/Deanleonard26
+- Jane https://github.com/Gabriellji
+- Teiko Mancia https://github.com/mancia08
+- Valentin Kolko https://github.com/valiant9191
 - Jacopo Luri https://github.com/JacopoLuri
-- Nikolai Phalen https://github.com/nphalen29
+- Jean-Loup Cayuela https://github.com/j-loup30400
 
-> WebApp made in 24 hours for first hackaton during [Wild Code School](https://www.wildcodeschool.com/) bootcamp
+> Client project made in 2 month for Collage Official during (https://www.wildcodeschool.com/) bootcamp
 
-## Install
+## Install for ButtonApp
 ```bash
+$ git clone https://github.com/collageofficial/web-extension.git
 $ npm install
-
 $ yarn install
+$ npm start
+```
+
+## Install for Chrome-Extension
+```bash
+$ git clone https://github.com/collageofficial/web-extension.git
+$ npm install
+$ npm run build
 ```
 
 ## List of Contents
 - [Install](#install)
 - [List of Contents](#list-of-contents)
 - [Purpose](#purpose)
-- [TempEra](#tempera)
 - [Wireframes Packages and Softwares used](#wireframes-packages-and-softwares-used)
 - [Documentation](#documentation)
 
 ## Purpose
-5 students from WCS full-stack web dev course in our first hackaton experience, we were asked to make a webapp in 24 hours.
+5 students from WCS full-stack web dev course in our first Client Project experience, we were asked to make a Chrome-Extension in 2 months .
 
-We are time-travellers, our purpose is to make an application for people in the past and solve one of their needs.
+ our purpose is to make an Extension gonna fetch picture from any website and to be able to create albums and send them in the collage application.
 
-
-
-## TempEra
-Photography is one of the greatest invention of mankind, imagine to be one of the lucky who have access to first cameras ever made in the XIX century, imagine to take a photo, imagine to see a photo for the first time in hystory...
-
-...you will have a greyscale photo in your hands, amazing, marvellous...
-
-...now imagine to add colors to this photo, how can you do that?
-
-with TempEra!!
 
 ## Wireframes, Packages and Softwares used
 - Miro
@@ -48,8 +45,15 @@ with TempEra!!
 - React
 - React Router
 - Context
-- Api Call with unsplash API
-- React burger menu
+- Api Call 
+- -Tailwind CSS
+- chokidar-cli
+- react-dropzone
+- Express
+- Mongoose
+- Puppeteer
+- Jsonwebtoken
+- Nodemon
 
 ## Documentation
-You can find all the documentation here: https://docs.google.com/document/d/1QW6I39_SvUQNc6_YRX6_afVaAoXCTzJVF1Jm2eJDz7U/edit?usp=sharing
+You can find all the documentation here: 
