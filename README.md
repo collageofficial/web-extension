@@ -13,17 +13,62 @@
 
 ## Install for ButtonApp
 ```bash
-$ git clone https://github.com/collageofficial/web-extension.git
+$ git clone https://github.com/collageofficial/buttonapp.git
 $ npm install
-$ yarn install
 $ npm start
 ```
-
+```bash
+$ git clone https://github.com/collageofficial/buttonapp.git
+$ yarn install
+$ yarn start
+```
 ## Install for Chrome-Extension
 ```bash
 $ git clone https://github.com/collageofficial/web-extension.git
 $ npm install
 $ npm run build
+```
+```bash
+$ git clone https://github.com/collageofficial/web-extension.git
+$ yarn install
+$ yarn start
+```
+Open Google chrome open the manage extension , then refresh the Collage extension 
+
+## Install for Endpoint
+```bash
+$ git clone https://github.com/collageofficial/endpoint.git
+$ npm install
+$ npm start
+```
+```bash
+$ git clone https://github.com/collageofficial/endpoint.git
+$ yarn install
+$ yarn start
+```
+Create a .env file in endpoint root with
+```bash
+PORT=5000
+REACT_APP_APPKEY_EXTENSTION={your key}
+REACT_APP_APPKEY_WEB={your key}
+```
+## Install for server
+```bash
+$ git clone https://github.com/collageofficial/server.git
+$ npm install
+$ npm run start
+```
+```bash
+$ git clone https://github.com/collageofficial/server.git
+$ yarn install
+$ yarn run start
+```
+create a .env file in server root with 
+```bash
+NODE_ENV=development
+PORT=4000
+AUTH_MODE=false
+JWT_SECRET_KEY='secret-key'
 ```
 
 ## List of Contents
@@ -31,7 +76,6 @@ $ npm run build
 - [List of Contents](#list-of-contents)
 - [Purpose](#purpose)
 - [Wireframes Packages and Softwares used](#wireframes-packages-and-softwares-used)
-- [Documentation](#documentation)
 
 ## Purpose
 5 students from WCS full-stack web dev course in our first Client Project experience, we were asked to make a Chrome-Extension in 2 months .
