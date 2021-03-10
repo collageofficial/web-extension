@@ -11,7 +11,7 @@
 
 > Client project made in 2 month for Collage Official (https://collageofficial.com/) during (https://www.wildcodeschool.com/) bootcamp
 
-
+### Project mockup create on figma with Atomic design approach.
 
 ### Project Done with react functional approach only, with hooks (useState, useEffect).
 
