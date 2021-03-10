@@ -10,11 +10,19 @@
 - Jean-Loup Cayuela https://github.com/j-loup30400
 
 > Client project made in 2 month for Collage Official (https://collageofficial.com/) during (https://www.wildcodeschool.com/) bootcamp
+
+
+
 ### Project Done with react functional approach only, with hooks (useState, useEffect).
+
 ### Our state management have been solve by context and useContext hooks.
+
 ### About our styling we been using Tailwind CSS. 
+
 ### The Back-End run with Node and Express for routing and JWT for the authorization.
+
 ### Puppeteer scraper run in a separate Back-End 
+
 
 
 ## Install for ButtonApp
