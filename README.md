@@ -3,8 +3,8 @@
 ![React](https://aleen42.github.io/badges/src/react.svg)
 
 ## Made by 5 students of the Wild Code School Bootcamp as last project with 
-- Jane https://github.com/Gabriellji
-- Teiko Mancia https://github.com/mancia08
+- Evgeniya Gabrikova https://github.com/Gabriellji
+- Mancini https://github.com/mancia08
 - Valentin Kolko https://github.com/valiant9191
 - Jacopo Luri https://github.com/JacopoLuri
 - Jean-Loup Cayuela https://github.com/j-loup30400
