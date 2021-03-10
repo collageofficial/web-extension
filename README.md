@@ -55,5 +55,3 @@ $ npm run build
 - Jsonwebtoken
 - Nodemon
 
-## Documentation
-You can find all the documentation here: 
