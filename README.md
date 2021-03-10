@@ -82,11 +82,20 @@ JWT_SECRET_KEY='secret-key'
 
  our purpose is to make an Extension gonna fetch picture from any website and to be able to create albums and send them in the collage application.
 
+Extension folder, run the chrome-extension and is connected to the server Back-End
+
+ButtonApp, Front-End of the App connected to the endpoint Back-End 
+
+Endpoint, Back-End server with Puppeteer functionality
+
+Server, Standard Back-End server 
+
+# dzdzdzdz
 
 ## Wireframes, Packages and Softwares used
 - Miro
 - Figma
-- React
+- React 
 - React Router
 - Context
 - Api Call 
